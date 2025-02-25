@@ -12,11 +12,13 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@nuxt/content": "^3.2.2",
     "@nuxt/eslint": "^0.7.5",
     "@nuxthub/core": "^0.8.11",
     "nuxt": "^3.15.1",
     "vue": "^3.5.13",
-    "vue-router": "^4.5.0"
+    "vue-router": "^4.5.0",
+    "vuetify-nuxt-module": "0.18.3"
   },
   "devDependencies": {
     "@nuxt/eslint-config": "^0.7.5",
