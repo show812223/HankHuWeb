@@ -23,17 +23,6 @@ export default defineNuxtConfig({
     moduleOptions: {
       /* module specific options */
     },
-    vuetifyOptions: {
-      /* vuetify options */
-    }
-  },
-
-  // https://eslint.nuxt.com
-  eslint: {
-    config: {
-      stylistic: {
-        quotes: 'single',
-      },
-    },
-  },
+    vuetifyOptions: './vuetify.config.ts'
+  }
 })

@@ -5,14 +5,20 @@ const color = useState('color', () => colors[Math.floor(Math.random() * colors.l
 </script>
 
 <template>
-  <div class="centered">
-    <h1 :style="{ color }">
-      {{ runtimeConfig.public.helloText }}
-    </h1>
-    <NuxtLink to="/" external>
-      refresh
-    </NuxtLink>
+<!--  <div class="centered">-->
+<!--    <h1 :style="{ color }">-->
+<!--      {{ runtimeConfig.public.helloText }}-->
+<!--    </h1>-->
+<!--    <NuxtLink to="/" external>-->
+<!--      refresh-->
+<!--    </NuxtLink>-->
+<!--  </div>-->
+
+  <div class="h-100 d-flex align-center justify-center ga-12">
+    <HomeAvatarCard />
+    <HomeAboutMe />
   </div>
+
 </template>
 
 <style scoped>
