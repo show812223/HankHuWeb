@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   // https://nuxt.com/modules
-  modules: ['@nuxthub/core', '@nuxt/eslint', 'vuetify-nuxt-module','@nuxt/content'],
+  modules: ['@nuxthub/core', '@nuxt/eslint', 'vuetify-nuxt-module', '@nuxt/content', '@nuxtjs/tailwindcss'],
 
   // https://devtools.nuxt.com
   devtools: { enabled: true },
@@ -19,14 +19,6 @@ export default defineNuxtConfig({
 
   // https://hub.nuxt.com/docs/getting-started/installation#options
   hub: {},
-  vuetify: {
-    moduleOptions: {
-      /* module specific options */
-    },
-    vuetifyOptions: {
-      /* vuetify options */
-    }
-  },
 
   // https://eslint.nuxt.com
   eslint: {
@@ -34,6 +26,19 @@ export default defineNuxtConfig({
       stylistic: {
         quotes: 'single',
       },
+    },
+  },
+  tailwindcss: {
+    exposeConfig: true,
+    viewer: true,
+    // and more...
+  },
+  vuetify: {
+    moduleOptions: {
+      /* module specific options */
+    },
+    vuetifyOptions: {
+      /* vuetify options */
     },
   },
 })
