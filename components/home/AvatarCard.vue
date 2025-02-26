@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <v-card  class="text-center pa-4" elevation="10" >
+  <v-card  class="text-center pa-4" elevation="10" rounded="lg">
     <v-avatar size="200">
       <v-img src="https://cdn.vuetifyjs.com/images/john.jpg"/>
     </v-avatar>

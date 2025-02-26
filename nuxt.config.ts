@@ -19,12 +19,6 @@ export default defineNuxtConfig({
 
   // https://hub.nuxt.com/docs/getting-started/installation#options
   hub: {},
-  vuetify: {
-    moduleOptions: {
-      /* module specific options */
-    },
-    vuetifyOptions: './vuetify.config.ts'
-  }
 
   // https://eslint.nuxt.com
   eslint: {
@@ -43,8 +37,6 @@ export default defineNuxtConfig({
     moduleOptions: {
       /* module specific options */
     },
-    vuetifyOptions: {
-      /* vuetify options */
-    },
+    vuetifyOptions: './vuetify.config.ts',
   },
 })
