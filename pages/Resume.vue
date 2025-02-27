@@ -3,7 +3,10 @@
 </script>
 
 <template>
-Resume
+  <ResumeSkills />
+  <ResumeEducations />
+  <ResumeExperiences />
+  <ResumeCertifications />
 </template>
 
 <style scoped>
