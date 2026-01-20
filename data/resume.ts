@@ -1,6 +1,32 @@
 import type { ResumeData } from '~/types/resume'
 
 export const resumeData: ResumeData = {
+  summary: '專注於 Vue 3 / Nuxt 3 的前端工程師，擁有 6 年以上企業級 Web 應用開發經驗。擅長前端架構設計、CI/CD 流程建置與團隊技術指導，致力於打造高效、可維護的現代化前端解決方案。',
+
+  languages: [
+    { name: '中文', level: '母語', icon: 'mdi-ideogram-cjk' },
+    { name: 'English', level: '中等', icon: 'mdi-alphabetical' },
+  ],
+
+  projects: [
+    {
+      name: '個人履歷網站',
+      description: '使用 Nuxt 3 + Vuetify 打造的現代化個人履歷網站，部署於 Cloudflare Workers。',
+      technologies: ['Nuxt 3', 'Vue 3', 'Vuetify', 'TypeScript', 'Cloudflare'],
+      github: 'https://github.com/show812223/HankHuWeb',
+    },
+    {
+      name: '企業級前端框架',
+      description: '為公司建立的前端開發框架，包含組件庫、工具函數與最佳實踐指南。',
+      technologies: ['Vue 3', 'TypeScript', 'Vite', 'Vitest'],
+    },
+    {
+      name: 'Azure DevOps CI/CD Pipeline',
+      description: '設計與實作自動化部署流程，支援多環境部署與自動化測試。',
+      technologies: ['Azure DevOps', 'Docker', 'YAML', 'Shell Script'],
+    },
+  ],
+
   skills: [
     {
       category: '前端框架',
