@@ -1,7 +1,19 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
+
 export default defineNuxtConfig({
   // https://nuxt.com/modules
-  modules: ['@nuxthub/core', '@nuxt/eslint', 'vuetify-nuxt-module', '@nuxtjs/tailwindcss'],
+  modules: [
+    '@nuxthub/core',
+    '@nuxt/eslint',
+    '@nuxtjs/tailwindcss',
+    (_options, nuxt) => {
+      nuxt.hooks.hook('vite:extendConfig', (config) => {
+        // @ts-expect-error - vuetify plugin type
+        config.plugins.push(vuetify({ autoImport: true }))
+      })
+    },
+  ],
 
   // https://devtools.nuxt.com
   devtools: { enabled: true },
@@ -28,15 +40,23 @@ export default defineNuxtConfig({
       },
     },
   },
+
   tailwindcss: {
     exposeConfig: true,
     viewer: true,
-    // and more...
   },
-  vuetify: {
-    moduleOptions: {
-      /* module specific options */
+
+  build: {
+    transpile: ['vuetify'],
+  },
+
+  vite: {
+    vue: {
+      template: {
+        transformAssetUrls,
+      },
     },
-    vuetifyOptions: './vuetify.config.ts',
   },
+
+  css: ['vuetify/styles', '@mdi/font/css/materialdesignicons.min.css'],
 })

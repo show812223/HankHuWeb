@@ -28,3 +28,4 @@ logs
 tsx-*
 .vercel
 .env*.local
+node-compile-cache/
