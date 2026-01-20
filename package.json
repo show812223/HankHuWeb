@@ -12,20 +12,19 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@nuxt/content": "^3.2.2",
     "@nuxt/eslint": "^0.7.5",
     "@nuxthub/core": "^0.10.0",
-    "@nuxtjs/tailwindcss": "6.13.1",
-    "nuxt": "^3.15.1",
-    "vue": "^3.5.13",
-    "vue-router": "^4.5.0",
-    "vuetify-nuxt-module": "0.18.3"
+    "@nuxtjs/tailwindcss": "latest",
+    "nuxt": "latest",
+    "vue": "latest",
+    "vue-router": "latest",
+    "vuetify-nuxt-module": "latest"
   },
   "devDependencies": {
     "@nuxt/eslint-config": "^0.7.5",
     "eslint": "^9.18.0",
-    "typescript": "^5.7.3",
-    "vue-tsc": "^2.2.0",
+    "typescript": "latest",
+    "vue-tsc": "latest",
     "wrangler": "^3.101.0"
   },
   "packageManager": "pnpm@9.15.3"

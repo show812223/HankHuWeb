@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   // https://nuxt.com/modules
-  modules: ['@nuxthub/core', '@nuxt/eslint', 'vuetify-nuxt-module', '@nuxt/content', '@nuxtjs/tailwindcss'],
+  modules: ['@nuxthub/core', '@nuxt/eslint', 'vuetify-nuxt-module', '@nuxtjs/tailwindcss'],
 
   // https://devtools.nuxt.com
   devtools: { enabled: true },

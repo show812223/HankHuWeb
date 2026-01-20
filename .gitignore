@@ -26,3 +26,5 @@ logs
 
 # Temp folders
 tsx-*
+.vercel
+.env*.local
