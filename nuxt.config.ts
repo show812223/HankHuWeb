@@ -7,6 +7,7 @@ export default defineNuxtConfig({
     '@nuxthub/core',
     '@nuxt/eslint',
     '@nuxtjs/tailwindcss',
+    '@nuxtjs/google-fonts',
     (_options, nuxt) => {
       nuxt.hooks.hook('vite:extendConfig', (config) => {
         // @ts-expect-error - vuetify plugin type
@@ -14,6 +15,18 @@ export default defineNuxtConfig({
       })
     },
   ],
+
+  // Google Fonts - 日系字體
+  googleFonts: {
+    families: {
+      'Noto+Serif+JP': [400, 500, 700],
+      'Zen+Maru+Gothic': [400, 500, 700],
+    },
+    display: 'swap',
+    prefetch: true,
+    preconnect: true,
+  },
+  ssr: false,
 
   // https://devtools.nuxt.com
   devtools: { enabled: true },
@@ -25,12 +38,24 @@ export default defineNuxtConfig({
       helloText: 'Hello from the Edge 👋',
     },
   },
+
+  build: {
+    transpile: ['vuetify'],
+  },
   // https://nuxt.com/docs/getting-started/upgrade#testing-nuxt-4
   future: { compatibilityVersion: 4 },
   compatibilityDate: '2024-07-30',
 
-  // https://hub.nuxt.com/docs/getting-started/installation#options
-  hub: {},
+  vite: {
+    plugins: [
+      vuetify({ autoImport: true }),
+    ],
+    vue: {
+      template: {
+        transformAssetUrls,
+      },
+    },
+  },
 
   // https://eslint.nuxt.com
   eslint: {
@@ -45,18 +70,4 @@ export default defineNuxtConfig({
     exposeConfig: true,
     viewer: true,
   },
-
-  build: {
-    transpile: ['vuetify'],
-  },
-
-  vite: {
-    vue: {
-      template: {
-        transformAssetUrls,
-      },
-    },
-  },
-
-  css: ['vuetify/styles', '@mdi/font/css/materialdesignicons.min.css'],
 })

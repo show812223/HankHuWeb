@@ -5,13 +5,21 @@ const skills = resumeData.skills
 </script>
 
 <template>
-  <v-container class="py-8">
-    <h2 class="text-h4 font-weight-bold mb-6">
-      <v-icon class="mr-2">mdi-star-circle</v-icon>
-      技術技能
-    </h2>
+  <section class="py-6">
+    <div class="d-flex align-center mb-8">
+      <v-icon
+        size="32"
+        color="primary"
+        class="mr-4"
+      >
+        mdi-star-circle
+      </v-icon>
+      <h2 class="text-h4 font-weight-bold">
+        技術技能
+      </h2>
+    </div>
 
-    <v-row>
+    <v-row class="ga-4">
       <v-col
         v-for="skill in skills"
         :key="skill.category"
@@ -19,20 +27,28 @@ const skills = resumeData.skills
         md="6"
         lg="4"
       >
-        <v-card class="h-100" variant="outlined">
-          <v-card-title class="d-flex align-center">
-            <v-icon class="mr-2" color="primary">{{ skill.icon }}</v-icon>
-            {{ skill.category }}
-          </v-card-title>
-          <v-card-text>
+        <v-card class="h-100 pa-6">
+          <div class="d-flex align-center mb-4">
+            <v-icon
+              class="mr-3"
+              color="primary"
+              size="24"
+            >
+              {{ skill.icon }}
+            </v-icon>
+            <span class="text-h6 font-weight-bold">{{ skill.category }}</span>
+          </div>
+          <div class="d-flex flex-column ga-4">
             <div
               v-for="item in skill.items"
               :key="item.name"
-              class="mb-3"
             >
-              <div class="d-flex justify-space-between mb-1">
-                <span>{{ item.name }}</span>
-                <span v-if="item.level" class="text-grey">
+              <div class="d-flex justify-space-between mb-2">
+                <span class="text-body-2">{{ item.name }}</span>
+                <span
+                  v-if="item.level"
+                  class="text-body-2 text-medium-emphasis"
+                >
                   {{ item.level }}/5
                 </span>
               </div>
@@ -40,15 +56,15 @@ const skills = resumeData.skills
                 v-if="item.level"
                 :model-value="item.level * 20"
                 color="primary"
-                height="8"
+                height="6"
                 rounded
               />
             </div>
-          </v-card-text>
+          </div>
         </v-card>
       </v-col>
     </v-row>
-  </v-container>
+  </section>
 </template>
 
 <style scoped>

@@ -1,80 +1,79 @@
-import { createVuetify } from 'vuetify'
-import * as components from 'vuetify/components'
-import * as directives from 'vuetify/directives'
+import '@mdi/font/css/materialdesignicons.css'
 
-// Warm, Minimalist, Clean theme with Antique White accent
+import 'vuetify/styles'
+import { createVuetify } from 'vuetify'
+
+// 日系溫暖極簡主題
 const lightTheme = {
   dark: false,
   colors: {
     'background': '#FAEBD7', // Antique White - 主背景
     'surface': '#FFFFFF', // White - 卡片/內容區塊
     'surface-bright': '#FFFFFF',
-    'surface-light': '#FFF8F0', // 淺暖白色
-    'surface-variant': '#F5E6D3', // 暖色調變體
-    'on-surface-variant': '#5D4E37', // 暖棕色
-    'primary': '#8B7355', // 溫暖棕色
-    'primary-darken-1': '#6B5A45',
-    'primary-lighten-1': '#A89070',
-    'secondary': '#6B8E7A', // 柔和綠色
-    'secondary-darken-1': '#557565',
-    'secondary-lighten-1': '#89A899',
-    'tertiary': '#9C8AA5', // 柔和紫色
-    'tertiary-darken-1': '#7D6E85',
-    'accent': '#C4956A', // 暖橙色
+    'surface-light': '#FFF8F0',
+    'surface-variant': '#F5E6D3',
+    'on-surface-variant': '#5D4E37',
+    'primary': '#4E4540', // 深暖灰色/茶色 - 日系柔和感
+    'primary-darken-1': '#3A3330',
+    'primary-lighten-1': '#6B6055',
+    'secondary': '#8B7355', // 溫暖棕色
+    'secondary-darken-1': '#6B5A45',
+    'secondary-lighten-1': '#A89070',
+    'tertiary': '#6B8E7A', // 柔和綠色
+    'accent': '#C4956A',
     'error': '#C75050',
     'info': '#5B8FB9',
     'success': '#6B9B6B',
     'warning': '#D4A04A',
-    'on-background': '#333333', // 深灰色文字
-    'on-surface': '#333333', // 深灰色文字
+    'on-background': '#4E4540', // 與 primary 統一
+    'on-surface': '#4E4540',
     'on-primary': '#FFFFFF',
     'on-secondary': '#FFFFFF',
     'on-error': '#FFFFFF',
     'on-info': '#FFFFFF',
     'on-success': '#FFFFFF',
-    'on-warning': '#333333',
+    'on-warning': '#4E4540',
+    'border': '#E0D8D0', // 極細邊框色
   },
 }
 
-// Warm dark theme
+// 暖色深色主題
 const darkTheme = {
   dark: true,
   colors: {
-    'background': '#1A1512', // 暖色調深色背景
-    'surface': '#2D2520', // 暖棕色表面
+    'background': '#1A1512',
+    'surface': '#2D2520',
     'surface-bright': '#3D3530',
     'surface-light': '#252018',
     'surface-variant': '#3D3530',
     'on-surface-variant': '#A89B8B',
-    'primary': '#D4A574', // 暖金色
+    'primary': '#D4A574',
     'primary-darken-1': '#B8896A',
     'primary-lighten-1': '#E5C09A',
-    'secondary': '#89A899', // 柔和綠色
+    'secondary': '#89A899',
     'secondary-darken-1': '#6B8E7A',
     'secondary-lighten-1': '#A5C4B5',
-    'tertiary': '#B8A5C0', // 柔和紫色
-    'tertiary-darken-1': '#9C8AA5',
-    'accent': '#E0B088', // 暖橙色
+    'tertiary': '#B8A5C0',
+    'accent': '#E0B088',
     'error': '#E07070',
     'info': '#7AAED4',
     'success': '#8BBB8B',
     'warning': '#E4B86A',
-    'on-background': '#E8DFD5', // 暖白色文字
-    'on-surface': '#D9CFC5', // 暖白色文字
+    'on-background': '#E8DFD5',
+    'on-surface': '#D9CFC5',
     'on-primary': '#1A1512',
     'on-secondary': '#1A1512',
     'on-error': '#FFFFFF',
     'on-info': '#1A1512',
     'on-success': '#1A1512',
     'on-warning': '#1A1512',
+    'border': '#4A3F38',
   },
 }
 
 export default defineNuxtPlugin((app) => {
   const vuetify = createVuetify({
-    ssr: true,
-    components,
-    directives,
+    ssr: false,
     theme: {
       defaultTheme: 'lightTheme',
       themes: {
@@ -83,65 +82,29 @@ export default defineNuxtPlugin((app) => {
       },
     },
     defaults: {
-      global: {
-        ripple: true,
-      },
-      VAppBar: {
+      // 全域預設：去除陰影、使用邊框
+      VCard: {
         elevation: 0,
-        density: 'comfortable',
-      },
-      VBtn: {
         variant: 'flat',
         rounded: 'lg',
-        elevation: 0,
       },
-      VCard: {
+      VBtn: {
+        elevation: 0,
+        variant: 'flat',
         rounded: 'lg',
-        elevation: 1, // 極簡風格 - 減少陰影
-        variant: 'elevated',
+      },
+      VChip: {
+        elevation: 0,
+        variant: 'tonal',
+        rounded: 'lg',
       },
       VTextField: {
         variant: 'outlined',
-        density: 'comfortable',
         rounded: 'lg',
-        hideDetails: 'auto',
-      },
-      VTextarea: {
-        variant: 'outlined',
-        density: 'comfortable',
-        rounded: 'lg',
-        hideDetails: 'auto',
       },
       VSelect: {
         variant: 'outlined',
-        density: 'comfortable',
         rounded: 'lg',
-        hideDetails: 'auto',
-      },
-      VChip: {
-        rounded: 'lg',
-        size: 'small',
-      },
-      VList: {
-        rounded: 'lg',
-      },
-      VListItem: {
-        rounded: 'lg',
-      },
-      VSheet: {
-        rounded: 'lg',
-      },
-      VDialog: {
-        rounded: 'lg',
-      },
-      VAvatar: {
-        rounded: 'lg',
-      },
-      VTimeline: {
-        density: 'comfortable',
-      },
-      VDivider: {
-        class: 'my-4',
       },
     },
   })

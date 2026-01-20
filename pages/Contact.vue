@@ -38,7 +38,9 @@ function handleSubmit() {
 <template>
   <v-container class="py-8">
     <h1 class="text-h3 font-weight-bold mb-2">
-      <v-icon class="mr-2">mdi-email-outline</v-icon>
+      <v-icon class="mr-2">
+        mdi-email-outline
+      </v-icon>
       聯絡我
     </h1>
     <p class="text-body-1 text-grey mb-8">
@@ -47,8 +49,13 @@ function handleSubmit() {
 
     <v-row>
       <!-- 聯絡資訊 -->
-      <v-col cols="12" md="5">
-        <h2 class="text-h5 font-weight-bold mb-4">聯絡資訊</h2>
+      <v-col
+        cols="12"
+        md="5"
+      >
+        <h2 class="text-h5 font-weight-bold mb-4">
+          聯絡資訊
+        </h2>
         <v-list>
           <v-list-item
             v-for="info in contactInfo"
@@ -58,8 +65,13 @@ function handleSubmit() {
             class="px-0"
           >
             <template #prepend>
-              <v-avatar color="primary" size="40">
-                <v-icon color="white">{{ info.icon }}</v-icon>
+              <v-avatar
+                color="primary"
+                size="40"
+              >
+                <v-icon color="white">
+                  {{ info.icon }}
+                </v-icon>
               </v-avatar>
             </template>
             <v-list-item-title class="font-weight-bold">
@@ -73,9 +85,14 @@ function handleSubmit() {
       </v-col>
 
       <!-- 聯絡表單 -->
-      <v-col cols="12" md="7">
-        <v-card variant="outlined" class="pa-6">
-          <h2 class="text-h5 font-weight-bold mb-4">發送訊息</h2>
+      <v-col
+        cols="12"
+        md="7"
+      >
+        <v-card class="pa-6">
+          <h2 class="text-h5 font-weight-bold mb-4">
+            發送訊息
+          </h2>
 
           <v-alert
             v-if="submitted"
@@ -86,11 +103,14 @@ function handleSubmit() {
             感謝您的訊息！我會盡快回覆您。
           </v-alert>
 
-          <v-form v-else @submit.prevent="handleSubmit">
+          <v-form
+            v-else
+            @submit.prevent="handleSubmit"
+          >
             <v-text-field
               v-model="form.name"
               label="姓名"
-              variant="outlined"
+
               required
               class="mb-2"
             />
@@ -98,14 +118,14 @@ function handleSubmit() {
               v-model="form.email"
               label="Email"
               type="email"
-              variant="outlined"
+
               required
               class="mb-2"
             />
             <v-textarea
               v-model="form.message"
               label="訊息內容"
-              variant="outlined"
+
               rows="4"
               required
               class="mb-4"
@@ -116,7 +136,9 @@ function handleSubmit() {
               size="large"
               block
             >
-              <v-icon class="mr-2">mdi-send</v-icon>
+              <v-icon class="mr-2">
+                mdi-send
+              </v-icon>
               發送訊息
             </v-btn>
           </v-form>

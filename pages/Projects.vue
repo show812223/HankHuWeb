@@ -7,7 +7,9 @@ const projects = resumeData.projects
 <template>
   <v-container class="py-8">
     <h1 class="text-h3 font-weight-bold mb-2">
-      <v-icon class="mr-2">mdi-folder-multiple</v-icon>
+      <v-icon class="mr-2">
+        mdi-folder-multiple
+      </v-icon>
       專案作品
     </h1>
     <p class="text-body-1 text-grey mb-8">
@@ -22,13 +24,20 @@ const projects = resumeData.projects
         md="6"
         lg="4"
       >
-        <v-card variant="outlined" class="h-100 d-flex flex-column">
+        <v-card class="h-100 d-flex flex-column">
           <v-card-title class="text-h6 font-weight-bold">
-            <v-icon class="mr-2" color="primary">mdi-application-brackets</v-icon>
+            <v-icon
+              class="mr-2"
+              color="primary"
+            >
+              mdi-application-brackets
+            </v-icon>
             {{ project.name }}
           </v-card-title>
           <v-card-text class="flex-grow-1">
-            <p class="text-body-2 mb-4">{{ project.description }}</p>
+            <p class="text-body-2 mb-4">
+              {{ project.description }}
+            </p>
             <div class="d-flex flex-wrap ga-1">
               <v-chip
                 v-for="tech in project.technologies"
@@ -50,7 +59,9 @@ const projects = resumeData.projects
               color="primary"
               size="small"
             >
-              <v-icon class="mr-1">mdi-open-in-new</v-icon>
+              <v-icon class="mr-1">
+                mdi-open-in-new
+              </v-icon>
               Demo
             </v-btn>
             <v-btn
@@ -61,7 +72,9 @@ const projects = resumeData.projects
               color="grey-darken-3"
               size="small"
             >
-              <v-icon class="mr-1">mdi-github</v-icon>
+              <v-icon class="mr-1">
+                mdi-github
+              </v-icon>
               GitHub
             </v-btn>
           </v-card-actions>

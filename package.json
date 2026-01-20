@@ -9,7 +9,8 @@
     "preview": "npx nuxthub preview",
     "deploy": "npx nuxthub deploy",
     "postinstall": "nuxt prepare",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "dependencies": {
     "@mdi/font": "^7.4.47",
@@ -19,14 +20,15 @@
     "nuxt": "latest",
     "vue": "latest",
     "vue-router": "latest",
-    "vuetify": "^3.7.0"
+    "vuetify": "3.11.0"
   },
   "devDependencies": {
     "@nuxt/eslint-config": "^0.7.5",
+    "@nuxtjs/google-fonts": "^3.2.0",
     "eslint": "^9.18.0",
     "sass": "^1.83.0",
     "typescript": "latest",
-    "vite-plugin-vuetify": "^2.0.4",
+    "vite-plugin-vuetify": "^2.1.1",
     "vue-tsc": "latest",
     "wrangler": "^3.101.0"
   },

@@ -5,13 +5,21 @@ const certifications = resumeData.certifications
 </script>
 
 <template>
-  <v-container class="py-8">
-    <h2 class="text-h4 font-weight-bold mb-6">
-      <v-icon class="mr-2">mdi-certificate</v-icon>
-      專業證照
-    </h2>
+  <section class="py-6">
+    <div class="d-flex align-center mb-8">
+      <v-icon
+        size="32"
+        color="primary"
+        class="mr-4"
+      >
+        mdi-certificate
+      </v-icon>
+      <h2 class="text-h4 font-weight-bold">
+        專業證照
+      </h2>
+    </div>
 
-    <v-row>
+    <v-row class="ga-4">
       <v-col
         v-for="cert in certifications"
         :key="cert.code"
@@ -19,38 +27,61 @@ const certifications = resumeData.certifications
         sm="6"
         md="4"
       >
-        <v-card variant="outlined" class="h-100">
-          <v-card-title class="d-flex align-center">
-            <v-avatar color="primary" size="40" class="mr-3">
-              <v-icon color="white">mdi-medal</v-icon>
+        <v-card class="h-100 pa-6">
+          <div class="d-flex align-center mb-4">
+            <v-avatar
+              color="primary"
+              size="44"
+              class="mr-4"
+            >
+              <v-icon
+                color="white"
+                size="24"
+              >
+                mdi-medal
+              </v-icon>
             </v-avatar>
             <div>
-              <div class="text-subtitle-1 font-weight-bold">{{ cert.code }}</div>
-              <div class="text-caption text-grey">{{ cert.issuer }}</div>
+              <div class="text-subtitle-1 font-weight-bold">
+                {{ cert.code }}
+              </div>
+              <div class="text-caption text-medium-emphasis">
+                {{ cert.issuer }}
+              </div>
             </div>
-          </v-card-title>
-          <v-card-text>
-            <p class="text-body-2 mb-2">{{ cert.name }}</p>
-            <p v-if="cert.date" class="text-caption text-grey">
-              取得日期：{{ cert.date }}
-            </p>
-          </v-card-text>
-          <v-card-actions v-if="cert.url">
-            <v-btn
-              :href="cert.url"
-              target="_blank"
-              variant="text"
-              color="primary"
-              size="small"
+          </div>
+
+          <p class="text-body-2 mb-3">
+            {{ cert.name }}
+          </p>
+          <p
+            v-if="cert.date"
+            class="text-caption text-medium-emphasis mb-4"
+          >
+            取得日期：{{ cert.date }}
+          </p>
+
+          <v-btn
+            v-if="cert.url"
+            :href="cert.url"
+            target="_blank"
+            variant="outlined"
+            color="primary"
+            size="small"
+            class="mt-auto"
+          >
+            <v-icon
+              class="mr-1"
+              size="16"
             >
-              <v-icon class="mr-1">mdi-open-in-new</v-icon>
-              查看證照
-            </v-btn>
-          </v-card-actions>
+              mdi-open-in-new
+            </v-icon>
+            查看證照
+          </v-btn>
         </v-card>
       </v-col>
     </v-row>
-  </v-container>
+  </section>
 </template>
 
 <style scoped>

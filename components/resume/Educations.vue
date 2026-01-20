@@ -5,42 +5,60 @@ const educations = resumeData.educations
 </script>
 
 <template>
-  <v-container class="py-8">
-    <h2 class="text-h4 font-weight-bold mb-6">
-      <v-icon class="mr-2">mdi-school</v-icon>
-      教育背景
-    </h2>
+  <section class="py-6">
+    <div class="d-flex align-center mb-8">
+      <v-icon
+        size="32"
+        color="primary"
+        class="mr-4"
+      >
+        mdi-school
+      </v-icon>
+      <h2 class="text-h4 font-weight-bold">
+        教育背景
+      </h2>
+    </div>
 
-    <v-row>
+    <v-row class="ga-4">
       <v-col
         v-for="edu in educations"
         :key="edu.school + edu.degree"
         cols="12"
         md="6"
       >
-        <v-card variant="outlined" class="h-100">
-          <v-card-title class="d-flex align-center">
-            <v-icon class="mr-2" color="primary">mdi-school</v-icon>
-            {{ edu.school }}
-          </v-card-title>
-          <v-card-subtitle>
+        <v-card class="h-100 pa-6">
+          <div class="d-flex align-center mb-3">
+            <v-icon
+              class="mr-3"
+              color="primary"
+              size="24"
+            >
+              mdi-school
+            </v-icon>
+            <span class="text-h6 font-weight-bold">{{ edu.school }}</span>
+          </div>
+          <p class="text-body-2 text-medium-emphasis mb-4">
             {{ edu.startDate }} - {{ edu.endDate }}
-          </v-card-subtitle>
-          <v-card-text>
-            <div class="d-flex align-center mb-2">
-              <v-chip color="primary" variant="tonal" size="small" class="mr-2">
-                {{ edu.degree }}
-              </v-chip>
-              <span class="text-body-1">{{ edu.major }}</span>
-            </div>
-            <p v-if="edu.description" class="text-body-2 text-grey">
-              {{ edu.description }}
-            </p>
-          </v-card-text>
+          </p>
+          <div class="d-flex align-center flex-wrap ga-2 mb-3">
+            <v-chip
+              color="primary"
+              size="small"
+            >
+              {{ edu.degree }}
+            </v-chip>
+            <span class="text-body-1">{{ edu.major }}</span>
+          </div>
+          <p
+            v-if="edu.description"
+            class="text-body-2 text-medium-emphasis"
+          >
+            {{ edu.description }}
+          </p>
         </v-card>
       </v-col>
     </v-row>
-  </v-container>
+  </section>
 </template>
 
 <style scoped>
