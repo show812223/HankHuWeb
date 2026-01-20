@@ -1,0 +1,206 @@
+/* ========================================
+   入場動畫 - 日系溫暖風格
+   ======================================== */
+
+/* 動畫變數 */
+:root {
+  /* 時序 */
+  --anim-duration-fast: 400ms;
+  --anim-duration-normal: 500ms;
+  --anim-duration-slow: 600ms;
+
+  /* 日系柔和緩動曲線 */
+  --anim-ease-soft: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --anim-ease-out: cubic-bezier(0.22, 0.61, 0.36, 1);
+
+  /* 位移距離（保持微小） */
+  --anim-distance-sm: 20px;
+  --anim-distance-md: 30px;
+  --anim-distance-lg: 40px;
+}
+
+/* ========================================
+   基礎 Keyframes
+   ======================================== */
+
+/* 淡入 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* 淡出 */
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* 從上方滑入 */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(calc(-1 * var(--anim-distance-md)));
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 從下方滑入 */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(var(--anim-distance-md));
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 從左側滑入 */
+@keyframes slideRight {
+  from {
+    opacity: 0;
+    transform: translateX(calc(-1 * var(--anim-distance-md)));
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* 從右側滑入 */
+@keyframes slideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(var(--anim-distance-md));
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* 縮放淡入 */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* 彈出效果（用於社交按鈕） */
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  70% {
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ========================================
+   動畫工具類
+   ======================================== */
+
+/* 基礎動畫類 */
+.anim-fade-in {
+  animation: fadeIn var(--anim-duration-normal) var(--anim-ease-soft) both;
+}
+
+.anim-slide-down {
+  animation: slideDown var(--anim-duration-normal) var(--anim-ease-out) both;
+}
+
+.anim-slide-up {
+  animation: slideUp var(--anim-duration-normal) var(--anim-ease-out) both;
+}
+
+.anim-slide-right {
+  animation: slideRight var(--anim-duration-normal) var(--anim-ease-out) both;
+}
+
+.anim-slide-left {
+  animation: slideLeft var(--anim-duration-normal) var(--anim-ease-out) both;
+}
+
+.anim-scale-in {
+  animation: scaleIn var(--anim-duration-normal) var(--anim-ease-out) both;
+}
+
+.anim-pop-in {
+  animation: popIn var(--anim-duration-fast) var(--anim-ease-out) both;
+}
+
+/* ========================================
+   延遲工具類
+   ======================================== */
+
+.anim-delay-100 { animation-delay: 100ms; }
+.anim-delay-200 { animation-delay: 200ms; }
+.anim-delay-300 { animation-delay: 300ms; }
+.anim-delay-400 { animation-delay: 400ms; }
+.anim-delay-500 { animation-delay: 500ms; }
+.anim-delay-600 { animation-delay: 600ms; }
+.anim-delay-700 { animation-delay: 700ms; }
+.anim-delay-800 { animation-delay: 800ms; }
+.anim-delay-900 { animation-delay: 900ms; }
+.anim-delay-1000 { animation-delay: 1000ms; }
+.anim-delay-1100 { animation-delay: 1100ms; }
+.anim-delay-1200 { animation-delay: 1200ms; }
+.anim-delay-1300 { animation-delay: 1300ms; }
+.anim-delay-1400 { animation-delay: 1400ms; }
+
+/* ========================================
+   頁面過渡動畫
+   ======================================== */
+
+/* 頁面淡入淡出 + 上滑 */
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 300ms var(--anim-ease-soft),
+              transform 300ms var(--anim-ease-out);
+}
+
+.page-enter-from {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-leave-to {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+/* ========================================
+   無障礙支援
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

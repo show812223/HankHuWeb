@@ -16,7 +16,7 @@ const menuItems = [
       app
       flat
       color="surface"
-      class="border-b app-bar-blur"
+      class="border-b app-bar-blur anim-slide-down anim-delay-400"
     >
       <div class="px-4 px-md-6 d-flex align-center ga-4">
         <p class="text-h5 font-weight-bold text-primary">
@@ -66,7 +66,7 @@ const menuItems = [
     </v-app-bar>
 
     <v-main>
-      <NuxtPage />
+      <NuxtPage :transition="{ name: 'page', mode: 'out-in' }" />
     </v-main>
   </v-app>
 </template>

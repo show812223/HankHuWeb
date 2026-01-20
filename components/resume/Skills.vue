@@ -5,7 +5,7 @@ const skills = resumeData.skills
 </script>
 
 <template>
-  <section class="py-6">
+  <section class="py-6 anim-slide-up anim-delay-100">
     <div class="d-flex align-center mb-8">
       <v-icon
         size="32"
@@ -21,13 +21,16 @@ const skills = resumeData.skills
 
     <v-row class="ga-4">
       <v-col
-        v-for="skill in skills"
+        v-for="(skill, index) in skills"
         :key="skill.category"
         cols="12"
         md="6"
         lg="4"
       >
-        <v-card class="h-100 pa-6">
+        <v-card
+          class="h-100 pa-6 skill-card"
+          :style="{ animationDelay: `${200 + index * 100}ms` }"
+        >
           <div class="d-flex align-center mb-4">
             <v-icon
               class="mr-3"
@@ -68,5 +71,19 @@ const skills = resumeData.skills
 </template>
 
 <style scoped>
+.skill-card {
+  opacity: 0;
+  animation: scaleIn 500ms cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
 
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
 </style>

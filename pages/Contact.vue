@@ -37,32 +37,36 @@ function handleSubmit() {
 
 <template>
   <v-container class="py-8">
-    <h1 class="text-h3 font-weight-bold mb-2">
+    <!-- 標題 - 從左滑入 -->
+    <h1 class="text-h3 font-weight-bold mb-2 anim-slide-right">
       <v-icon class="mr-2">
         mdi-email-outline
       </v-icon>
       聯絡我
     </h1>
-    <p class="text-body-1 text-grey mb-8">
+    <!-- 副標題 - 延遲淡入 -->
+    <p class="text-body-1 text-grey mb-8 anim-fade-in anim-delay-100">
       歡迎透過以下方式與我聯繫
     </p>
 
     <v-row>
-      <!-- 聯絡資訊 -->
+      <!-- 聯絡資訊 - 從左滑入 -->
       <v-col
         cols="12"
         md="5"
+        class="anim-slide-right anim-delay-200"
       >
         <h2 class="text-h5 font-weight-bold mb-4">
           聯絡資訊
         </h2>
         <v-list>
           <v-list-item
-            v-for="info in contactInfo"
+            v-for="(info, index) in contactInfo"
             :key="info.title"
             :href="info.href"
             target="_blank"
-            class="px-0"
+            class="px-0 contact-item"
+            :style="{ animationDelay: `${300 + index * 100}ms` }"
           >
             <template #prepend>
               <v-avatar
@@ -84,10 +88,11 @@ function handleSubmit() {
         </v-list>
       </v-col>
 
-      <!-- 聯絡表單 -->
+      <!-- 聯絡表單 - 從下上滑 -->
       <v-col
         cols="12"
         md="7"
+        class="anim-slide-up anim-delay-300"
       >
         <v-card class="pa-6">
           <h2 class="text-h5 font-weight-bold mb-4">
@@ -149,5 +154,19 @@ function handleSubmit() {
 </template>
 
 <style scoped>
+.contact-item {
+  opacity: 0;
+  animation: fadeSlideRight 400ms cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
 
+@keyframes fadeSlideRight {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
 </style>

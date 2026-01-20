@@ -5,7 +5,7 @@ const experiences = resumeData.experiences
 </script>
 
 <template>
-  <section class="py-6">
+  <section class="py-6 anim-slide-up anim-delay-400">
     <div class="d-flex align-center mb-8">
       <v-icon
         size="32"
@@ -25,10 +25,12 @@ const experiences = resumeData.experiences
       line-color="primary"
     >
       <v-timeline-item
-        v-for="exp in experiences"
+        v-for="(exp, index) in experiences"
         :key="exp.company + exp.startDate"
         dot-color="primary"
         size="small"
+        class="exp-item"
+        :style="{ animationDelay: `${500 + index * 200}ms` }"
       >
         <template #opposite>
           <div class="text-body-2 text-medium-emphasis">
@@ -92,5 +94,19 @@ const experiences = resumeData.experiences
 </template>
 
 <style scoped>
+.exp-item {
+  opacity: 0;
+  animation: fadeSlideUp 600ms cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
 
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 </style>

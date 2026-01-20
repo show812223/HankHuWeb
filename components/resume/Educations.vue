@@ -5,7 +5,7 @@ const educations = resumeData.educations
 </script>
 
 <template>
-  <section class="py-6">
+  <section class="py-6 anim-slide-up anim-delay-300">
     <div class="d-flex align-center mb-8">
       <v-icon
         size="32"
@@ -21,12 +21,15 @@ const educations = resumeData.educations
 
     <v-row class="ga-4">
       <v-col
-        v-for="edu in educations"
+        v-for="(edu, index) in educations"
         :key="edu.school + edu.degree"
         cols="12"
         md="6"
       >
-        <v-card class="h-100 pa-6">
+        <v-card
+          class="h-100 pa-6 edu-card"
+          :style="{ animationDelay: `${400 + index * 150}ms` }"
+        >
           <div class="d-flex align-center mb-3">
             <v-icon
               class="mr-3"
@@ -62,5 +65,19 @@ const educations = resumeData.educations
 </template>
 
 <style scoped>
+.edu-card {
+  opacity: 0;
+  animation: slideRight 500ms cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
 
+@keyframes slideRight {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
 </style>

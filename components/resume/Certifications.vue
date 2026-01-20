@@ -5,7 +5,7 @@ const certifications = resumeData.certifications
 </script>
 
 <template>
-  <section class="py-6">
+  <section class="py-6 anim-slide-up anim-delay-500">
     <div class="d-flex align-center mb-8">
       <v-icon
         size="32"
@@ -21,13 +21,16 @@ const certifications = resumeData.certifications
 
     <v-row class="ga-4">
       <v-col
-        v-for="cert in certifications"
+        v-for="(cert, index) in certifications"
         :key="cert.code"
         cols="12"
         sm="6"
         md="4"
       >
-        <v-card class="h-100 pa-6">
+        <v-card
+          class="h-100 pa-6 cert-card"
+          :style="{ animationDelay: `${600 + index * 100}ms` }"
+        >
           <div class="d-flex align-center mb-4">
             <v-avatar
               color="primary"
@@ -85,5 +88,19 @@ const certifications = resumeData.certifications
 </template>
 
 <style scoped>
+.cert-card {
+  opacity: 0;
+  animation: scaleSlideUp 500ms cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
 
+@keyframes scaleSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
 </style>

@@ -5,7 +5,7 @@ const summary = resumeData.summary
 </script>
 
 <template>
-  <section class="py-6">
+  <section class="py-6 anim-slide-up">
     <v-card class="pa-8">
       <div class="d-flex align-center mb-6">
         <v-icon

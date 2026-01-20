@@ -5,7 +5,7 @@ const languages = resumeData.languages
 </script>
 
 <template>
-  <section class="py-6">
+  <section class="py-6 anim-slide-up anim-delay-200">
     <div class="d-flex align-center mb-8">
       <v-icon
         size="32"
@@ -21,13 +21,16 @@ const languages = resumeData.languages
 
     <v-row class="ga-4">
       <v-col
-        v-for="lang in languages"
+        v-for="(lang, index) in languages"
         :key="lang.name"
         cols="6"
         sm="4"
         md="3"
       >
-        <v-card class="text-center pa-6">
+        <v-card
+          class="text-center pa-6 lang-card"
+          :style="{ animationDelay: `${300 + index * 100}ms` }"
+        >
           <v-icon
             :icon="lang.icon || 'mdi-translate'"
             size="40"
@@ -50,5 +53,22 @@ const languages = resumeData.languages
 </template>
 
 <style scoped>
+.lang-card {
+  opacity: 0;
+  animation: popIn 400ms cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
 
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  70% {
+    transform: scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
 </style>
