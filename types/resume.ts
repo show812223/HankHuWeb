@@ -40,9 +40,27 @@ export interface Certification {
   credentialId?: string
 }
 
+export interface Language {
+  name: string
+  level: string // 母語、精通、流利、中等、基礎
+  icon?: string
+}
+
+export interface Project {
+  name: string
+  description: string
+  technologies: string[]
+  url?: string
+  github?: string
+  image?: string
+}
+
 export interface ResumeData {
+  summary: string
   skills: Skill[]
+  languages: Language[]
   experiences: Experience[]
   educations: Education[]
   certifications: Certification[]
+  projects: Project[]
 }

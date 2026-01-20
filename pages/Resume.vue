@@ -3,7 +3,9 @@
 </script>
 
 <template>
+  <ResumeSummary />
   <ResumeSkills />
+  <ResumeLanguages />
   <ResumeEducations />
   <ResumeExperiences />
   <ResumeCertifications />
