@@ -9,8 +9,8 @@ const contactInfo = [
   {
     icon: 'mdi-linkedin',
     title: 'LinkedIn',
-    value: 'linkedin.com/in/yourprofile',
-    href: 'https://linkedin.com/in/yourprofile',
+    value: '聖翰 胡',
+    href: 'https://www.linkedin.com/in/%E8%81%96%E7%BF%B0-%E8%83%A1-b435b9285/',
   },
   {
     icon: 'mdi-github',
