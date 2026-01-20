@@ -1,5 +1,6 @@
-// vuetify.config.ts
-import { defineVuetifyConfiguration } from 'vuetify-nuxt-module/custom-configuration'
+import { createVuetify } from 'vuetify'
+import * as components from 'vuetify/components'
+import * as directives from 'vuetify/directives'
 
 const lightTheme = {
   dark: false,
@@ -67,74 +68,80 @@ const darkTheme = {
   },
 }
 
-export default defineVuetifyConfiguration({
-  theme: {
-    defaultTheme: 'lightTheme',
-    themes: {
-      lightTheme,
-      darkTheme,
+export default defineNuxtPlugin((app) => {
+  const vuetify = createVuetify({
+    ssr: true,
+    components,
+    directives,
+    theme: {
+      defaultTheme: 'lightTheme',
+      themes: {
+        lightTheme,
+        darkTheme,
+      },
     },
-  },
-  defaults: {
-    global: {
-      ripple: true,
+    defaults: {
+      global: {
+        ripple: true,
+      },
+      VAppBar: {
+        elevation: 0,
+        density: 'comfortable',
+      },
+      VBtn: {
+        variant: 'flat',
+        rounded: 'lg',
+        elevation: 0,
+      },
+      VCard: {
+        rounded: 'lg',
+        elevation: 2,
+        variant: 'elevated',
+      },
+      VTextField: {
+        variant: 'outlined',
+        density: 'comfortable',
+        rounded: 'lg',
+        hideDetails: 'auto',
+      },
+      VTextarea: {
+        variant: 'outlined',
+        density: 'comfortable',
+        rounded: 'lg',
+        hideDetails: 'auto',
+      },
+      VSelect: {
+        variant: 'outlined',
+        density: 'comfortable',
+        rounded: 'lg',
+        hideDetails: 'auto',
+      },
+      VChip: {
+        rounded: 'lg',
+        size: 'small',
+      },
+      VList: {
+        rounded: 'lg',
+      },
+      VListItem: {
+        rounded: 'lg',
+      },
+      VSheet: {
+        rounded: 'lg',
+      },
+      VDialog: {
+        rounded: 'lg',
+      },
+      VAvatar: {
+        rounded: 'lg',
+      },
+      VTimeline: {
+        density: 'comfortable',
+      },
+      VDivider: {
+        class: 'my-4',
+      },
     },
-    VAppBar: {
-      elevation: 0,
-      density: 'comfortable',
-    },
-    VBtn: {
-      variant: 'flat',
-      rounded: 'lg',
-      elevation: 0,
-    },
-    VCard: {
-      rounded: 'lg',
-      elevation: 2,
-      variant: 'elevated',
-    },
-    VTextField: {
-      variant: 'outlined',
-      density: 'comfortable',
-      rounded: 'lg',
-      hideDetails: 'auto',
-    },
-    VTextarea: {
-      variant: 'outlined',
-      density: 'comfortable',
-      rounded: 'lg',
-      hideDetails: 'auto',
-    },
-    VSelect: {
-      variant: 'outlined',
-      density: 'comfortable',
-      rounded: 'lg',
-      hideDetails: 'auto',
-    },
-    VChip: {
-      rounded: 'lg',
-      size: 'small',
-    },
-    VList: {
-      rounded: 'lg',
-    },
-    VListItem: {
-      rounded: 'lg',
-    },
-    VSheet: {
-      rounded: 'lg',
-    },
-    VDialog: {
-      rounded: 'lg',
-    },
-    VAvatar: {
-      rounded: 'lg',
-    },
-    VTimeline: {
-      density: 'comfortable',
-    },
-    VDivider: {
-      class: 'my-4',
-    },
-  },
+  })
+  app.vueApp.use(vuetify)
 })

@@ -12,18 +12,21 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@mdi/font": "^7.4.47",
     "@nuxt/eslint": "^0.7.5",
     "@nuxthub/core": "^0.10.0",
     "@nuxtjs/tailwindcss": "latest",
     "nuxt": "latest",
     "vue": "latest",
     "vue-router": "latest",
-    "vuetify-nuxt-module": "latest"
+    "vuetify": "^3.7.0"
   },
   "devDependencies": {
     "@nuxt/eslint-config": "^0.7.5",
     "eslint": "^9.18.0",
+    "sass": "^1.83.0",
     "typescript": "latest",
+    "vite-plugin-vuetify": "^2.0.4",
     "vue-tsc": "latest",
     "wrangler": "^3.101.0"
   },
