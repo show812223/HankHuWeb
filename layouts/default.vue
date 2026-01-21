@@ -5,10 +5,10 @@ const { smAndUp } = useDisplay()
 const route = useRoute()
 
 const menuItems = [
-  { title: 'Home', icon: 'mdi-home', to: '/' },
-  { title: 'Resume', icon: 'mdi-account', to: '/Resume' },
-  { title: 'Projects', icon: 'mdi-folder-multiple', to: '/Projects' },
-  { title: 'Contact', icon: 'mdi-email', to: '/Contact' },
+  { title: 'Home', titleJa: 'ホーム', to: '/' },
+  { title: 'Resume', titleJa: '履歴', to: '/Resume' },
+  { title: 'Projects', titleJa: '作品', to: '/Projects' },
+  { title: 'Contact', titleJa: '連絡', to: '/Contact' },
 ]
 
 const isActiveRoute = (to: string) => {
@@ -19,43 +19,32 @@ const isActiveRoute = (to: string) => {
 
 <template>
   <v-app>
+    <!-- 日式簡約導航 -->
     <v-app-bar
       app
       flat
-      color="surface"
-      class="nav-bar anim-slide-down anim-delay-400"
-      height="72"
+      color="transparent"
+      class="nav-bar anim-fade-in"
+      height="80"
     >
-      <v-container class="d-flex align-center h-100 px-4 px-md-6">
+      <v-container class="d-flex align-center h-100">
         <!-- Logo -->
-        <NuxtLink to="/" class="logo-link d-flex align-center ga-3">
-          <div class="logo-icon">
-            <span class="logo-text">H</span>
-          </div>
-          <span class="text-h6 font-weight-bold text-primary d-none d-sm-block">
-            Sheng Han Hu
-          </span>
+        <NuxtLink to="/" class="logo-link d-flex align-center">
+          <span class="logo-text text-h6 font-weight-bold text-primary">胡聖翰</span>
         </NuxtLink>
 
         <v-spacer />
 
         <!-- Desktop Navigation -->
-        <nav v-if="smAndUp" class="d-flex align-center ga-1">
+        <nav v-if="smAndUp" class="d-flex align-center ga-8">
           <NuxtLink
             v-for="item in menuItems"
             :key="item.title"
             :to="item.to"
             class="nav-link"
+            :class="{ 'nav-link--active': isActiveRoute(item.to) }"
           >
-            <v-btn
-              :variant="isActiveRoute(item.to) ? 'tonal' : 'text'"
-              :color="isActiveRoute(item.to) ? 'primary' : 'default'"
-              class="nav-btn"
-              size="small"
-            >
-              <v-icon start size="18">{{ item.icon }}</v-icon>
-              {{ item.title }}
-            </v-btn>
+            <span class="nav-link-text">{{ item.title }}</span>
           </NuxtLink>
         </nav>
 
@@ -71,7 +60,7 @@ const isActiveRoute = (to: string) => {
               <v-icon>mdi-menu</v-icon>
             </v-btn>
           </template>
-          <v-list class="py-2 mobile-menu" min-width="200">
+          <v-list class="py-2 mobile-menu" min-width="180">
             <v-list-item
               v-for="item in menuItems"
               :key="item.title"
@@ -80,11 +69,9 @@ const isActiveRoute = (to: string) => {
               active-color="primary"
               class="mobile-menu-item"
             >
-              <template #prepend>
-                <v-icon size="20">{{ item.icon }}</v-icon>
-              </template>
-              <v-list-item-title class="font-weight-medium">
-                {{ item.title }}
+              <v-list-item-title class="d-flex align-center justify-space-between">
+                <span>{{ item.title }}</span>
+                <span class="text-caption text-medium-emphasis">{{ item.titleJa }}</span>
               </v-list-item-title>
             </v-list-item>
           </v-list>
@@ -96,36 +83,37 @@ const isActiveRoute = (to: string) => {
       <NuxtPage :transition="{ name: 'page', mode: 'out-in' }" />
     </v-main>
 
-    <!-- Footer -->
-    <v-footer class="footer py-6">
+    <!-- 日式簡約頁尾 -->
+    <footer class="site-footer py-8">
       <v-container>
-        <div class="d-flex flex-column flex-sm-row align-center justify-space-between ga-4">
-          <span class="text-body-2 text-medium-emphasis">
-            &copy; {{ new Date().getFullYear() }} Sheng Han Hu. All rights reserved.
-          </span>
-          <div class="d-flex ga-2">
-            <v-btn
+        <div class="d-flex flex-column align-center ga-4">
+          <!-- 社交連結 -->
+          <div class="d-flex ga-4">
+            <a
               href="https://github.com/show812223"
               target="_blank"
-              icon
-              variant="text"
-              size="small"
+              class="footer-link"
+              aria-label="GitHub"
             >
-              <v-icon>mdi-github</v-icon>
-            </v-btn>
-            <v-btn
+              <v-icon size="20">mdi-github</v-icon>
+            </a>
+            <a
               href="https://www.linkedin.com/in/%E8%81%96%E7%BF%B0-%E8%83%A1-b435b9285/"
               target="_blank"
-              icon
-              variant="text"
-              size="small"
+              class="footer-link"
+              aria-label="LinkedIn"
             >
-              <v-icon>mdi-linkedin</v-icon>
-            </v-btn>
+              <v-icon size="20">mdi-linkedin</v-icon>
+            </a>
           </div>
+
+          <!-- 版權 -->
+          <p class="text-caption text-medium-emphasis">
+            &copy; {{ new Date().getFullYear() }} Sheng Han Hu
+          </p>
         </div>
       </v-container>
-    </v-footer>
+    </footer>
   </v-app>
 </template>
 
@@ -158,72 +146,112 @@ h1, h2, h3, h4, h5, h6,
   border-radius: 4px;
 }
 
-/* Cursor pointer for interactive elements */
+/* Cursor pointer */
 .cursor-pointer {
   cursor: pointer;
+}
+
+/* 頁面過渡 */
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.page-enter-from {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.page-leave-to {
+  opacity: 0;
+  transform: translateY(-8px);
 }
 </style>
 
 <style scoped>
+/* 導航列 */
 .nav-bar {
-  border-bottom: 1px solid #E0D8D0 !important;
-  backdrop-filter: blur(12px);
-  background: rgb(var(--v-theme-surface) / 0.95) !important;
+  background: rgb(var(--v-theme-background) / 0.9) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .logo-link {
   text-decoration: none;
 }
 
-.logo-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
-  background: linear-gradient(135deg, rgb(var(--v-theme-primary)), rgb(var(--v-theme-secondary)));
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.logo-icon:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 16px rgb(var(--v-theme-primary) / 0.3);
-}
-
 .logo-text {
-  color: white;
-  font-size: 20px;
-  font-weight: 700;
-  font-family: 'Noto Serif JP', serif;
+  letter-spacing: 0.1em;
 }
 
+/* 導航連結 - 日式簡約 */
 .nav-link {
+  position: relative;
   text-decoration: none;
+  color: rgb(var(--v-theme-on-surface));
+  font-size: 0.875rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  padding: 0.5rem 0;
+  transition: color 0.3s ease;
 }
 
-.nav-btn {
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  transition: all 0.2s ease;
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: rgb(var(--v-theme-primary));
+  transition: width 0.3s ease;
 }
 
-.nav-btn:hover {
-  transform: translateY(-1px);
+.nav-link:hover {
+  color: rgb(var(--v-theme-primary));
 }
 
+.nav-link:hover::after,
+.nav-link--active::after {
+  width: 100%;
+}
+
+.nav-link--active {
+  color: rgb(var(--v-theme-primary));
+}
+
+/* 手機選單 */
 .mobile-menu {
-  border-radius: 12px !important;
-  box-shadow: 0 8px 32px rgb(0 0 0 / 0.12) !important;
+  border-radius: 8px !important;
+  border: 1px solid rgb(var(--v-theme-border));
 }
 
 .mobile-menu-item {
-  border-radius: 8px;
   margin: 4px 8px;
+  border-radius: 6px;
 }
 
-.footer {
-  background: rgb(var(--v-theme-surface));
-  border-top: 1px solid #E0D8D0;
+/* 頁尾 */
+.site-footer {
+  border-top: 1px solid rgb(var(--v-theme-border) / 0.5);
+}
+
+.footer-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgb(var(--v-theme-border));
+  color: rgb(var(--v-theme-on-surface));
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.footer-link:hover {
+  color: rgb(var(--v-theme-primary));
+  border-color: rgb(var(--v-theme-primary) / 0.3);
+  background: rgb(var(--v-theme-primary) / 0.05);
 }
 </style>
