@@ -5,19 +5,12 @@ const skills = resumeData.skills
 </script>
 
 <template>
-  <section class="py-6 anim-slide-up anim-delay-100">
-    <div class="d-flex align-center mb-8">
-      <v-icon
-        size="32"
-        color="primary"
-        class="mr-4"
-      >
-        mdi-star-circle
-      </v-icon>
-      <h2 class="text-h4 font-weight-bold">
-        技術技能
-      </h2>
-    </div>
+  <section class="section anim-slide-up anim-delay-100">
+    <UiSectionHeader
+      icon="mdi-star-circle"
+      title="技術技能"
+      subtitle="專業技術與工具"
+    />
 
     <v-row class="ga-4">
       <v-col
@@ -28,7 +21,7 @@ const skills = resumeData.skills
         lg="4"
       >
         <v-card
-          class="h-100 pa-6 skill-card"
+          class="h-100 pa-6 skill-card card-interactive"
           :style="{ animationDelay: `${200 + index * 100}ms` }"
         >
           <div class="d-flex align-center mb-4">
@@ -39,7 +32,7 @@ const skills = resumeData.skills
             >
               {{ skill.icon }}
             </v-icon>
-            <span class="text-h6 font-weight-bold">{{ skill.category }}</span>
+            <span class="text-h6 font-weight-medium">{{ skill.category }}</span>
           </div>
           <div class="d-flex flex-column ga-4">
             <div
@@ -61,6 +54,7 @@ const skills = resumeData.skills
                 color="primary"
                 height="6"
                 rounded
+                class="progress-animated"
               />
             </div>
           </div>
@@ -79,11 +73,15 @@ const skills = resumeData.skills
 @keyframes scaleIn {
   from {
     opacity: 0;
-    transform: scale(0.9);
+    transform: scale(0.95);
   }
   to {
     opacity: 1;
     transform: scale(1);
   }
+}
+
+.progress-animated :deep(.v-progress-linear__determinate) {
+  transition: width 800ms cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 </style>

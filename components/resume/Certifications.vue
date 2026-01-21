@@ -5,19 +5,12 @@ const certifications = resumeData.certifications
 </script>
 
 <template>
-  <section class="py-6 anim-slide-up anim-delay-500">
-    <div class="d-flex align-center mb-8">
-      <v-icon
-        size="32"
-        color="primary"
-        class="mr-4"
-      >
-        mdi-certificate
-      </v-icon>
-      <h2 class="text-h4 font-weight-bold">
-        專業證照
-      </h2>
-    </div>
+  <section class="section anim-slide-up anim-delay-500">
+    <UiSectionHeader
+      icon="mdi-certificate"
+      title="專業證照"
+      subtitle="專業認證與資格"
+    />
 
     <v-row class="ga-4">
       <v-col
@@ -28,7 +21,7 @@ const certifications = resumeData.certifications
         md="4"
       >
         <v-card
-          class="h-100 pa-6 cert-card"
+          class="h-100 pa-6 cert-card card-interactive d-flex flex-column"
           :style="{ animationDelay: `${600 + index * 100}ms` }"
         >
           <div class="d-flex align-center mb-4">
@@ -45,7 +38,7 @@ const certifications = resumeData.certifications
               </v-icon>
             </v-avatar>
             <div>
-              <div class="text-subtitle-1 font-weight-bold">
+              <div class="text-subtitle-1 font-weight-medium">
                 {{ cert.code }}
               </div>
               <div class="text-caption text-medium-emphasis">
@@ -54,7 +47,7 @@ const certifications = resumeData.certifications
             </div>
           </div>
 
-          <p class="text-body-2 mb-3">
+          <p class="text-body-2 mb-3 flex-grow-1">
             {{ cert.name }}
           </p>
           <p
@@ -71,7 +64,6 @@ const certifications = resumeData.certifications
             variant="outlined"
             color="primary"
             size="small"
-            class="mt-auto"
           >
             <v-icon
               class="mr-1"

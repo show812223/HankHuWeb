@@ -5,19 +5,11 @@ const languages = resumeData.languages
 </script>
 
 <template>
-  <section class="py-6 anim-slide-up anim-delay-200">
-    <div class="d-flex align-center mb-8">
-      <v-icon
-        size="32"
-        color="primary"
-        class="mr-4"
-      >
-        mdi-translate
-      </v-icon>
-      <h2 class="text-h4 font-weight-bold">
-        語言能力
-      </h2>
-    </div>
+  <section class="section anim-slide-up anim-delay-200">
+    <UiSectionHeader
+      icon="mdi-translate"
+      title="語言能力"
+    />
 
     <v-row class="ga-4">
       <v-col
@@ -28,7 +20,7 @@ const languages = resumeData.languages
         md="3"
       >
         <v-card
-          class="text-center pa-6 lang-card"
+          class="text-center pa-6 lang-card card-interactive"
           :style="{ animationDelay: `${300 + index * 100}ms` }"
         >
           <v-icon
@@ -37,7 +29,7 @@ const languages = resumeData.languages
             color="primary"
             class="mb-4"
           />
-          <div class="text-h6 font-weight-bold mb-3">
+          <div class="text-h6 font-weight-medium mb-3">
             {{ lang.name }}
           </div>
           <v-chip
