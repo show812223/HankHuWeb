@@ -22,9 +22,19 @@ const experiences = resumeData.experiences
         <!-- Header -->
         <div class="d-flex align-start justify-space-between flex-wrap ga-3 mb-4">
           <div>
-            <h3 class="text-h6 font-weight-bold mb-1">
-              {{ exp.position }}
-            </h3>
+            <div class="d-flex align-center ga-2 mb-1">
+              <h3 class="text-h6 font-weight-bold mb-0">
+                {{ exp.position }}
+              </h3>
+              <v-chip
+                v-if="index === 0"
+                color="success"
+                variant="flat"
+                size="x-small"
+              >
+                Current
+              </v-chip>
+            </div>
             <div class="d-flex align-center flex-wrap ga-3 text-body-2 text-medium-emphasis">
               <span class="d-flex align-center">
                 <v-icon size="16" class="mr-1">mdi-domain</v-icon>
@@ -37,8 +47,7 @@ const experiences = resumeData.experiences
             </div>
           </div>
           <v-chip
-            :color="index === 0 ? 'success' : 'default'"
-            :variant="index === 0 ? 'flat' : 'outlined'"
+            variant="outlined"
             size="small"
             class="date-chip"
           >
@@ -90,19 +99,6 @@ const experiences = resumeData.experiences
 
 .exp-card--current {
   border-left: 3px solid rgb(var(--v-theme-success));
-}
-
-.exp-card--current::before {
-  content: '現職';
-  position: absolute;
-  top: -10px;
-  left: 16px;
-  background: rgb(var(--v-theme-success));
-  color: white;
-  font-size: 10px;
-  font-weight: 600;
-  padding: 2px 8px;
-  border-radius: 4px;
 }
 
 @keyframes fadeSlideUp {
