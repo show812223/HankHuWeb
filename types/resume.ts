@@ -53,14 +53,41 @@ export interface Project {
   url?: string
   github?: string
   image?: string
+  highlights?: string[] // 量化成果
+}
+
+export interface ContactInfo {
+  email?: string
+  phone?: string
+  linkedin?: string
+  github?: string
+  blog?: string
+  website?: string
+}
+
+export interface Highlight {
+  icon: string
+  title: string
+  description: string
+}
+
+export interface Contribution {
+  type: 'article' | 'talk' | 'opensource'
+  title: string
+  description: string
+  url?: string
+  date?: string
 }
 
 export interface ResumeData {
   summary: string
+  contactInfo?: ContactInfo
+  highlights?: Highlight[] // 亮點成就
   skills: Skill[]
   languages: Language[]
   experiences: Experience[]
   educations: Education[]
   certifications: Certification[]
   projects: Project[]
+  contributions?: Contribution[] // 技術貢獻
 }
