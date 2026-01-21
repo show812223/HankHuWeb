@@ -5,24 +5,13 @@ const summary = resumeData.summary
 </script>
 
 <template>
-  <section class="py-6 anim-slide-up">
-    <v-card class="pa-8">
-      <div class="d-flex align-center mb-6">
-        <v-icon
-          size="32"
-          color="primary"
-          class="mr-4"
-        >
-          mdi-account-circle
-        </v-icon>
-        <h2 class="text-h4 font-weight-bold">
-          關於我
-        </h2>
-      </div>
-      <p
-        class="text-body-1"
-        style="line-height: 2;"
-      >
+  <section class="section anim-slide-up">
+    <v-card class="pa-8 card-interactive summary-card">
+      <UiSectionHeader
+        icon="mdi-account-circle"
+        title="關於我"
+      />
+      <p class="text-body-1 leading-loose summary-text">
         {{ summary }}
       </p>
     </v-card>
@@ -30,5 +19,15 @@ const summary = resumeData.summary
 </template>
 
 <style scoped>
+.summary-card {
+  background: linear-gradient(
+    135deg,
+    rgb(var(--v-theme-surface)) 0%,
+    rgb(var(--v-theme-surface-light)) 100%
+  );
+}
 
+.summary-text {
+  max-width: 800px;
+}
 </style>

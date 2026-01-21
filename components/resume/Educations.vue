@@ -5,19 +5,12 @@ const educations = resumeData.educations
 </script>
 
 <template>
-  <section class="py-6 anim-slide-up anim-delay-300">
-    <div class="d-flex align-center mb-8">
-      <v-icon
-        size="32"
-        color="primary"
-        class="mr-4"
-      >
-        mdi-school
-      </v-icon>
-      <h2 class="text-h4 font-weight-bold">
-        教育背景
-      </h2>
-    </div>
+  <section class="section anim-slide-up anim-delay-300">
+    <UiSectionHeader
+      icon="mdi-school"
+      title="教育背景"
+      subtitle="學歷與專業培訓"
+    />
 
     <v-row class="ga-4">
       <v-col
@@ -27,7 +20,7 @@ const educations = resumeData.educations
         md="6"
       >
         <v-card
-          class="h-100 pa-6 edu-card"
+          class="h-100 pa-6 edu-card card-interactive"
           :style="{ animationDelay: `${400 + index * 150}ms` }"
         >
           <div class="d-flex align-center mb-3">
@@ -38,7 +31,7 @@ const educations = resumeData.educations
             >
               mdi-school
             </v-icon>
-            <span class="text-h6 font-weight-bold">{{ edu.school }}</span>
+            <span class="text-h6 font-weight-medium">{{ edu.school }}</span>
           </div>
           <p class="text-body-2 text-medium-emphasis mb-4">
             {{ edu.startDate }} - {{ edu.endDate }}
@@ -54,7 +47,7 @@ const educations = resumeData.educations
           </div>
           <p
             v-if="edu.description"
-            class="text-body-2 text-medium-emphasis"
+            class="text-body-2 text-medium-emphasis leading-relaxed"
           >
             {{ edu.description }}
           </p>

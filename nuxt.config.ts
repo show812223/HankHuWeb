@@ -3,7 +3,7 @@ import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 
 export default defineNuxtConfig({
   // 全域 CSS
-  css: ['~/assets/css/animations.css'],
+  css: ['~/assets/css/animations.css', '~/assets/css/design-system.css'],
 
   // https://nuxt.com/modules
   modules: [
