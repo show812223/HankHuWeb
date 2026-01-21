@@ -33,7 +33,7 @@ const socialButtons = [
       <!-- 頭像 - 簡約圓形 -->
       <div class="avatar-wrapper mb-8 anim-scale-in anim-delay-900">
         <v-avatar size="160" class="avatar-main">
-          <v-img src="https://cdn.vuetifyjs.com/images/john.jpg" />
+          <v-img src="/images/avatar.jpg" />
         </v-avatar>
       </div>
 
