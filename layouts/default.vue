@@ -5,10 +5,10 @@ const { smAndUp } = useDisplay()
 const route = useRoute()
 
 const menuItems = [
-  { title: 'Home', titleJa: 'ホーム', to: '/' },
-  { title: 'Resume', titleJa: '履歴', to: '/Resume' },
-  { title: 'Projects', titleJa: '作品', to: '/Projects' },
-  { title: 'Contact', titleJa: '連絡', to: '/Contact' },
+  { title: 'Home', to: '/' },
+  { title: 'Resume', to: '/Resume' },
+  { title: 'Projects', to: '/Projects' },
+  { title: 'Contact', to: '/Contact' },
 ]
 
 const isActiveRoute = (to: string) => {
@@ -69,9 +69,8 @@ const isActiveRoute = (to: string) => {
               active-color="primary"
               class="mobile-menu-item"
             >
-              <v-list-item-title class="d-flex align-center justify-space-between">
-                <span>{{ item.title }}</span>
-                <span class="text-caption text-medium-emphasis">{{ item.titleJa }}</span>
+              <v-list-item-title>
+                {{ item.title }}
               </v-list-item-title>
             </v-list-item>
           </v-list>
