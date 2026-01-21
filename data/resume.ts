@@ -1,7 +1,7 @@
 import type { ResumeData } from '~/types/resume'
 
 export const resumeData: ResumeData = {
-  summary: '專注於 Vue 3 / Nuxt 4 的前端技術主管，擁有 6 年以上企業級 Web 應用開發經驗。目前帶領 2 人前端團隊，負責架構設計、ESLint 團隊規則制定、E2E 測試導入與 CI/CD 流程建置，致力於打造高效、可維護的現代化前端解決方案。',
+  summary: '專注於 Vue 3 / Nuxt 4 的前端技術主管，擁有 6 年以上企業級 Web 應用開發經驗。目前帶領 2 人前端團隊，負責架構設計、ESLint 團隊規則制定、E2E 測試導入與 CI/CD 流程建置。積極導入 AI 輔助開發工具，提升測試與 E2E 覆蓋率，致力於打造高效、可維護的現代化前端解決方案。',
 
   languages: [
     { name: '中文', level: '母語', icon: 'mdi-ideogram-cjk' },
@@ -83,6 +83,15 @@ export const resumeData: ResumeData = {
         { name: 'Vitest', level: 4 },
       ],
     },
+    {
+      category: 'AI 輔助開發',
+      icon: 'mdi-robot',
+      items: [
+        { name: 'Claude Code', level: 4 },
+        { name: 'GitHub Copilot', level: 4 },
+        { name: 'AI Test Generation', level: 3 },
+      ],
+    },
   ],
 
   experiences: [
@@ -97,9 +106,10 @@ export const resumeData: ResumeData = {
         '帶領 2 人前端團隊，負責技術決策與專案架構規劃',
         '制定 ESLint 團隊開發規範，統一程式碼風格與最佳實踐',
         '導入 Playwright E2E 測試框架，提升產品品質與交付穩定性',
+        '導入 AI 輔助開發工具，提升測試與 E2E 覆蓋率',
         '跨部門協作，與產品、後端團隊緊密配合確保專案順利交付',
       ],
-      technologies: ['Vue 3', 'Nuxt 4', 'TypeScript', 'Vuetify', 'ESLint', 'Playwright', 'Azure DevOps'],
+      technologies: ['Vue 3', 'Nuxt 4', 'TypeScript', 'Vuetify', 'ESLint', 'Playwright', 'AI Tools', 'Azure DevOps'],
     },
     {
       company: '衛武資訊股份有限公司',
