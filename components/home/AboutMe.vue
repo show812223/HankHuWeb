@@ -4,11 +4,11 @@
 
 <template>
   <div class="about-me-section d-flex flex-column ga-8" style="max-width: 480px">
-    <!-- 問候語 - 日式簡約 -->
+    <!-- 標題區 -->
     <div class="anim-fade-in anim-delay-600">
       <p class="text-overline text-medium-emphasis mb-3 letter-spacing-wide">ABOUT ME</p>
       <h1 class="text-h3 font-weight-bold text-primary mb-2">
-        こんにちは
+        Hello
       </h1>
       <p class="text-body-1 text-medium-emphasis">
         Here's who I am & what I do
