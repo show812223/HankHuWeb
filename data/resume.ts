@@ -10,6 +10,11 @@ export const resumeData: ResumeData = {
 
   highlights: [
     {
+      icon: 'mdi-vuejs',
+      title: 'Vue 2 → Vue 3 升級',
+      description: '主導公司產品從 Vue 2 升級至 Vue 3，確保平滑遷移與零停機',
+    },
+    {
       icon: 'mdi-chart-line',
       title: 'E2E 覆蓋率提升',
       description: '導入 Playwright + AI 輔助，測試覆蓋率從 15% 提升至 70%',
@@ -24,11 +29,6 @@ export const resumeData: ResumeData = {
       title: 'CI/CD 自動化',
       description: '建置 Azure DevOps Pipeline，部署時間縮短 60%',
     },
-    {
-      icon: 'mdi-office-building',
-      title: 'BIM 產業經驗',
-      description: '6 年以上 AEC 產業數位化與 BIM 平台開發經驗',
-    },
   ],
 
   languages: [
@@ -37,6 +37,16 @@ export const resumeData: ResumeData = {
   ],
 
   projects: [
+    {
+      name: 'Vue 2 → Vue 3 產品升級專案',
+      description: '主導公司核心產品從 Vue 2 升級至 Vue 3，包含架構重構、Composition API 遷移與效能優化。',
+      technologies: ['Vue 3', 'Vue 2', 'Composition API', 'TypeScript', 'Vite', 'Pinia'],
+      highlights: [
+        '零停機完成版本升級，確保業務連續性',
+        '遷移 100+ 組件至 Composition API',
+        '建立遷移指南與最佳實踐文件',
+      ],
+    },
     {
       name: '個人履歷網站',
       description: '使用 Nuxt 4 + Vuetify 打造的現代化個人履歷網站，部署於 Vercel。',
@@ -180,6 +190,7 @@ export const resumeData: ResumeData = {
       startDate: '2024/03',
       endDate: '2024/09',
       description: [
+        '主導公司產品從 Vue 2 升級至 Vue 3，制定遷移策略與時程規劃',
         '帶領前端開發團隊，每週進行 Code Review，程式碼品質提升 40%',
         '主導前端架構重構，頁面載入速度優化 50%，Bundle Size 減少 35%',
         '建立 Azure DevOps CI/CD Pipeline，部署時間從 30 分鐘縮短至 12 分鐘',
@@ -239,6 +250,11 @@ export const resumeData: ResumeData = {
   ],
 
   contributions: [
+    {
+      type: 'talk',
+      title: 'Vue 2 → Vue 3 遷移實戰經驗',
+      description: '分享公司產品升級經驗，包含遷移策略、踩坑紀錄與效能優化技巧',
+    },
     {
       type: 'talk',
       title: 'Vue 3 Composition API 實戰分享',
