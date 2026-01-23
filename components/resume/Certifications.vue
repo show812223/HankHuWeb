@@ -5,73 +5,42 @@ const certifications = resumeData.certifications
 </script>
 
 <template>
-  <section class="section anim-slide-up anim-delay-500">
+  <section>
     <UiSectionHeader
       icon="mdi-certificate"
       title="專業證照"
-      subtitle="專業認證與資格"
     />
 
-    <v-row class="ga-4">
+    <v-row>
       <v-col
-        v-for="(cert, index) in certifications"
+        v-for="cert in certifications"
         :key="cert.code"
         cols="12"
         sm="6"
-        md="4"
       >
-        <v-card
-          class="h-100 pa-6 cert-card card-interactive d-flex flex-column"
-          :style="{ animationDelay: `${600 + index * 100}ms` }"
-        >
+        <v-card class="h-100 pa-6 cert-card">
           <div class="d-flex align-center mb-4">
-            <v-avatar
-              color="primary"
-              size="44"
-              class="mr-4"
-            >
-              <v-icon
-                color="white"
-                size="24"
-              >
-                mdi-medal
-              </v-icon>
+            <v-avatar color="primary" size="44" class="mr-4">
+              <v-icon color="white" size="24">mdi-medal</v-icon>
             </v-avatar>
             <div>
-              <div class="text-subtitle-1 font-weight-medium">
-                {{ cert.code }}
-              </div>
-              <div class="text-caption text-medium-emphasis">
-                {{ cert.issuer }}
-              </div>
+              <div class="text-subtitle-1 font-weight-bold">{{ cert.code }}</div>
+              <div class="text-caption text-medium-emphasis">{{ cert.issuer }}</div>
             </div>
           </div>
 
-          <p class="text-body-2 mb-3 flex-grow-1">
-            {{ cert.name }}
-          </p>
-          <p
-            v-if="cert.date"
-            class="text-caption text-medium-emphasis mb-4"
-          >
-            取得日期：{{ cert.date }}
-          </p>
+          <p class="text-body-2 mb-4">{{ cert.name }}</p>
 
           <v-btn
             v-if="cert.url"
             :href="cert.url"
             target="_blank"
-            variant="outlined"
+            variant="text"
             color="primary"
             size="small"
           >
-            <v-icon
-              class="mr-1"
-              size="16"
-            >
-              mdi-open-in-new
-            </v-icon>
-            查看證照
+            <v-icon start size="16">mdi-open-in-new</v-icon>
+            View Certificate
           </v-btn>
         </v-card>
       </v-col>
@@ -81,18 +50,11 @@ const certifications = resumeData.certifications
 
 <style scoped>
 .cert-card {
-  opacity: 0;
-  animation: scaleSlideUp 500ms cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-@keyframes scaleSlideUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px) scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
+.cert-card:hover {
+  border-color: rgb(var(--v-theme-primary)) !important;
+  box-shadow: 0 4px 16px rgb(var(--v-theme-primary) / 0.1);
 }
 </style>

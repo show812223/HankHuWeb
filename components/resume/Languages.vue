@@ -5,37 +5,29 @@ const languages = resumeData.languages
 </script>
 
 <template>
-  <section class="section anim-slide-up anim-delay-200">
+  <section>
     <UiSectionHeader
       icon="mdi-translate"
       title="語言能力"
     />
 
-    <v-row class="ga-4">
+    <v-row>
       <v-col
-        v-for="(lang, index) in languages"
+        v-for="lang in languages"
         :key="lang.name"
         cols="6"
         sm="4"
         md="3"
       >
-        <v-card
-          class="text-center pa-6 lang-card card-interactive"
-          :style="{ animationDelay: `${300 + index * 100}ms` }"
-        >
+        <v-card class="text-center pa-6 lang-card">
           <v-icon
             :icon="lang.icon || 'mdi-translate'"
-            size="40"
+            size="32"
             color="primary"
-            class="mb-4"
+            class="mb-3"
           />
-          <div class="text-h6 font-weight-medium mb-3">
-            {{ lang.name }}
-          </div>
-          <v-chip
-            size="small"
-            color="primary"
-          >
+          <div class="text-subtitle-1 font-weight-bold mb-2">{{ lang.name }}</div>
+          <v-chip size="small" color="primary">
             {{ lang.level }}
           </v-chip>
         </v-card>
@@ -46,21 +38,11 @@ const languages = resumeData.languages
 
 <style scoped>
 .lang-card {
-  opacity: 0;
-  animation: popIn 400ms cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-@keyframes popIn {
-  0% {
-    opacity: 0;
-    transform: scale(0.8);
-  }
-  70% {
-    transform: scale(1.02);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
+.lang-card:hover {
+  border-color: rgb(var(--v-theme-primary)) !important;
+  box-shadow: 0 4px 16px rgb(var(--v-theme-primary) / 0.1);
 }
 </style>

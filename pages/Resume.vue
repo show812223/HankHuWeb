@@ -4,30 +4,28 @@
 
 <template>
   <div class="resume-page">
-    <!-- 日式裝飾 -->
-    <div class="page-decoration">
-      <div class="deco-circle" />
-    </div>
+    <!-- 背景網格 -->
+    <div class="grid-background" />
 
-    <!-- 頁面標題 - 日式簡約 -->
+    <!-- 頁面標題 -->
     <section class="page-header py-16">
       <v-container>
-        <div class="text-center anim-fade-in">
-          <p class="text-overline text-medium-emphasis mb-3 letter-spacing-wide">RESUME</p>
-          <h1 class="text-h2 font-weight-bold text-primary mb-2">履歷</h1>
+        <div class="text-center">
+          <p class="text-overline text-secondary mb-2 tracking-wide">RESUME</p>
+          <h1 class="text-h2 font-weight-bold mb-2">履歷</h1>
           <p class="text-body-1 text-medium-emphasis">專業背景與技術能力</p>
         </div>
       </v-container>
     </section>
 
-    <!-- 日式分隔線 -->
-    <div class="zen-divider">
-      <span class="zen-divider-dot" />
+    <!-- 分隔線 -->
+    <div class="section-divider">
+      <div class="divider-line" />
     </div>
 
     <!-- 主要內容 - 單欄布局 -->
     <v-container class="py-12" style="max-width: 900px;">
-      <div class="d-flex flex-column ga-10">
+      <div class="d-flex flex-column ga-12">
         <ResumeSummary />
         <ResumeExperiences />
         <ResumeSkills />
@@ -45,72 +43,41 @@
   position: relative;
 }
 
-/* 頁面裝飾 */
-.page-decoration {
+/* 背景網格 */
+.grid-background {
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  overflow: hidden;
+  background-image:
+    linear-gradient(rgb(var(--v-theme-border) / 0.2) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(var(--v-theme-border) / 0.2) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
 }
 
-.deco-circle {
-  position: absolute;
-  width: 500px;
-  height: 500px;
-  border-radius: 50%;
-  border: 1px solid rgb(var(--v-theme-primary) / 0.04);
-  top: -150px;
-  right: -150px;
-}
-
-/* 頁面標題 */
 .page-header {
   position: relative;
   z-index: 1;
 }
 
-.letter-spacing-wide {
-  letter-spacing: 0.3em;
+.tracking-wide {
+  letter-spacing: 0.2em;
 }
 
-/* 日式分隔線 */
-.zen-divider {
+/* 分隔線 */
+.section-divider {
   display: flex;
-  align-items: center;
   justify-content: center;
   padding: 1rem 0;
   position: relative;
   z-index: 1;
 }
 
-.zen-divider::before,
-.zen-divider::after {
-  content: '';
-  flex: 1;
-  max-width: 100px;
-  height: 1px;
-  background: linear-gradient(
-    to var(--direction, right),
-    transparent,
-    rgb(var(--v-theme-primary) / 0.15)
-  );
+.divider-line {
+  width: 80px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgb(var(--v-theme-primary)), transparent);
+  border-radius: 1px;
 }
-
-.zen-divider::before {
-  --direction: right;
-}
-
-.zen-divider::after {
-  --direction: left;
-}
-
-.zen-divider-dot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: rgb(var(--v-theme-primary) / 0.25);
-  margin: 0 0.75rem;
-}
-
 </style>

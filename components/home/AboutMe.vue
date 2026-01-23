@@ -3,108 +3,88 @@
 </script>
 
 <template>
-  <div class="about-me-section d-flex flex-column ga-8" style="max-width: 480px">
+  <div class="about-me-section d-flex flex-column ga-6" style="max-width: 480px">
     <!-- 標題區 -->
-    <div class="anim-fade-in anim-delay-600">
-      <p class="text-overline text-medium-emphasis mb-3 letter-spacing-wide">ABOUT ME</p>
-      <h1 class="text-h3 font-weight-bold text-primary mb-2">
-        Hello
+    <div>
+      <p class="text-overline text-secondary mb-2 tracking-wide">ABOUT ME</p>
+      <h1 class="text-h3 font-weight-bold mb-2">
+        Hello, I'm Hank
       </h1>
       <p class="text-body-1 text-medium-emphasis">
-        Here's who I am & what I do
+        Frontend Engineer & Technical Lead
       </p>
     </div>
 
     <!-- 描述文字 -->
-    <div class="about-text anim-fade-in anim-delay-800">
-      <p class="text-body-1 mb-0" style="line-height: 2;">
-        一名專注於 <span class="text-primary font-weight-medium">Nuxt 3</span> 與前端開發的工程師，擁有豐富的全端開發與雲端部署經驗。擅長 <span class="text-primary font-weight-medium">Vue、TypeScript</span> 及 <span class="text-primary font-weight-medium">Azure CI/CD</span>，並熟悉容器化與微服務架構。
+    <div class="about-text">
+      <p class="text-body-1 mb-0" style="line-height: 1.8;">
+        專注於 <span class="text-primary font-weight-medium">Vue / Nuxt</span> 生態系的前端工程師，擁有豐富的企業級應用開發經驗。擅長 <span class="text-primary font-weight-medium">TypeScript</span> 與 <span class="text-primary font-weight-medium">Azure CI/CD</span>，熱衷於建構高效能、可維護的前端架構。
       </p>
     </div>
 
-    <!-- 經歷摘要 - 日式排列 -->
-    <div class="experience-summary d-flex ga-8 anim-fade-in anim-delay-900">
-      <div class="exp-item">
-        <p class="text-h4 font-weight-bold text-primary mb-1">6+</p>
-        <p class="text-caption text-medium-emphasis">年經驗</p>
+    <!-- 經歷摘要 -->
+    <div class="stats-row d-flex ga-6">
+      <div class="stat-item">
+        <p class="text-h4 font-weight-bold text-primary mb-0">6+</p>
+        <p class="text-caption text-medium-emphasis">Years Exp.</p>
       </div>
-      <div class="exp-divider" />
-      <div class="exp-item">
-        <p class="text-h4 font-weight-bold text-primary mb-1">10+</p>
-        <p class="text-caption text-medium-emphasis">專案數</p>
+      <div class="stat-divider" />
+      <div class="stat-item">
+        <p class="text-h4 font-weight-bold text-primary mb-0">10+</p>
+        <p class="text-caption text-medium-emphasis">Projects</p>
       </div>
-      <div class="exp-divider" />
-      <div class="exp-item">
-        <p class="text-h4 font-weight-bold text-primary mb-1">TL</p>
-        <p class="text-caption text-medium-emphasis">技術領導</p>
+      <div class="stat-divider" />
+      <div class="stat-item">
+        <p class="text-h4 font-weight-bold text-primary mb-0">TL</p>
+        <p class="text-caption text-medium-emphasis">Tech Lead</p>
       </div>
     </div>
 
-    <!-- 行動按鈕 - 日式簡約 -->
-    <div class="d-flex ga-4 anim-fade-in anim-delay-1000">
+    <!-- 行動按鈕 -->
+    <div class="d-flex ga-3">
       <v-btn
         to="/Resume"
         color="primary"
-        variant="flat"
         size="large"
-        class="action-btn"
       >
-        履歷
-        <v-icon end size="18">mdi-arrow-right</v-icon>
+        <v-icon start size="18">mdi-file-document</v-icon>
+        View Resume
       </v-btn>
       <v-btn
         to="/Projects"
-        color="primary"
         variant="outlined"
         size="large"
-        class="action-btn"
       >
-        作品集
-        <v-icon end size="18">mdi-arrow-right</v-icon>
+        <v-icon start size="18">mdi-folder-open</v-icon>
+        Projects
       </v-btn>
     </div>
   </div>
 </template>
 
 <style scoped>
-.about-me-section {
-  position: relative;
-}
-
-.letter-spacing-wide {
-  letter-spacing: 0.3em;
+.tracking-wide {
+  letter-spacing: 0.2em;
 }
 
 .about-text {
-  position: relative;
   padding-left: 1rem;
-  border-left: 2px solid rgb(var(--v-theme-primary) / 0.15);
+  border-left: 3px solid rgb(var(--v-theme-primary));
 }
 
-/* 經歷摘要 */
-.experience-summary {
-  padding: 1.5rem 0;
+/* 統計數據 */
+.stats-row {
+  padding: 1rem 0;
 }
 
-.exp-item {
+.stat-item {
   text-align: center;
-  min-width: 60px;
+  min-width: 70px;
 }
 
-.exp-divider {
+.stat-divider {
   width: 1px;
   background: rgb(var(--v-theme-border));
   align-self: stretch;
-}
-
-/* 行動按鈕 */
-.action-btn {
-  font-weight: 500;
-  letter-spacing: 0.05em;
-  transition: all 0.3s ease;
-}
-
-.action-btn:hover {
-  transform: translateX(4px);
 }
 </style>

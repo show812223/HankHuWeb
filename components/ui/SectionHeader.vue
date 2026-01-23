@@ -12,15 +12,14 @@ defineProps<{
       <v-icon
         v-if="icon"
         :icon="icon"
-        size="28"
+        size="24"
         color="primary"
-        class="section-icon"
       />
-      <h2 class="section-title text-h4 font-weight-medium">
+      <h2 class="text-h5 font-weight-bold">
         {{ title }}
       </h2>
     </div>
-    <p v-if="subtitle" class="section-subtitle text-body-1 text-medium-emphasis ml-10">
+    <p v-if="subtitle" class="text-body-2 text-medium-emphasis" :class="{ 'ml-9': icon }">
       {{ subtitle }}
     </p>
     <div class="section-divider mt-4" />
@@ -28,32 +27,14 @@ defineProps<{
 </template>
 
 <style scoped>
-.section-header {
-  position: relative;
-}
-
-.section-title {
-  letter-spacing: 0.5px;
-  line-height: 1.3;
-}
-
-.section-subtitle {
-  line-height: 1.6;
-  max-width: 600px;
-}
-
-.section-icon {
-  opacity: 0.9;
-}
-
 .section-divider {
-  height: 1px;
+  height: 2px;
   background: linear-gradient(
     to right,
+    rgb(var(--v-theme-primary)),
     rgb(var(--v-theme-primary) / 0.3),
-    rgb(var(--v-theme-primary) / 0.1),
     transparent
   );
-  max-width: 200px;
+  max-width: 120px;
 }
 </style>

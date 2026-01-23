@@ -6,35 +6,32 @@ const projects = resumeData.projects
 
 <template>
   <div class="projects-page">
-    <!-- 日式裝飾 -->
-    <div class="page-decoration">
-      <div class="deco-circle" />
-    </div>
+    <!-- 背景網格 -->
+    <div class="grid-background" />
 
     <!-- 頁面標題 -->
     <section class="page-header py-16">
       <v-container>
-        <div class="text-center anim-fade-in">
-          <p class="text-overline text-medium-emphasis mb-3 letter-spacing-wide">WORKS</p>
-          <h1 class="text-h2 font-weight-bold text-primary mb-2">作品集</h1>
-          <p class="text-body-1 text-medium-emphasis">參與或獨立開發的專案</p>
+        <div class="text-center">
+          <p class="text-overline text-secondary mb-2 tracking-wide">PROJECTS</p>
+          <h1 class="text-h2 font-weight-bold mb-2">作品集</h1>
+          <p class="text-body-1 text-medium-emphasis">參與開發的專案</p>
         </div>
       </v-container>
     </section>
 
-    <!-- 日式分隔線 -->
-    <div class="zen-divider">
-      <span class="zen-divider-dot" />
+    <!-- 分隔線 -->
+    <div class="section-divider">
+      <div class="divider-line" />
     </div>
 
     <!-- 專案列表 -->
-    <v-container class="py-12">
-      <div class="projects-list">
+    <v-container class="py-12" style="max-width: 900px;">
+      <div class="projects-list d-flex flex-column ga-6">
         <v-card
           v-for="(project, index) in projects"
           :key="project.name"
-          class="project-card mb-6"
-          :style="{ animationDelay: `${200 + index * 150}ms` }"
+          class="project-card"
         >
           <div class="d-flex flex-column flex-md-row">
             <!-- 專案編號 -->
@@ -44,42 +41,48 @@ const projects = resumeData.projects
 
             <!-- 專案內容 -->
             <div class="flex-grow-1 pa-6">
-              <h3 class="text-h6 font-weight-bold mb-3">{{ project.name }}</h3>
+              <h3 class="text-h6 font-weight-bold mb-2">{{ project.name }}</h3>
               <p class="text-body-2 text-medium-emphasis mb-4" style="line-height: 1.8;">
                 {{ project.description }}
               </p>
 
               <!-- 技術標籤 -->
               <div class="d-flex flex-wrap ga-2 mb-4">
-                <span
+                <v-chip
                   v-for="tech in project.technologies"
                   :key="tech"
-                  class="tech-tag"
+                  size="small"
+                  color="primary"
+                  variant="tonal"
                 >
                   {{ tech }}
-                </span>
+                </v-chip>
               </div>
 
               <!-- 連結 -->
               <div v-if="project.url || project.github" class="d-flex ga-4">
-                <a
+                <v-btn
                   v-if="project.url"
                   :href="project.url"
                   target="_blank"
-                  class="project-link"
+                  variant="text"
+                  size="small"
+                  color="primary"
                 >
-                  <v-icon size="16" class="mr-1">mdi-open-in-new</v-icon>
+                  <v-icon start size="16">mdi-open-in-new</v-icon>
                   Demo
-                </a>
-                <a
+                </v-btn>
+                <v-btn
                   v-if="project.github"
                   :href="project.github"
                   target="_blank"
-                  class="project-link"
+                  variant="text"
+                  size="small"
+                  color="primary"
                 >
-                  <v-icon size="16" class="mr-1">mdi-github</v-icon>
+                  <v-icon start size="16">mdi-github</v-icon>
                   GitHub
-                </a>
+                </v-btn>
               </div>
             </div>
           </div>
@@ -87,17 +90,17 @@ const projects = resumeData.projects
       </div>
 
       <!-- GitHub CTA -->
-      <div class="text-center mt-16 anim-fade-in anim-delay-600">
+      <div class="text-center mt-12">
         <p class="text-body-2 text-medium-emphasis mb-4">查看更多專案</p>
-        <a
+        <v-btn
           href="https://github.com/show812223"
           target="_blank"
-          class="github-link"
+          variant="outlined"
+          size="large"
         >
-          <v-icon size="20" class="mr-2">mdi-github</v-icon>
-          GitHub
-          <v-icon size="16" class="ml-1">mdi-arrow-right</v-icon>
-        </a>
+          <v-icon start>mdi-github</v-icon>
+          View GitHub Profile
+        </v-btn>
       </div>
     </v-container>
   </div>
@@ -109,108 +112,67 @@ const projects = resumeData.projects
   position: relative;
 }
 
-/* 頁面裝飾 */
-.page-decoration {
+/* 背景網格 */
+.grid-background {
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  overflow: hidden;
+  background-image:
+    linear-gradient(rgb(var(--v-theme-border) / 0.2) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(var(--v-theme-border) / 0.2) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse at center, black 0%, transparent 70%);
 }
 
-.deco-circle {
-  position: absolute;
-  width: 400px;
-  height: 400px;
-  border-radius: 50%;
-  border: 1px solid rgb(var(--v-theme-primary) / 0.04);
-  bottom: -100px;
-  left: -100px;
-}
-
-/* 頁面標題 */
 .page-header {
   position: relative;
   z-index: 1;
 }
 
-.letter-spacing-wide {
-  letter-spacing: 0.3em;
+.tracking-wide {
+  letter-spacing: 0.2em;
 }
 
-/* 日式分隔線 */
-.zen-divider {
+/* 分隔線 */
+.section-divider {
   display: flex;
-  align-items: center;
   justify-content: center;
   padding: 1rem 0;
   position: relative;
   z-index: 1;
 }
 
-.zen-divider::before,
-.zen-divider::after {
-  content: '';
-  flex: 1;
-  max-width: 100px;
-  height: 1px;
-  background: linear-gradient(
-    to var(--direction, right),
-    transparent,
-    rgb(var(--v-theme-primary) / 0.15)
-  );
-}
-
-.zen-divider::before {
-  --direction: right;
-}
-
-.zen-divider::after {
-  --direction: left;
-}
-
-.zen-divider-dot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: rgb(var(--v-theme-primary) / 0.25);
-  margin: 0 0.75rem;
+.divider-line {
+  width: 80px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgb(var(--v-theme-primary)), transparent);
+  border-radius: 1px;
 }
 
 /* 專案卡片 */
 .project-card {
-  opacity: 0;
-  animation: gentleFadeUp 500ms ease forwards;
-  transition: border-color 0.3s ease;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
   overflow: hidden;
 }
 
 .project-card:hover {
-  border-color: rgb(var(--v-theme-primary) / 0.2) !important;
-}
-
-@keyframes gentleFadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(16px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  border-color: rgb(var(--v-theme-primary)) !important;
+  box-shadow: 0 4px 16px rgb(var(--v-theme-primary) / 0.1);
 }
 
 /* 專案編號 */
 .project-number {
   min-width: 100px;
   border-right: 1px solid rgb(var(--v-theme-border));
+  background: rgb(var(--v-theme-surface-variant) / 0.5);
 }
 
 .number-text {
   font-size: 2rem;
   font-weight: 700;
-  color: rgb(var(--v-theme-primary) / 0.15);
-  font-family: 'Noto Serif JP', serif;
+  color: rgb(var(--v-theme-primary) / 0.3);
+  font-family: 'JetBrains Mono', monospace;
 }
 
 @media (max-width: 960px) {
@@ -218,52 +180,5 @@ const projects = resumeData.projects
     border-right: none;
     border-bottom: 1px solid rgb(var(--v-theme-border));
   }
-}
-
-/* 技術標籤 */
-.tech-tag {
-  font-size: 0.75rem;
-  color: rgb(var(--v-theme-primary));
-  padding: 0.25rem 0.75rem;
-  border: 1px solid rgb(var(--v-theme-primary) / 0.2);
-  border-radius: 999px;
-  transition: all 0.3s ease;
-}
-
-.tech-tag:hover {
-  background: rgb(var(--v-theme-primary) / 0.05);
-}
-
-/* 專案連結 */
-.project-link {
-  display: inline-flex;
-  align-items: center;
-  font-size: 0.875rem;
-  color: rgb(var(--v-theme-primary));
-  text-decoration: none;
-  transition: opacity 0.3s ease;
-}
-
-.project-link:hover {
-  opacity: 0.7;
-}
-
-/* GitHub CTA */
-.github-link {
-  display: inline-flex;
-  align-items: center;
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: rgb(var(--v-theme-primary));
-  text-decoration: none;
-  padding: 0.75rem 1.5rem;
-  border: 1px solid rgb(var(--v-theme-primary) / 0.2);
-  border-radius: 999px;
-  transition: all 0.3s ease;
-}
-
-.github-link:hover {
-  background: rgb(var(--v-theme-primary) / 0.05);
-  border-color: rgb(var(--v-theme-primary) / 0.4);
 }
 </style>

@@ -5,19 +5,18 @@ const experiences = resumeData.experiences
 </script>
 
 <template>
-  <section class="anim-slide-up anim-delay-200">
-    <div class="d-flex align-center mb-6">
-      <v-icon color="primary" class="mr-2">mdi-briefcase</v-icon>
-      <h2 class="text-h5 font-weight-bold mb-0">工作經驗</h2>
-    </div>
+  <section>
+    <UiSectionHeader
+      icon="mdi-briefcase"
+      title="工作經歷"
+    />
 
-    <div class="experience-list">
+    <div class="experience-list d-flex flex-column ga-4">
       <v-card
         v-for="(exp, index) in experiences"
         :key="exp.company + exp.startDate"
-        class="exp-card pa-6 mb-4"
+        class="exp-card pa-6"
         :class="{ 'exp-card--current': index === 0 }"
-        :style="{ animationDelay: `${300 + index * 150}ms` }"
       >
         <!-- Header -->
         <div class="d-flex align-start justify-space-between flex-wrap ga-3 mb-4">
@@ -29,7 +28,6 @@ const experiences = resumeData.experiences
               <v-chip
                 v-if="index === 0"
                 color="success"
-                variant="flat"
                 size="x-small"
               >
                 Current
@@ -49,7 +47,6 @@ const experiences = resumeData.experiences
           <v-chip
             variant="outlined"
             size="small"
-            class="date-chip"
           >
             <v-icon start size="14">mdi-calendar</v-icon>
             {{ exp.startDate }} - {{ exp.endDate }}
@@ -86,30 +83,16 @@ const experiences = resumeData.experiences
 
 <style scoped>
 .exp-card {
-  opacity: 0;
-  animation: fadeSlideUp 600ms cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
-  position: relative;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .exp-card:hover {
-  transform: translateX(4px);
-  box-shadow: 0 4px 20px rgb(var(--v-theme-primary) / 0.1);
+  border-color: rgb(var(--v-theme-primary)) !important;
+  box-shadow: 0 4px 16px rgb(var(--v-theme-primary) / 0.1);
 }
 
 .exp-card--current {
-  border-left: 3px solid rgb(var(--v-theme-success));
-}
-
-@keyframes fadeSlideUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  border-left: 3px solid rgb(var(--v-theme-success)) !important;
 }
 
 .description-list {
@@ -125,9 +108,5 @@ const experiences = resumeData.experiences
 
 .description-list li::marker {
   color: rgb(var(--v-theme-primary));
-}
-
-.date-chip {
-  flex-shrink: 0;
 }
 </style>
