@@ -25,27 +25,16 @@
       <span class="zen-divider-dot" />
     </div>
 
-    <!-- 主要內容 -->
-    <v-container class="py-12">
-      <v-row>
-        <!-- 左欄 - 主要內容 -->
-        <v-col cols="12" lg="8">
-          <div class="d-flex flex-column ga-10">
-            <ResumeSummary />
-            <ResumeExperiences />
-          </div>
-        </v-col>
-
-        <!-- 右欄 - 側邊欄 -->
-        <v-col cols="12" lg="4">
-          <div class="d-flex flex-column ga-8 sidebar-content">
-            <ResumeSkills />
-            <ResumeLanguages />
-            <ResumeEducations />
-            <ResumeCertifications />
-          </div>
-        </v-col>
-      </v-row>
+    <!-- 主要內容 - 單欄布局 -->
+    <v-container class="py-12" style="max-width: 900px;">
+      <div class="d-flex flex-column ga-10">
+        <ResumeSummary />
+        <ResumeExperiences />
+        <ResumeSkills />
+        <ResumeEducations />
+        <ResumeCertifications />
+        <ResumeLanguages />
+      </div>
     </v-container>
   </div>
 </template>
@@ -124,11 +113,4 @@
   margin: 0 0.75rem;
 }
 
-/* 側邊欄固定 */
-@media (min-width: 1280px) {
-  .sidebar-content {
-    position: sticky;
-    top: 100px;
-  }
-}
 </style>
