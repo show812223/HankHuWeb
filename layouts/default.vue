@@ -36,7 +36,7 @@ const isActiveRoute = (to: string) => {
         <v-spacer />
 
         <!-- Desktop Navigation -->
-        <nav v-if="smAndUp" class="d-flex align-center ga-8">
+        <nav v-if="smAndUp" class="d-flex align-center ga-6">
           <NuxtLink
             v-for="item in menuItems"
             :key="item.title"
@@ -46,36 +46,42 @@ const isActiveRoute = (to: string) => {
           >
             <span class="nav-link-text">{{ item.title }}</span>
           </NuxtLink>
+
+          <!-- 主題切換器 -->
+          <UiThemeSwitcher />
         </nav>
 
-        <!-- Mobile Menu -->
-        <v-menu v-else location="bottom end" :close-on-content-click="true">
-          <template #activator="{ props }">
-            <v-btn
-              icon
-              variant="text"
-              v-bind="props"
-              size="small"
-            >
-              <v-icon>mdi-menu</v-icon>
-            </v-btn>
-          </template>
-          <v-list class="py-2 mobile-menu" min-width="180">
-            <v-list-item
-              v-for="item in menuItems"
-              :key="item.title"
-              :to="item.to"
-              :active="isActiveRoute(item.to)"
-              active-color="primary"
-              class="mobile-menu-item"
-            >
-              <v-list-item-title class="d-flex align-center justify-space-between">
-                <span>{{ item.title }}</span>
-                <span class="text-caption text-medium-emphasis">{{ item.titleJa }}</span>
-              </v-list-item-title>
-            </v-list-item>
-          </v-list>
-        </v-menu>
+        <!-- Mobile: Theme Switcher + Menu -->
+        <div v-else class="d-flex align-center ga-1">
+          <UiThemeSwitcher />
+          <v-menu location="bottom end" :close-on-content-click="true">
+            <template #activator="{ props }">
+              <v-btn
+                icon
+                variant="text"
+                v-bind="props"
+                size="small"
+              >
+                <v-icon>mdi-menu</v-icon>
+              </v-btn>
+            </template>
+            <v-list class="py-2 mobile-menu" min-width="180">
+              <v-list-item
+                v-for="item in menuItems"
+                :key="item.title"
+                :to="item.to"
+                :active="isActiveRoute(item.to)"
+                active-color="primary"
+                class="mobile-menu-item"
+              >
+                <v-list-item-title class="d-flex align-center justify-space-between">
+                  <span>{{ item.title }}</span>
+                  <span class="text-caption text-medium-emphasis">{{ item.titleJa }}</span>
+                </v-list-item-title>
+              </v-list-item>
+            </v-list>
+          </v-menu>
+        </div>
       </v-container>
     </v-app-bar>
 
@@ -131,14 +137,9 @@ h1, h2, h3, h4, h5, h6,
   font-family: 'Noto Serif JP', 'Noto Serif TC', Georgia, serif;
 }
 
-/* 卡片預設邊框 */
+/* 卡片邊框顏色跟隨主題 */
 .v-card {
-  border: 1px solid #E0D8D0 !important;
-}
-
-/* 暗色模式邊框 */
-.v-theme--darkTheme .v-card {
-  border-color: #4A3F38 !important;
+  border-color: rgb(var(--v-theme-border)) !important;
 }
 
 /* 進度條柔和化 */
