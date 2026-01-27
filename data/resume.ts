@@ -10,6 +10,13 @@ export const resumeData: ResumeData = {
 
   projects: [
     {
+      name: '生命靈數計算器',
+      description: '基於生命靈數理論的命理計算工具，提供個人生命數字分析與解讀。',
+      technologies: ['Nuxt 3', 'Vue 3', 'TypeScript', 'Vercel'],
+      url: 'https://life-path-grid.vercel.app/',
+      github: 'https://github.com/show812223/life-path-grid',
+    },
+    {
       name: '個人履歷網站',
       description: '使用 Nuxt 3 + Vuetify 打造的現代化個人履歷網站，部署於 Cloudflare Workers。',
       technologies: ['Nuxt 3', 'Vue 3', 'Vuetify', 'TypeScript', 'Cloudflare'],
