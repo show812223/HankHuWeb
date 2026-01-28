@@ -1,9 +1,22 @@
 <script setup lang="ts">
-const skills = [
-  { icon: '🟢', name: 'Vue / Nuxt', desc: '前端框架' },
-  { icon: '📘', name: 'TypeScript', desc: '型別安全' },
-  { icon: '☁️', name: 'Azure', desc: '雲端服務' },
-  { icon: '🐳', name: 'Docker', desc: '容器技術' },
+import { markRaw } from 'vue'
+import type { Component } from 'vue'
+import MdiVuejs from '~icons/mdi/vuejs'
+import MdiLanguageTypescript from '~icons/mdi/language-typescript'
+import MdiCloud from '~icons/mdi/cloud'
+import MdiDocker from '~icons/mdi/docker'
+
+interface Skill {
+  icon: Component
+  name: string
+  desc: string
+}
+
+const skills: Skill[] = [
+  { icon: markRaw(MdiVuejs), name: 'Vue / Nuxt', desc: '前端框架' },
+  { icon: markRaw(MdiLanguageTypescript), name: 'TypeScript', desc: '型別安全' },
+  { icon: markRaw(MdiCloud), name: 'Azure', desc: '雲端服務' },
+  { icon: markRaw(MdiDocker), name: 'Docker', desc: '容器技術' },
 ]
 </script>
 
@@ -47,7 +60,7 @@ const skills = [
             :style="{ animationDelay: `${300 + index * 150}ms` }"
           >
             <div class="skill-icon-wrapper w-18 h-18 rounded-full border border-[var(--color-border)] flex items-center justify-center mx-auto mb-4 bg-white transition-all duration-300">
-              <span class="text-3xl">{{ skill.icon }}</span>
+              <component :is="skill.icon" class="text-3xl" />
             </div>
             <div class="text-sm font-bold mb-1">{{ skill.name }}</div>
             <div class="text-xs text-muted">{{ skill.desc }}</div>

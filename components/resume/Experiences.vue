@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { NCard, NTag } from 'naive-ui'
 import { resumeData } from '~/data/resume'
+import MdiBriefcase from '~icons/mdi/briefcase'
+import MdiOfficeBuilding from '~icons/mdi/office-building'
+import MdiMapMarker from '~icons/mdi/map-marker'
+import MdiCalendar from '~icons/mdi/calendar'
 
 const experiences = resumeData.experiences
 </script>
@@ -8,7 +12,7 @@ const experiences = resumeData.experiences
 <template>
   <section class="anim-slide-up anim-delay-200">
     <div class="flex items-center mb-6">
-      <span class="text-xl mr-2">💼</span>
+      <MdiBriefcase class="text-xl mr-2" />
       <h2 class="text-xl font-bold font-heading">工作經驗</h2>
     </div>
 
@@ -32,16 +36,19 @@ const experiences = resumeData.experiences
               </NTag>
             </div>
             <div class="flex flex-wrap items-center gap-3 text-sm text-muted">
-              <span class="flex items-center">
-                🏢 {{ exp.company }}
+              <span class="flex items-center gap-1">
+                <MdiOfficeBuilding class="text-base" />
+                {{ exp.company }}
               </span>
-              <span v-if="exp.location" class="flex items-center">
-                📍 {{ exp.location }}
+              <span v-if="exp.location" class="flex items-center gap-1">
+                <MdiMapMarker class="text-base" />
+                {{ exp.location }}
               </span>
             </div>
           </div>
-          <NTag size="small" round>
-            📅 {{ exp.startDate }} - {{ exp.endDate }}
+          <NTag size="small" round class="flex items-center gap-1">
+            <MdiCalendar class="text-sm" />
+            {{ exp.startDate }} - {{ exp.endDate }}
           </NTag>
         </div>
 
