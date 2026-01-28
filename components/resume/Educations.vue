@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { NCard, NTag } from 'naive-ui'
 import { resumeData } from '~/data/resume'
+import MdiSchool from '~icons/mdi/school'
+import MdiDomain from '~icons/mdi/domain'
 
 const educations = resumeData.educations
 </script>
@@ -8,10 +10,13 @@ const educations = resumeData.educations
 <template>
   <section class="anim-slide-up anim-delay-300">
     <UiSectionHeader
-      icon="🎓"
       title="教育背景"
       subtitle="學歷與專業培訓"
-    />
+    >
+      <template #icon>
+        <MdiSchool />
+      </template>
+    </UiSectionHeader>
 
     <div class="flex flex-col gap-4">
       <NCard
@@ -21,7 +26,7 @@ const educations = resumeData.educations
         :style="{ animationDelay: `${400 + index * 150}ms` }"
       >
         <div class="flex items-center mb-3">
-          <span class="text-xl mr-3">🏫</span>
+          <MdiDomain class="text-xl mr-3" />
           <span class="text-lg font-medium">{{ edu.school }}</span>
         </div>
         <p class="text-sm text-muted mb-4">

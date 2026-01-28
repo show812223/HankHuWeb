@@ -1,6 +1,5 @@
 <script setup lang="ts">
 defineProps<{
-  icon?: string
   title: string
   subtitle?: string
 }>()
@@ -9,7 +8,9 @@ defineProps<{
 <template>
   <div class="section-header mb-8">
     <div class="flex items-center gap-3 mb-2">
-      <span v-if="icon" class="section-icon text-2xl">{{ icon }}</span>
+      <span v-if="$slots.icon" class="section-icon text-2xl flex items-center">
+        <slot name="icon" />
+      </span>
       <h2 class="section-title text-2xl font-medium font-heading">
         {{ title }}
       </h2>

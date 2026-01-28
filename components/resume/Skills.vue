@@ -1,23 +1,33 @@
 <script setup lang="ts">
 import { NCard } from 'naive-ui'
 import { resumeData } from '~/data/resume'
+import MdiStar from '~icons/mdi/star'
+import MdiVuejs from '~icons/mdi/vuejs'
+import MdiLanguageTypescript from '~icons/mdi/language-typescript'
+import MdiCloud from '~icons/mdi/cloud'
+import MdiDocker from '~icons/mdi/docker'
+import MdiSitemap from '~icons/mdi/sitemap'
+import MdiPackageVariant from '~icons/mdi/package-variant'
+import type { Component } from 'vue'
 
 const skills = resumeData.skills
 
-const iconMap: Record<string, string> = {
-  'mdi-vuejs': '🟢',
-  'mdi-language-typescript': '📘',
-  'mdi-cloud': '☁️',
-  'mdi-docker': '🐳',
-  'mdi-sitemap': '🏗️',
+const iconMap: Record<string, Component> = {
+  'mdi-vuejs': MdiVuejs,
+  'mdi-language-typescript': MdiLanguageTypescript,
+  'mdi-cloud': MdiCloud,
+  'mdi-docker': MdiDocker,
+  'mdi-sitemap': MdiSitemap,
 }
+
+const defaultIcon = MdiPackageVariant
 </script>
 
 <template>
   <section class="anim-slide-up anim-delay-100">
     <NCard class="p-5">
       <div class="flex items-center mb-5">
-        <span class="text-xl mr-2">⭐</span>
+        <MdiStar class="text-xl mr-2" />
         <h3 class="text-lg font-bold font-heading">技術技能</h3>
       </div>
 
@@ -30,7 +40,7 @@ const iconMap: Record<string, string> = {
         >
           <!-- 類別標題 -->
           <div class="flex items-center mb-3">
-            <span class="text-lg mr-2">{{ iconMap[skill.icon] || '📦' }}</span>
+            <component :is="iconMap[skill.icon] || defaultIcon" class="text-lg mr-2" />
             <span class="text-sm font-medium">{{ skill.category }}</span>
           </div>
 

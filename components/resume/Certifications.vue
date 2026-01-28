@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { NCard, NButton, NAvatar } from 'naive-ui'
 import { resumeData } from '~/data/resume'
+import MdiTrophy from '~icons/mdi/trophy'
+import MdiMedal from '~icons/mdi/medal'
+import MdiOpenInNew from '~icons/mdi/open-in-new'
 
 const certifications = resumeData.certifications
 </script>
@@ -8,10 +11,13 @@ const certifications = resumeData.certifications
 <template>
   <section class="anim-slide-up anim-delay-500">
     <UiSectionHeader
-      icon="🏆"
       title="專業證照"
       subtitle="專業認證與資格"
-    />
+    >
+      <template #icon>
+        <MdiTrophy />
+      </template>
+    </UiSectionHeader>
 
     <div class="flex flex-col gap-4">
       <NCard
@@ -26,7 +32,7 @@ const certifications = resumeData.certifications
             round
             class="mr-4 bg-primary text-white flex items-center justify-center"
           >
-            🏅
+            <MdiMedal class="text-xl" />
           </NAvatar>
           <div>
             <div class="text-base font-medium">
@@ -56,7 +62,10 @@ const certifications = resumeData.certifications
           size="small"
           secondary
         >
-          ↗ 查看證照
+          <template #icon>
+            <MdiOpenInNew />
+          </template>
+          查看證照
         </NButton>
       </NCard>
     </div>

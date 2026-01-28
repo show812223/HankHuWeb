@@ -1,3 +1,5 @@
+import Icons from 'unplugin-icons/vite'
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   // 全域 CSS
@@ -10,6 +12,16 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     '@nuxtjs/google-fonts',
   ],
+
+  // Vite 配置 - unplugin-icons
+  vite: {
+    plugins: [
+      Icons({
+        compiler: 'vue3',
+        autoInstall: true,
+      }),
+    ],
+  },
 
   // Google Fonts - 日系字體
   googleFonts: {

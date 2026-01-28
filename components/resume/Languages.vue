@@ -1,21 +1,29 @@
 <script setup lang="ts">
 import { NCard, NTag } from 'naive-ui'
 import { resumeData } from '~/data/resume'
+import MdiTranslate from '~icons/mdi/translate'
+import MdiIdeogramCjk from '~icons/mdi/ideogram-cjk'
+import MdiAlphabetical from '~icons/mdi/alphabetical'
+import MdiWeb from '~icons/mdi/web'
+import type { Component } from 'vue'
 
 const languages = resumeData.languages
 
-const iconMap: Record<string, string> = {
-  'mdi-ideogram-cjk': '🇹🇼',
-  'mdi-alphabetical': '🇺🇸',
+const iconMap: Record<string, Component> = {
+  'mdi-ideogram-cjk': MdiIdeogramCjk,
+  'mdi-alphabetical': MdiAlphabetical,
 }
+
+const defaultIcon = MdiWeb
 </script>
 
 <template>
   <section class="anim-slide-up anim-delay-200">
-    <UiSectionHeader
-      icon="🌐"
-      title="語言能力"
-    />
+    <UiSectionHeader title="語言能力">
+      <template #icon>
+        <MdiTranslate />
+      </template>
+    </UiSectionHeader>
 
     <div class="grid grid-cols-2 gap-4">
       <NCard
@@ -24,7 +32,7 @@ const iconMap: Record<string, string> = {
         class="text-center p-6 lang-card"
         :style="{ animationDelay: `${300 + index * 100}ms` }"
       >
-        <span class="text-3xl mb-4 block">{{ iconMap[lang.icon] || '🌍' }}</span>
+        <component :is="iconMap[lang.icon] || defaultIcon" class="text-3xl mb-4 mx-auto" />
         <div class="text-lg font-medium mb-3">
           {{ lang.name }}
         </div>
