@@ -7,7 +7,7 @@ defineProps<{
 </script>
 
 <template>
-  <div class="section-header mb-8">
+  <div class="section-header mb-4">
     <div class="d-flex align-center ga-3 mb-2">
       <v-icon
         v-if="icon"
@@ -23,7 +23,6 @@ defineProps<{
     <p v-if="subtitle" class="section-subtitle text-body-1 text-medium-emphasis ml-10">
       {{ subtitle }}
     </p>
-    <div class="section-divider mt-4" />
   </div>
 </template>
 
