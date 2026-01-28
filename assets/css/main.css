@@ -1,0 +1,267 @@
+/* ========================================
+   HankHuWeb 全域樣式 - Naive UI + Tailwind
+   日系溫暖極簡風格
+   ======================================== */
+
+:root {
+  /* 主題色彩 - 日系溫暖色調 */
+  --color-bg: #FAEBD7;
+  --color-surface: #FFFFFF;
+  --color-primary: #4E4540;
+  --color-primary-hover: #3A3330;
+  --color-secondary: #8B7355;
+  --color-text: #4E4540;
+  --color-text-secondary: #6B6055;
+  --color-border: #E0D8D0;
+  --color-success: #6B9B6B;
+  --color-warning: #D4A04A;
+
+  /* 字體堆疊 */
+  --font-body: 'Zen Maru Gothic', 'Noto Sans TC', sans-serif;
+  --font-heading: 'Noto Serif JP', 'Noto Serif TC', serif;
+
+  /* 間距系統 */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+
+  /* 圓角 */
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-full: 9999px;
+
+  /* 過渡 */
+  --transition-fast: 150ms ease;
+  --transition-normal: 200ms ease;
+  --transition-slow: 300ms ease;
+}
+
+/* ========================================
+   基礎樣式
+   ======================================== */
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 標題使用襯線體 */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+/* ========================================
+   Naive UI 覆寫
+   ======================================== */
+
+/* 卡片樣式 */
+.n-card {
+  border: 1px solid var(--color-border) !important;
+  transition: all var(--transition-normal) !important;
+}
+
+.n-card:hover {
+  border-color: rgba(78, 69, 64, 0.2) !important;
+  transform: translateY(-2px);
+}
+
+/* 按鈕懸停效果 */
+.n-button:hover {
+  transform: translateY(-1px);
+}
+
+.n-button:active {
+  transform: scale(0.98);
+}
+
+/* 標籤樣式 */
+.n-tag {
+  transition: all var(--transition-fast) !important;
+}
+
+.n-tag:hover {
+  transform: translateY(-1px);
+}
+
+/* ========================================
+   工具類
+   ======================================== */
+
+.text-primary {
+  color: var(--color-primary);
+}
+
+.text-secondary {
+  color: var(--color-secondary);
+}
+
+.text-muted {
+  color: var(--color-text-secondary);
+}
+
+.bg-surface {
+  background-color: var(--color-surface);
+}
+
+.bg-primary {
+  background-color: var(--color-bg);
+}
+
+.border-primary {
+  border-color: var(--color-border);
+}
+
+.letter-spacing-wide {
+  letter-spacing: 0.3em;
+}
+
+.letter-spacing-wider {
+  letter-spacing: 0.2em;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+/* ========================================
+   頁面過渡
+   ======================================== */
+
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.page-enter-from {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.page-leave-to {
+  opacity: 0;
+  transform: translateY(-8px);
+}
+
+/* ========================================
+   日式裝飾元素
+   ======================================== */
+
+/* 禪意分隔線 */
+.zen-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 0;
+  position: relative;
+  z-index: 1;
+}
+
+.zen-divider::before,
+.zen-divider::after {
+  content: '';
+  flex: 1;
+  max-width: 100px;
+  height: 1px;
+  background: linear-gradient(
+    to var(--direction, right),
+    transparent,
+    rgba(78, 69, 64, 0.15)
+  );
+}
+
+.zen-divider::before {
+  --direction: right;
+}
+
+.zen-divider::after {
+  --direction: left;
+}
+
+.zen-divider-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(78, 69, 64, 0.25);
+  margin: 0 0.75rem;
+}
+
+/* 頁面裝飾圓圈 */
+.page-decoration {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.deco-circle {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(78, 69, 64, 0.04);
+}
+
+/* ========================================
+   滾動條樣式
+   ======================================== */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(78, 69, 64, 0.2);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(78, 69, 64, 0.3);
+}
+
+/* ========================================
+   選取樣式
+   ======================================== */
+
+::selection {
+  background-color: rgba(78, 69, 64, 0.2);
+  color: var(--color-text);
+}
+
+/* ========================================
+   響應式調整
+   ======================================== */
+
+@media (max-width: 640px) {
+  :root {
+    --space-section: var(--space-8);
+  }
+}
+
+/* ========================================
+   減少動畫偏好
+   ======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

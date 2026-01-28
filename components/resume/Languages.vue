@@ -1,46 +1,38 @@
 <script setup lang="ts">
+import { NCard, NTag } from 'naive-ui'
 import { resumeData } from '~/data/resume'
 
 const languages = resumeData.languages
+
+const iconMap: Record<string, string> = {
+  'mdi-ideogram-cjk': '🇹🇼',
+  'mdi-alphabetical': '🇺🇸',
+}
 </script>
 
 <template>
-  <section class="section anim-slide-up anim-delay-200">
+  <section class="anim-slide-up anim-delay-200">
     <UiSectionHeader
-      icon="mdi-translate"
+      icon="🌐"
       title="語言能力"
     />
 
-    <v-row class="ga-4">
-      <v-col
+    <div class="grid grid-cols-2 gap-4">
+      <NCard
         v-for="(lang, index) in languages"
         :key="lang.name"
-        cols="6"
-        sm="4"
-        md="3"
+        class="text-center p-6 lang-card"
+        :style="{ animationDelay: `${300 + index * 100}ms` }"
       >
-        <v-card
-          class="text-center pa-6 lang-card card-interactive"
-          :style="{ animationDelay: `${300 + index * 100}ms` }"
-        >
-          <v-icon
-            :icon="lang.icon || 'mdi-translate'"
-            size="40"
-            color="primary"
-            class="mb-4"
-          />
-          <div class="text-h6 font-weight-medium mb-3">
-            {{ lang.name }}
-          </div>
-          <v-chip
-            size="small"
-            color="primary"
-          >
-            {{ lang.level }}
-          </v-chip>
-        </v-card>
-      </v-col>
-    </v-row>
+        <span class="text-3xl mb-4 block">{{ iconMap[lang.icon] || '🌍' }}</span>
+        <div class="text-lg font-medium mb-3">
+          {{ lang.name }}
+        </div>
+        <NTag size="small" round type="primary">
+          {{ lang.level }}
+        </NTag>
+      </NCard>
+    </div>
   </section>
 </template>
 
@@ -48,6 +40,11 @@ const languages = resumeData.languages
 .lang-card {
   opacity: 0;
   animation: popIn 400ms cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+  transition: transform 0.3s ease;
+}
+
+.lang-card:hover {
+  transform: translateY(-2px);
 }
 
 @keyframes popIn {
