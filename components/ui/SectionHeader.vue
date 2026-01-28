@@ -8,19 +8,13 @@ defineProps<{
 
 <template>
   <div class="section-header mb-8">
-    <div class="d-flex align-center ga-3 mb-2">
-      <v-icon
-        v-if="icon"
-        :icon="icon"
-        size="28"
-        color="primary"
-        class="section-icon"
-      />
-      <h2 class="section-title text-h4 font-weight-medium">
+    <div class="flex items-center gap-3 mb-2">
+      <span v-if="icon" class="section-icon text-2xl">{{ icon }}</span>
+      <h2 class="section-title text-2xl font-medium font-heading">
         {{ title }}
       </h2>
     </div>
-    <p v-if="subtitle" class="section-subtitle text-body-1 text-medium-emphasis ml-10">
+    <p v-if="subtitle" class="section-subtitle text-base text-muted ml-10">
       {{ subtitle }}
     </p>
     <div class="section-divider mt-4" />
@@ -50,10 +44,14 @@ defineProps<{
   height: 1px;
   background: linear-gradient(
     to right,
-    rgb(var(--v-theme-primary) / 0.3),
-    rgb(var(--v-theme-primary) / 0.1),
+    rgba(78, 69, 64, 0.3),
+    rgba(78, 69, 64, 0.1),
     transparent
   );
   max-width: 200px;
+}
+
+.font-heading {
+  font-family: 'Noto Serif JP', 'Noto Serif TC', serif;
 }
 </style>

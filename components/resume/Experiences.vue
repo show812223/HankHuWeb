@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { NCard, NTag } from 'naive-ui'
 import { resumeData } from '~/data/resume'
 
 const experiences = resumeData.experiences
@@ -6,80 +7,67 @@ const experiences = resumeData.experiences
 
 <template>
   <section class="anim-slide-up anim-delay-200">
-    <div class="d-flex align-center mb-6">
-      <v-icon color="primary" class="mr-2">mdi-briefcase</v-icon>
-      <h2 class="text-h5 font-weight-bold mb-0">工作經驗</h2>
+    <div class="flex items-center mb-6">
+      <span class="text-xl mr-2">💼</span>
+      <h2 class="text-xl font-bold font-heading">工作經驗</h2>
     </div>
 
     <div class="experience-list">
-      <v-card
+      <NCard
         v-for="(exp, index) in experiences"
         :key="exp.company + exp.startDate"
-        class="exp-card pa-6 mb-4"
+        class="exp-card p-6 mb-4"
         :class="{ 'exp-card--current': index === 0 }"
         :style="{ animationDelay: `${300 + index * 150}ms` }"
       >
         <!-- Header -->
-        <div class="d-flex align-start justify-space-between flex-wrap ga-3 mb-4">
+        <div class="flex flex-wrap justify-between gap-3 mb-4">
           <div>
-            <div class="d-flex align-center ga-2 mb-1">
-              <h3 class="text-h6 font-weight-bold mb-0">
+            <div class="flex items-center gap-2 mb-1">
+              <h3 class="text-lg font-bold">
                 {{ exp.position }}
               </h3>
-              <v-chip
-                v-if="index === 0"
-                color="success"
-                variant="flat"
-                size="x-small"
-              >
+              <NTag v-if="index === 0" type="success" size="small" round>
                 Current
-              </v-chip>
+              </NTag>
             </div>
-            <div class="d-flex align-center flex-wrap ga-3 text-body-2 text-medium-emphasis">
-              <span class="d-flex align-center">
-                <v-icon size="16" class="mr-1">mdi-domain</v-icon>
-                {{ exp.company }}
+            <div class="flex flex-wrap items-center gap-3 text-sm text-muted">
+              <span class="flex items-center">
+                🏢 {{ exp.company }}
               </span>
-              <span v-if="exp.location" class="d-flex align-center">
-                <v-icon size="16" class="mr-1">mdi-map-marker</v-icon>
-                {{ exp.location }}
+              <span v-if="exp.location" class="flex items-center">
+                📍 {{ exp.location }}
               </span>
             </div>
           </div>
-          <v-chip
-            variant="outlined"
-            size="small"
-            class="date-chip"
-          >
-            <v-icon start size="14">mdi-calendar</v-icon>
-            {{ exp.startDate }} - {{ exp.endDate }}
-          </v-chip>
+          <NTag size="small" round>
+            📅 {{ exp.startDate }} - {{ exp.endDate }}
+          </NTag>
         </div>
 
         <!-- Description -->
-        <ul class="description-list mb-5">
+        <ul class="description-list mb-5 pl-5">
           <li
             v-for="(desc, descIndex) in exp.description"
             :key="descIndex"
-            class="mb-2 text-body-2"
+            class="mb-2 text-sm"
           >
             {{ desc }}
           </li>
         </ul>
 
         <!-- Technologies -->
-        <div v-if="exp.technologies?.length" class="d-flex flex-wrap ga-2">
-          <v-chip
+        <div v-if="exp.technologies?.length" class="flex flex-wrap gap-2">
+          <NTag
             v-for="tech in exp.technologies"
             :key="tech"
-            size="x-small"
-            color="primary"
-            variant="tonal"
+            size="small"
+            round
           >
             {{ tech }}
-          </v-chip>
+          </NTag>
         </div>
-      </v-card>
+      </NCard>
     </div>
   </section>
 </template>
@@ -94,11 +82,10 @@ const experiences = resumeData.experiences
 
 .exp-card:hover {
   transform: translateX(4px);
-  box-shadow: 0 4px 20px rgb(var(--v-theme-primary) / 0.1);
 }
 
 .exp-card--current {
-  border-left: 3px solid rgb(var(--v-theme-success));
+  border-left: 3px solid #6B9B6B !important;
 }
 
 @keyframes fadeSlideUp {
@@ -114,20 +101,18 @@ const experiences = resumeData.experiences
 
 .description-list {
   line-height: 1.8;
-  padding-left: 20px;
   margin: 0;
 }
 
 .description-list li {
   position: relative;
-  padding-left: 8px;
 }
 
 .description-list li::marker {
-  color: rgb(var(--v-theme-primary));
+  color: var(--color-primary);
 }
 
-.date-chip {
-  flex-shrink: 0;
+.font-heading {
+  font-family: 'Noto Serif JP', 'Noto Serif TC', serif;
 }
 </style>

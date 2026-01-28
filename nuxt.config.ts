@@ -1,9 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
-
 export default defineNuxtConfig({
   // 全域 CSS
-  css: ['~/assets/css/animations.css', '~/assets/css/design-system.css'],
+  css: ['~/assets/css/animations.css', '~/assets/css/main.css'],
 
   // https://nuxt.com/modules
   modules: [
@@ -11,12 +9,6 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@nuxtjs/tailwindcss',
     '@nuxtjs/google-fonts',
-    (_options, nuxt) => {
-      nuxt.hooks.hook('vite:extendConfig', (config) => {
-        // @ts-expect-error - vuetify plugin type
-        config.plugins.push(vuetify({ autoImport: true }))
-      })
-    },
   ],
 
   // Google Fonts - 日系字體
@@ -42,23 +34,9 @@ export default defineNuxtConfig({
     },
   },
 
-  build: {
-    transpile: ['vuetify'],
-  },
   // https://nuxt.com/docs/getting-started/upgrade#testing-nuxt-4
   future: { compatibilityVersion: 4 },
   compatibilityDate: '2024-07-30',
-
-  vite: {
-    plugins: [
-      vuetify({ autoImport: true }),
-    ],
-    vue: {
-      template: {
-        transformAssetUrls,
-      },
-    },
-  },
 
   // https://eslint.nuxt.com
   eslint: {

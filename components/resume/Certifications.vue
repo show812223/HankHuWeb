@@ -1,81 +1,65 @@
 <script setup lang="ts">
+import { NCard, NButton, NAvatar } from 'naive-ui'
 import { resumeData } from '~/data/resume'
 
 const certifications = resumeData.certifications
 </script>
 
 <template>
-  <section class="section anim-slide-up anim-delay-500">
+  <section class="anim-slide-up anim-delay-500">
     <UiSectionHeader
-      icon="mdi-certificate"
+      icon="🏆"
       title="專業證照"
       subtitle="專業認證與資格"
     />
 
-    <v-row class="ga-4">
-      <v-col
+    <div class="flex flex-col gap-4">
+      <NCard
         v-for="(cert, index) in certifications"
         :key="cert.code"
-        cols="12"
-        sm="6"
-        md="4"
+        class="p-6 cert-card"
+        :style="{ animationDelay: `${600 + index * 100}ms` }"
       >
-        <v-card
-          class="h-100 pa-6 cert-card card-interactive d-flex flex-column"
-          :style="{ animationDelay: `${600 + index * 100}ms` }"
-        >
-          <div class="d-flex align-center mb-4">
-            <v-avatar
-              color="primary"
-              size="44"
-              class="mr-4"
-            >
-              <v-icon
-                color="white"
-                size="24"
-              >
-                mdi-medal
-              </v-icon>
-            </v-avatar>
-            <div>
-              <div class="text-subtitle-1 font-weight-medium">
-                {{ cert.code }}
-              </div>
-              <div class="text-caption text-medium-emphasis">
-                {{ cert.issuer }}
-              </div>
+        <div class="flex items-center mb-4">
+          <NAvatar
+            :size="44"
+            round
+            class="mr-4 bg-primary text-white flex items-center justify-center"
+          >
+            🏅
+          </NAvatar>
+          <div>
+            <div class="text-base font-medium">
+              {{ cert.code }}
+            </div>
+            <div class="text-xs text-muted">
+              {{ cert.issuer }}
             </div>
           </div>
+        </div>
 
-          <p class="text-body-2 mb-3 flex-grow-1">
-            {{ cert.name }}
-          </p>
-          <p
-            v-if="cert.date"
-            class="text-caption text-medium-emphasis mb-4"
-          >
-            取得日期：{{ cert.date }}
-          </p>
+        <p class="text-sm mb-3 flex-grow">
+          {{ cert.name }}
+        </p>
+        <p
+          v-if="cert.date"
+          class="text-xs text-muted mb-4"
+        >
+          取得日期：{{ cert.date }}
+        </p>
 
-          <v-btn
-            v-if="cert.url"
-            :href="cert.url"
-            target="_blank"
-            variant="outlined"
-            color="primary"
-            size="small"
-          >
-            <v-icon
-              class="mr-1"
-              size="16"
-            >
-              mdi-open-in-new
-            </v-icon>
-            查看證照
-          </v-btn>
-        </v-card>
-      </v-col>
-    </v-row>
+        <NButton
+          v-if="cert.url"
+          tag="a"
+          :href="cert.url"
+          target="_blank"
+          size="small"
+          secondary
+        >
+          ↗ 查看證照
+        </NButton>
+      </NCard>
+    </div>
   </section>
 </template>
 
@@ -83,6 +67,11 @@ const certifications = resumeData.certifications
 .cert-card {
   opacity: 0;
   animation: scaleSlideUp 500ms cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+  transition: transform 0.3s ease;
+}
+
+.cert-card:hover {
+  transform: translateY(-2px);
 }
 
 @keyframes scaleSlideUp {
@@ -94,5 +83,9 @@ const certifications = resumeData.certifications
     opacity: 1;
     transform: translateY(0) scale(1);
   }
+}
+
+.bg-primary {
+  background-color: var(--color-primary);
 }
 </style>
