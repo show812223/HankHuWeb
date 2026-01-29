@@ -4,6 +4,8 @@ import MdiGithub from '~icons/mdi/github'
 import MdiOpenInNew from '~icons/mdi/open-in-new'
 import MdiArrowRight from '~icons/mdi/arrow-right'
 
+const { getListDelay } = useAnimationConfig()
+
 const projects = resumeData.projects
 </script>
 
@@ -52,7 +54,7 @@ const projects = resumeData.projects
           v-for="(project, index) in projects"
           :key="project.name"
           class="project-card mb-6"
-          :style="{ animationDelay: `${200 + index * 150}ms` }"
+          :style="{ animationDelay: getListDelay(index, 200) }"
           variant="outlined"
         >
           <div class="d-flex flex-column flex-md-row">

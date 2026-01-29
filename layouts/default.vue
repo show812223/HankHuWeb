@@ -25,7 +25,7 @@ function handleMenuSelect(key: string) {
 </script>
 
 <template>
-  <v-layout class="min-h-screen">
+  <v-layout class="min-h-screen flex-column">
     <!-- 導航列 -->
     <v-app-bar
       class="nav-bar"

@@ -6,6 +6,8 @@ import MdiLinkedin from '~icons/mdi/linkedin'
 import MdiGithub from '~icons/mdi/github'
 import MdiSend from '~icons/mdi/send'
 
+const { getListDelay, intervals } = useAnimationConfig()
+
 interface ContactInfo {
   icon: Component
   title: string
@@ -97,7 +99,7 @@ function handleSubmit() {
             :href="info.href"
             target="_blank"
             class="contact-item text-center"
-            :style="{ animationDelay: `${300 + index * 100}ms` }"
+            :style="{ animationDelay: getListDelay(index, 300, intervals.normal) }"
           >
             <div class="contact-icon-wrapper mb-3">
               <component

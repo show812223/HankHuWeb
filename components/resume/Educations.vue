@@ -3,6 +3,8 @@ import { resumeData } from '~/data/resume'
 import MdiSchool from '~icons/mdi/school'
 import MdiDomain from '~icons/mdi/domain'
 
+const { getListDelay } = useAnimationConfig()
+
 const educations = resumeData.educations
 </script>
 
@@ -22,7 +24,7 @@ const educations = resumeData.educations
         v-for="(edu, index) in educations"
         :key="edu.school + edu.degree"
         class="pa-6 edu-card"
-        :style="{ animationDelay: `${400 + index * 150}ms` }"
+        :style="{ animationDelay: getListDelay(index, 400) }"
         variant="outlined"
       >
         <div class="d-flex align-center mb-3">

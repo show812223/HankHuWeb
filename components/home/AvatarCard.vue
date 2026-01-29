@@ -5,6 +5,8 @@ import MdiLinkedin from '~icons/mdi/linkedin'
 import MdiGithub from '~icons/mdi/github'
 import MdiFacebook from '~icons/mdi/facebook'
 
+const { getCharacterDelay, getListDelay, delays, intervals } = useAnimationConfig()
+
 const nameChars = ['胡', '聖', '翰']
 
 interface SocialButton {
@@ -38,7 +40,7 @@ const socialButtons: SocialButton[] = [
             v-for="(char, index) in nameChars"
             :key="index"
             class="name-char"
-            :style="{ animationDelay: `${600 + index * 200}ms` }"
+            :style="{ animationDelay: getCharacterDelay(index, delays.hero) }"
           >
             {{ char }}
           </span>
@@ -78,7 +80,7 @@ const socialButtons: SocialButton[] = [
           :href="btn.href"
           target="_blank"
           class="social-link"
-          :style="{ animationDelay: `${1200 + index * 100}ms` }"
+          :style="{ animationDelay: getListDelay(index, 1200, intervals.normal) }"
           :aria-label="btn.label"
         >
           <component

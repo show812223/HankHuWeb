@@ -5,6 +5,8 @@ import MdiOfficeBuilding from '~icons/mdi/office-building'
 import MdiMapMarker from '~icons/mdi/map-marker'
 import MdiCalendar from '~icons/mdi/calendar'
 
+const { getListDelay } = useAnimationConfig()
+
 const experiences = resumeData.experiences
 </script>
 
@@ -23,7 +25,7 @@ const experiences = resumeData.experiences
         :key="exp.company + exp.startDate"
         class="exp-card pa-6 mb-4"
         :class="{ 'exp-card--current': index === 0 }"
-        :style="{ animationDelay: `${300 + index * 150}ms` }"
+        :style="{ animationDelay: getListDelay(index, 300) }"
         variant="outlined"
       >
         <!-- Header -->

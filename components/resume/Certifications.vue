@@ -4,6 +4,8 @@ import MdiTrophy from '~icons/mdi/trophy'
 import MdiMedal from '~icons/mdi/medal'
 import MdiOpenInNew from '~icons/mdi/open-in-new'
 
+const { getListDelay, intervals } = useAnimationConfig()
+
 const certifications = resumeData.certifications
 </script>
 
@@ -23,7 +25,7 @@ const certifications = resumeData.certifications
         v-for="(cert, index) in certifications"
         :key="cert.code"
         class="pa-6 cert-card"
-        :style="{ animationDelay: `${600 + index * 100}ms` }"
+        :style="{ animationDelay: getListDelay(index, 600, intervals.normal) }"
         variant="outlined"
       >
         <div class="d-flex align-center mb-4">

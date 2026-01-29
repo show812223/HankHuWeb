@@ -6,6 +6,8 @@ import MdiIdeogramCjk from '~icons/mdi/ideogram-cjk'
 import MdiAlphabetical from '~icons/mdi/alphabetical'
 import MdiWeb from '~icons/mdi/web'
 
+const { getListDelay, intervals } = useAnimationConfig()
+
 const languages = resumeData.languages
 
 const iconMap: Record<string, Component> = {
@@ -32,7 +34,7 @@ const defaultIcon = MdiWeb
       >
         <v-card
           class="text-center pa-6 lang-card"
-          :style="{ animationDelay: `${300 + index * 100}ms` }"
+          :style="{ animationDelay: getListDelay(index, 300, intervals.normal) }"
           variant="outlined"
         >
           <component

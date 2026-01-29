@@ -9,6 +9,8 @@ import MdiDocker from '~icons/mdi/docker'
 import MdiSitemap from '~icons/mdi/sitemap'
 import MdiPackageVariant from '~icons/mdi/package-variant'
 
+const { getListDelay, intervals } = useAnimationConfig()
+
 const skills = resumeData.skills
 
 const iconMap: Record<string, Component> = {
@@ -40,7 +42,7 @@ const defaultIcon = MdiPackageVariant
           v-for="(skill, index) in skills"
           :key="skill.category"
           class="skill-category"
-          :style="{ animationDelay: `${200 + index * 80}ms` }"
+          :style="{ animationDelay: getListDelay(index, 200, intervals.fast) }"
         >
           <!-- 類別標題 -->
           <div class="d-flex align-center mb-3">
