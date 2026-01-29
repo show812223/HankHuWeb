@@ -15,16 +15,17 @@
     "format:check": "prettier --check ."
   },
   "dependencies": {
-    "@mdi/font": "^7.4.47",
+    "@css-render/vue3-ssr": "^0.15.14",
     "@nuxt/eslint": "^0.7.5",
     "@nuxthub/core": "^0.10.0",
     "@nuxtjs/tailwindcss": "latest",
+    "naive-ui": "^2.40.1",
     "nuxt": "latest",
     "vue": "latest",
-    "vue-router": "latest",
-    "vuetify": "3.11.0"
+    "vue-router": "latest"
   },
   "devDependencies": {
+    "@iconify-json/mdi": "^1.2.3",
     "@nuxt/eslint-config": "^0.7.5",
     "@nuxtjs/google-fonts": "^3.2.0",
     "eslint": "^9.18.0",
@@ -33,7 +34,7 @@
     "sass": "^1.83.0",
     "sharp": "^0.34.5",
     "typescript": "latest",
-    "vite-plugin-vuetify": "^2.1.1",
+    "unplugin-icons": "^0.20.0",
     "vue-tsc": "latest",
     "wrangler": "^3.101.0"
   },

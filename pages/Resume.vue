@@ -1,23 +1,22 @@
 <script setup lang="ts">
-
 </script>
 
 <template>
-  <div class="resume-page">
+  <div class="resume-page min-h-screen relative">
     <!-- 日式裝飾 -->
     <div class="page-decoration">
       <div class="deco-circle" />
     </div>
 
-    <!-- 頁面標題 - 日式簡約 -->
-    <section class="page-header py-16">
-      <v-container>
-        <div class="d-flex flex-column align-center ga-2 anim-fade-in">
-          <p class="text-overline text-medium-emphasis mb-0 letter-spacing-wide">RESUME</p>
-          <h1 class="text-h2 font-weight-bold text-primary mb-0">履歷</h1>
-          <p class="text-body-1 text-medium-emphasis mb-0">專業背景與技術能力</p>
+    <!-- 頁面標題 -->
+    <section class="page-header py-16 relative z-10">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center anim-fade-in">
+          <p class="text-xs text-muted mb-3 letter-spacing-wide uppercase">RESUME</p>
+          <h1 class="text-4xl font-bold text-primary mb-2 font-heading">履歷</h1>
+          <p class="text-base text-muted">專業背景與技術能力</p>
         </div>
-      </v-container>
+      </div>
     </section>
 
     <!-- 日式分隔線 -->
@@ -26,109 +25,47 @@
     </div>
 
     <!-- 主要內容 -->
-    <v-container class="py-12">
-      <v-row>
+    <div class="max-w-6xl mx-auto px-6 py-12">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
         <!-- 左欄 - 主要內容 -->
-        <v-col cols="12" lg="8">
-          <div class="d-flex flex-column ga-10">
-            <ResumeSummary />
-            <ResumeExperiences />
-          </div>
-        </v-col>
+        <div class="lg:col-span-2 flex flex-col gap-10">
+          <ResumeSummary />
+          <ResumeExperiences />
+        </div>
 
         <!-- 右欄 - 側邊欄 -->
-        <v-col cols="12" lg="4">
-          <div class="d-flex flex-column ga-8 sidebar-content">
-            <ResumeSkills />
-            <ResumeLanguages />
-            <ResumeEducations />
-            <ResumeCertifications />
-          </div>
-        </v-col>
-      </v-row>
-    </v-container>
+        <div class="flex flex-col gap-8 sidebar-content">
+          <ResumeSkills />
+          <ResumeLanguages />
+          <ResumeEducations />
+          <ResumeCertifications />
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <style scoped>
-.resume-page {
-  min-height: 100vh;
-  position: relative;
-}
-
 /* 頁面裝飾 */
-.page-decoration {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  overflow: hidden;
-}
-
 .deco-circle {
   position: absolute;
   width: 500px;
   height: 500px;
   border-radius: 50%;
-  border: 1px solid rgb(var(--v-theme-primary) / 0.04);
+  border: 1px solid rgba(78, 69, 64, 0.04);
   top: -150px;
   right: -150px;
 }
 
-/* 頁面標題 */
-.page-header {
-  position: relative;
-  z-index: 1;
-}
-
-.letter-spacing-wide {
-  letter-spacing: 0.3em;
-}
-
-/* 日式分隔線 */
-.zen-divider {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem 0;
-  position: relative;
-  z-index: 1;
-}
-
-.zen-divider::before,
-.zen-divider::after {
-  content: '';
-  flex: 1;
-  max-width: 100px;
-  height: 1px;
-  background: linear-gradient(
-    to var(--direction, right),
-    transparent,
-    rgb(var(--v-theme-primary) / 0.15)
-  );
-}
-
-.zen-divider::before {
-  --direction: right;
-}
-
-.zen-divider::after {
-  --direction: left;
-}
-
-.zen-divider-dot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: rgb(var(--v-theme-primary) / 0.25);
-  margin: 0 0.75rem;
-}
-
 /* 側邊欄固定 */
-@media (min-width: 1280px) {
+@media (min-width: 1024px) {
   .sidebar-content {
     position: sticky;
     top: 100px;
   }
+}
+
+.font-heading {
+  font-family: 'Noto Serif JP', 'Noto Serif TC', serif;
 }
 </style>

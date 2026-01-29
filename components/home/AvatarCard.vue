@@ -1,24 +1,37 @@
 <script setup lang="ts">
+import { NCard, NAvatar } from 'naive-ui'
+import { markRaw } from 'vue'
+import type { Component } from 'vue'
+import MdiLinkedin from '~icons/mdi/linkedin'
+import MdiGithub from '~icons/mdi/github'
+import MdiFacebook from '~icons/mdi/facebook'
+
 const nameChars = ['胡', '聖', '翰']
 
-const socialButtons = [
-  { icon: 'mdi-linkedin', label: 'LinkedIn', href: 'https://www.linkedin.com/in/%E8%81%96%E7%BF%B0-%E8%83%A1-b435b9285/' },
-  { icon: 'mdi-github', label: 'GitHub', href: 'https://github.com/show812223' },
-  { icon: 'mdi-facebook', label: 'Facebook', href: '#' },
+interface SocialButton {
+  icon: Component
+  label: string
+  href: string
+}
+
+const socialButtons: SocialButton[] = [
+  { icon: markRaw(MdiLinkedin), label: 'LinkedIn', href: 'https://www.linkedin.com/in/%E8%81%96%E7%BF%B0-%E8%83%A1-b435b9285/' },
+  { icon: markRaw(MdiGithub), label: 'GitHub', href: 'https://github.com/show812223' },
+  { icon: markRaw(MdiFacebook), label: 'Facebook', href: '#' },
 ]
 </script>
 
 <template>
   <div class="avatar-card-wrapper anim-fade-in anim-delay-500">
     <!-- 日式和紙質感卡片 -->
-    <v-card class="avatar-card text-center pa-10" elevation="0">
+    <NCard class="avatar-card text-center p-10 relative" :bordered="true">
       <!-- 角落裝飾 -->
       <div class="corner-accent corner-accent-tl" />
       <div class="corner-accent corner-accent-br" />
 
       <!-- 直式排版姓名 -->
-      <div class="vertical-name-wrapper mb-8">
-        <div class="vertical-name text-h3 font-weight-bold text-primary">
+      <div class="vertical-name-wrapper mb-8 flex justify-center">
+        <div class="vertical-name text-3xl font-bold text-primary">
           <span
             v-for="(char, index) in nameChars"
             :key="index"
@@ -30,37 +43,40 @@ const socialButtons = [
         </div>
       </div>
 
-      <!-- 頭像 - 簡約圓形 -->
-      <div class="avatar-wrapper mb-8 anim-scale-in anim-delay-900">
-        <v-avatar size="160" class="avatar-main">
-          <v-img src="~/assets/images/avatar.jpg" />
-        </v-avatar>
+      <!-- 頭像 -->
+      <div class="avatar-wrapper mb-8 anim-scale-in anim-delay-900 inline-block">
+        <NAvatar
+          :size="160"
+          round
+          src="/images/avatar.svg"
+          class="avatar-main"
+        />
       </div>
 
       <!-- 英文名 -->
       <div class="anim-fade-in anim-delay-1100">
-        <p class="text-overline text-medium-emphasis mb-1 letter-spacing-wide">SHENG HAN HU</p>
-        <p class="text-body-2 text-secondary">Front-end Technical Manager</p>
+        <p class="text-xs text-muted mb-1 letter-spacing-wider uppercase">SHENG HAN HU</p>
+        <p class="text-sm text-secondary">Front-end Technical Manager</p>
       </div>
 
       <!-- 分隔線 -->
       <div class="card-divider my-6" />
 
-      <!-- 社交連結 - 簡約風格 -->
-      <div class="d-flex align-center justify-center ga-4">
+      <!-- 社交連結 -->
+      <div class="flex items-center justify-center gap-4">
         <a
           v-for="(btn, index) in socialButtons"
-          :key="btn.icon"
+          :key="btn.label"
           :href="btn.href"
           target="_blank"
           class="social-link"
           :style="{ animationDelay: `${1200 + index * 100}ms` }"
           :aria-label="btn.label"
         >
-          <v-icon size="20" color="primary">{{ btn.icon }}</v-icon>
+          <component :is="btn.icon" class="w-5 h-5" />
         </a>
       </div>
-    </v-card>
+    </NCard>
   </div>
 </template>
 
@@ -70,10 +86,9 @@ const socialButtons = [
 }
 
 .avatar-card {
-  position: relative;
   min-width: 280px;
   max-width: 320px;
-  background: rgb(var(--v-theme-surface)) !important;
+  background: white !important;
 }
 
 /* 角落裝飾 - 日式 */
@@ -88,7 +103,7 @@ const socialButtons = [
 .corner-accent::after {
   content: '';
   position: absolute;
-  background: rgb(var(--v-theme-primary) / 0.15);
+  background: rgba(78, 69, 64, 0.15);
 }
 
 .corner-accent-tl {
@@ -130,15 +145,11 @@ const socialButtons = [
 }
 
 /* 直式排版 */
-.vertical-name-wrapper {
-  display: flex;
-  justify-content: center;
-}
-
 .vertical-name {
   writing-mode: vertical-rl;
   text-orientation: upright;
   letter-spacing: 0.4em;
+  font-family: 'Noto Serif JP', 'Noto Serif TC', serif;
 }
 
 .name-char {
@@ -161,28 +172,22 @@ const socialButtons = [
 /* 頭像 */
 .avatar-wrapper {
   position: relative;
-  display: inline-block;
 }
 
 .avatar-main {
-  border: 3px solid rgb(var(--v-theme-border));
+  border: 3px solid var(--color-border) !important;
   transition: border-color 0.4s ease;
 }
 
 .avatar-card:hover .avatar-main {
-  border-color: rgb(var(--v-theme-primary) / 0.3);
-}
-
-/* 字母間距 */
-.letter-spacing-wide {
-  letter-spacing: 0.25em;
+  border-color: rgba(78, 69, 64, 0.3) !important;
 }
 
 /* 分隔線 */
 .card-divider {
   width: 40px;
   height: 1px;
-  background: rgb(var(--v-theme-primary) / 0.2);
+  background: rgba(78, 69, 64, 0.2);
   margin-left: auto;
   margin-right: auto;
 }
@@ -197,14 +202,15 @@ const socialButtons = [
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  border: 1px solid rgb(var(--v-theme-border));
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
   text-decoration: none;
   transition: all 0.3s ease;
 }
 
 .social-link:hover {
-  border-color: rgb(var(--v-theme-primary) / 0.4);
-  background: rgb(var(--v-theme-primary) / 0.05);
+  border-color: rgba(78, 69, 64, 0.4);
+  background: rgba(78, 69, 64, 0.05);
 }
 
 @keyframes gentleFadeIn {

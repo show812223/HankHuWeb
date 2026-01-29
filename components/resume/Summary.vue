@@ -5,16 +5,16 @@ const summary = resumeData.summary
 </script>
 
 <template>
-  <section class="d-flex flex-column ga-4 anim-fade-in">
+  <section class="anim-fade-in">
     <!-- 區塊標題 -->
-    <div class="section-header d-flex flex-column ga-1">
-      <p class="text-overline text-medium-emphasis mb-0 letter-spacing-wide">ABOUT</p>
-      <h2 class="text-h6 font-weight-bold text-primary mb-0">關於我</h2>
+    <div class="section-header mb-6 pl-4 relative">
+      <p class="text-xs text-muted mb-2 letter-spacing-wider uppercase">ABOUT</p>
+      <h2 class="text-xl font-bold text-primary font-heading">關於我</h2>
     </div>
 
     <!-- 簡介內容 -->
-    <div class="summary-content">
-      <p class="text-body-1 mb-0" style="line-height: 2;">
+    <div class="summary-content pl-4 border-l border-[var(--color-border)]">
+      <p class="text-base mb-0 leading-loose">
         {{ summary }}
       </p>
     </div>
@@ -22,11 +22,6 @@ const summary = resumeData.summary
 </template>
 
 <style scoped>
-.section-header {
-  position: relative;
-  padding-left: 1rem;
-}
-
 .section-header::before {
   content: '';
   position: absolute;
@@ -34,15 +29,10 @@ const summary = resumeData.summary
   top: 4px;
   bottom: 4px;
   width: 2px;
-  background: rgb(var(--v-theme-primary) / 0.3);
+  background: rgba(78, 69, 64, 0.3);
 }
 
-.letter-spacing-wide {
-  letter-spacing: 0.2em;
-}
-
-.summary-content {
-  padding-left: 1rem;
-  border-left: 1px solid rgb(var(--v-theme-border));
+.font-heading {
+  font-family: 'Noto Serif JP', 'Noto Serif TC', serif;
 }
 </style>
