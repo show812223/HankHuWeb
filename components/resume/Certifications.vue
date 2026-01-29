@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { NCard, NButton, NAvatar } from 'naive-ui'
 import { resumeData } from '~/data/resume'
 import MdiTrophy from '~icons/mdi/trophy'
 import MdiMedal from '~icons/mdi/medal'
@@ -19,55 +18,55 @@ const certifications = resumeData.certifications
       </template>
     </UiSectionHeader>
 
-    <div class="flex flex-col gap-4">
-      <NCard
+    <div class="d-flex flex-column ga-4">
+      <v-card
         v-for="(cert, index) in certifications"
         :key="cert.code"
-        class="p-6 cert-card"
+        class="pa-6 cert-card"
         :style="{ animationDelay: `${600 + index * 100}ms` }"
+        variant="outlined"
       >
-        <div class="flex items-center mb-4">
-          <NAvatar
-            :size="44"
-            round
-            class="mr-4 bg-primary text-white flex items-center justify-center"
+        <div class="d-flex align-center mb-4">
+          <v-avatar
+            size="44"
+            color="primary"
+            class="mr-4"
           >
-            <MdiMedal class="text-xl" />
-          </NAvatar>
+            <MdiMedal class="text-h5 text-white" />
+          </v-avatar>
           <div>
-            <div class="text-base font-medium">
+            <div class="text-body-1 font-weight-medium">
               {{ cert.code }}
             </div>
-            <div class="text-xs text-muted">
+            <div class="text-caption text-medium-emphasis">
               {{ cert.issuer }}
             </div>
           </div>
         </div>
 
-        <p class="text-sm mb-3 flex-grow">
+        <p class="text-body-2 mb-3 flex-grow-1">
           {{ cert.name }}
         </p>
         <p
           v-if="cert.date"
-          class="text-xs text-muted mb-4"
+          class="text-caption text-medium-emphasis mb-4"
         >
           取得日期：{{ cert.date }}
         </p>
 
-        <NButton
+        <v-btn
           v-if="cert.url"
-          tag="a"
           :href="cert.url"
           target="_blank"
           size="small"
-          secondary
+          variant="outlined"
         >
-          <template #icon>
+          <template #prepend>
             <MdiOpenInNew />
           </template>
           查看證照
-        </NButton>
-      </NCard>
+        </v-btn>
+      </v-card>
     </div>
   </section>
 </template>
@@ -94,7 +93,7 @@ const certifications = resumeData.certifications
   }
 }
 
-.bg-primary {
-  background-color: var(--color-primary);
+.text-white {
+  color: white !important;
 }
 </style>

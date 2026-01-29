@@ -1,6 +1,6 @@
+import { writeFileSync } from 'fs'
 import sharp from 'sharp'
 import pngToIco from 'png-to-ico'
-import { writeFileSync } from 'fs'
 
 const svgContent = `<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256">
   <rect width="256" height="256" rx="32" fill="#4E4540"/>
@@ -23,7 +23,8 @@ async function generateFavicon() {
     const icoBuffer = await pngToIco(pngBuffers)
     writeFileSync('./public/favicon.ico', icoBuffer)
     console.log('favicon.ico generated successfully!')
-  } catch (error) {
+  }
+  catch (error) {
     console.error('Error:', error)
   }
 }

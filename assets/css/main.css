@@ -62,36 +62,43 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ========================================
-   Naive UI 覆寫
+   Vuetify 覆寫
    ======================================== */
 
 /* 卡片樣式 */
-.n-card {
-  border: 1px solid var(--color-border) !important;
+.v-card {
   transition: all var(--transition-normal) !important;
 }
 
-.n-card:hover {
+.v-card:hover {
   border-color: rgba(78, 69, 64, 0.2) !important;
-  transform: translateY(-2px);
 }
 
 /* 按鈕懸停效果 */
-.n-button:hover {
+.v-btn:hover {
   transform: translateY(-1px);
 }
 
-.n-button:active {
+.v-btn:active {
   transform: scale(0.98);
 }
 
-/* 標籤樣式 */
-.n-tag {
+/* Chip 標籤樣式 */
+.v-chip {
   transition: all var(--transition-fast) !important;
 }
 
-.n-tag:hover {
+.v-chip:hover {
   transform: translateY(-1px);
+}
+
+/* 輸入框樣式 */
+.v-field {
+  border-color: var(--color-border) !important;
+}
+
+.v-field--focused {
+  border-color: var(--color-primary) !important;
 }
 
 /* ========================================

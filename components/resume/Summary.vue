@@ -8,8 +8,12 @@ const summary = resumeData.summary
   <section class="anim-fade-in">
     <!-- 區塊標題 -->
     <div class="section-header mb-6 pl-4 relative">
-      <p class="text-xs text-muted mb-2 letter-spacing-wider uppercase">ABOUT</p>
-      <h2 class="text-xl font-bold text-primary font-heading">關於我</h2>
+      <p class="text-xs text-muted mb-2 letter-spacing-wider uppercase">
+        ABOUT
+      </p>
+      <h2 class="text-xl font-bold text-primary font-heading">
+        關於我
+      </h2>
     </div>
 
     <!-- 簡介內容 -->

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { NCard, NInput, NButton, NResult } from 'naive-ui'
 import { markRaw } from 'vue'
 import type { Component } from 'vue'
 import MdiEmail from '~icons/mdi/email-outline'
@@ -50,21 +49,33 @@ function handleSubmit() {
 </script>
 
 <template>
-  <div class="contact-page min-h-screen relative">
+  <div class="contact-page min-h-screen position-relative">
     <!-- 日式裝飾 -->
     <div class="page-decoration">
       <div class="deco-circle" />
     </div>
 
     <!-- 頁面標題 -->
-    <section class="page-header py-16 relative z-10">
-      <div class="max-w-6xl mx-auto px-6">
+    <section
+      class="page-header py-16 position-relative"
+      style="z-index: 10;"
+    >
+      <v-container style="max-width: 1152px;">
         <div class="text-center anim-fade-in">
-          <p class="text-xs text-muted mb-3 letter-spacing-wide uppercase">CONTACT</p>
-          <h1 class="text-4xl font-bold text-primary mb-2 font-heading">聯絡</h1>
-          <p class="text-base text-muted">歡迎與我聯繫</p>
+          <p
+            class="text-caption text-medium-emphasis mb-3"
+            style="letter-spacing: 0.3em;"
+          >
+            CONTACT
+          </p>
+          <h1 class="text-h3 font-weight-bold text-primary mb-2 font-heading">
+            聯絡
+          </h1>
+          <p class="text-body-1 text-medium-emphasis">
+            歡迎與我聯繫
+          </p>
         </div>
-      </div>
+      </v-container>
     </section>
 
     <!-- 日式分隔線 -->
@@ -73,10 +84,13 @@ function handleSubmit() {
     </div>
 
     <!-- 主要內容 -->
-    <div class="max-w-3xl mx-auto px-6 py-12">
+    <v-container
+      class="py-12"
+      style="max-width: 768px;"
+    >
       <!-- 聯絡資訊 -->
       <div class="contact-info-section mb-12 anim-fade-in anim-delay-200">
-        <div class="flex flex-wrap justify-center gap-8 md:gap-12">
+        <div class="d-flex flex-wrap justify-center ga-8 ga-md-12">
           <a
             v-for="(info, index) in contactInfo"
             :key="info.title"
@@ -86,64 +100,121 @@ function handleSubmit() {
             :style="{ animationDelay: `${300 + index * 100}ms` }"
           >
             <div class="contact-icon-wrapper mb-3">
-              <component :is="info.icon" class="w-6 h-6" />
+              <component
+                :is="info.icon"
+                class="w-6 h-6"
+              />
             </div>
-            <p class="text-xs text-muted mb-1">{{ info.title }}</p>
-            <p class="text-sm font-medium">{{ info.value }}</p>
+            <p class="text-caption text-medium-emphasis mb-1">
+              {{ info.title }}
+            </p>
+            <p class="text-body-2 font-weight-medium">
+              {{ info.value }}
+            </p>
           </a>
         </div>
       </div>
 
       <!-- 聯絡表單 -->
-      <NCard class="contact-form-card p-8 md:p-10 anim-fade-in anim-delay-400">
+      <v-card
+        class="contact-form-card pa-8 pa-md-10 anim-fade-in anim-delay-400"
+        variant="outlined"
+      >
         <!-- 區塊標題 -->
         <div class="section-header mb-8 text-center">
-          <p class="text-xs text-muted mb-2 letter-spacing-wide uppercase">MESSAGE</p>
-          <h2 class="text-xl font-bold text-primary font-heading">發送訊息</h2>
+          <p
+            class="text-caption text-medium-emphasis mb-2"
+            style="letter-spacing: 0.3em;"
+          >
+            MESSAGE
+          </p>
+          <h2 class="text-h5 font-weight-bold text-primary font-heading">
+            發送訊息
+          </h2>
         </div>
 
         <!-- 成功訊息 -->
         <Transition name="fade">
-          <div v-if="submitted" class="text-center py-8">
-            <NResult status="success" title="訊息已送出" description="感謝您的來信，我會盡快回覆。" />
+          <div
+            v-if="submitted"
+            class="text-center py-8"
+          >
+            <v-icon
+              color="success"
+              size="64"
+              class="mb-4"
+            >
+              mdi-check-circle
+            </v-icon>
+            <h3 class="text-h6 mb-2">
+              訊息已送出
+            </h3>
+            <p class="text-body-2 text-medium-emphasis">
+              感謝您的來信，我會盡快回覆。
+            </p>
           </div>
         </Transition>
 
         <!-- 表單 -->
-        <form v-if="!submitted" @submit.prevent="handleSubmit">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
-            <div class="form-group">
-              <label class="form-label text-xs text-muted mb-2 block">姓名</label>
-              <NInput v-model:value="form.name" placeholder="請輸入您的姓名" size="large" />
-            </div>
-            <div class="form-group">
-              <label class="form-label text-xs text-muted mb-2 block">Email</label>
-              <NInput v-model:value="form.email" placeholder="your@email.com" type="email" size="large" />
-            </div>
-          </div>
+        <v-form
+          v-if="!submitted"
+          @submit.prevent="handleSubmit"
+        >
+          <v-row>
+            <v-col
+              cols="12"
+              sm="6"
+            >
+              <label class="form-label text-caption text-medium-emphasis mb-2 d-block">姓名</label>
+              <v-text-field
+                v-model="form.name"
+                placeholder="請輸入您的姓名"
+                density="comfortable"
+                hide-details
+              />
+            </v-col>
+            <v-col
+              cols="12"
+              sm="6"
+            >
+              <label class="form-label text-caption text-medium-emphasis mb-2 d-block">Email</label>
+              <v-text-field
+                v-model="form.email"
+                placeholder="your@email.com"
+                type="email"
+                density="comfortable"
+                hide-details
+              />
+            </v-col>
+          </v-row>
 
-          <div class="form-group mb-8">
-            <label class="form-label text-xs text-muted mb-2 block">訊息</label>
-            <NInput
-              v-model:value="form.message"
+          <div class="mt-6 mb-8">
+            <label class="form-label text-caption text-medium-emphasis mb-2 d-block">訊息</label>
+            <v-textarea
+              v-model="form.message"
               placeholder="請輸入您想說的話..."
-              type="textarea"
-              :rows="5"
-              size="large"
+              rows="5"
+              density="comfortable"
+              hide-details
             />
           </div>
 
           <div class="text-center">
-            <NButton type="primary" size="large" attr-type="submit" class="submit-btn px-8">
-              <template #icon>
+            <v-btn
+              color="primary"
+              size="large"
+              type="submit"
+              class="submit-btn px-8"
+            >
+              <template #prepend>
                 <MdiSend />
               </template>
               送出
-            </NButton>
+            </v-btn>
           </div>
-        </form>
-      </NCard>
-    </div>
+        </v-form>
+      </v-card>
+    </v-container>
   </div>
 </template>
 

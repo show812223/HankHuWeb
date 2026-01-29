@@ -48,8 +48,12 @@ const skills: Skill[] = [
     <section class="skills-section py-16 relative z-10">
       <div class="max-w-6xl mx-auto px-6">
         <div class="text-center mb-12 anim-fade-in">
-          <p class="text-xs text-muted mb-2 letter-spacing-wide uppercase">EXPERTISE</p>
-          <h2 class="text-2xl font-bold text-primary font-heading">專業領域</h2>
+          <p class="text-xs text-muted mb-2 letter-spacing-wide uppercase">
+            EXPERTISE
+          </p>
+          <h2 class="text-2xl font-bold text-primary font-heading">
+            專業領域
+          </h2>
         </div>
 
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-6">
@@ -60,10 +64,17 @@ const skills: Skill[] = [
             :style="{ animationDelay: `${300 + index * 150}ms` }"
           >
             <div class="skill-icon-wrapper w-18 h-18 rounded-full border border-[var(--color-border)] flex items-center justify-center mx-auto mb-4 bg-white transition-all duration-300">
-              <component :is="skill.icon" class="text-3xl" />
+              <component
+                :is="skill.icon"
+                class="text-3xl"
+              />
             </div>
-            <div class="text-sm font-bold mb-1">{{ skill.name }}</div>
-            <div class="text-xs text-muted">{{ skill.desc }}</div>
+            <div class="text-sm font-bold mb-1">
+              {{ skill.name }}
+            </div>
+            <div class="text-xs text-muted">
+              {{ skill.desc }}
+            </div>
           </div>
         </div>
       </div>

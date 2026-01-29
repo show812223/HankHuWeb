@@ -12,9 +12,15 @@
     <section class="page-header py-16 relative z-10">
       <div class="max-w-6xl mx-auto px-6">
         <div class="text-center anim-fade-in">
-          <p class="text-xs text-muted mb-3 letter-spacing-wide uppercase">RESUME</p>
-          <h1 class="text-4xl font-bold text-primary mb-2 font-heading">履歷</h1>
-          <p class="text-base text-muted">專業背景與技術能力</p>
+          <p class="text-xs text-muted mb-3 letter-spacing-wide uppercase">
+            RESUME
+          </p>
+          <h1 class="text-4xl font-bold text-primary mb-2 font-heading">
+            履歷
+          </h1>
+          <p class="text-base text-muted">
+            專業背景與技術能力
+          </p>
         </div>
       </div>
     </section>

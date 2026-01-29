@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { NCard, NAvatar } from 'naive-ui'
 import { markRaw } from 'vue'
 import type { Component } from 'vue'
 import MdiLinkedin from '~icons/mdi/linkedin'
@@ -24,14 +23,17 @@ const socialButtons: SocialButton[] = [
 <template>
   <div class="avatar-card-wrapper anim-fade-in anim-delay-500">
     <!-- 日式和紙質感卡片 -->
-    <NCard class="avatar-card text-center p-10 relative" :bordered="true">
+    <v-card
+      class="avatar-card text-center pa-10 position-relative"
+      variant="outlined"
+    >
       <!-- 角落裝飾 -->
       <div class="corner-accent corner-accent-tl" />
       <div class="corner-accent corner-accent-br" />
 
       <!-- 直式排版姓名 -->
-      <div class="vertical-name-wrapper mb-8 flex justify-center">
-        <div class="vertical-name text-3xl font-bold text-primary">
+      <div class="vertical-name-wrapper mb-8 d-flex justify-center">
+        <div class="vertical-name text-h4 font-weight-bold text-primary">
           <span
             v-for="(char, index) in nameChars"
             :key="index"
@@ -44,26 +46,32 @@ const socialButtons: SocialButton[] = [
       </div>
 
       <!-- 頭像 -->
-      <div class="avatar-wrapper mb-8 anim-scale-in anim-delay-900 inline-block">
-        <NAvatar
-          :size="160"
-          round
-          src="/images/avatar.jpg"
+      <div class="avatar-wrapper mb-8 anim-scale-in anim-delay-900 d-inline-block">
+        <v-avatar
+          size="160"
+          image="/images/avatar.jpg"
           class="avatar-main"
         />
       </div>
 
       <!-- 英文名 -->
       <div class="anim-fade-in anim-delay-1100">
-        <p class="text-xs text-muted mb-1 letter-spacing-wider uppercase">SHENG HAN HU</p>
-        <p class="text-sm text-secondary">Front-end Technical Manager</p>
+        <p
+          class="text-caption text-medium-emphasis mb-1"
+          style="letter-spacing: 0.2em;"
+        >
+          SHENG HAN HU
+        </p>
+        <p class="text-body-2 text-secondary">
+          Front-end Technical Manager
+        </p>
       </div>
 
       <!-- 分隔線 -->
       <div class="card-divider my-6" />
 
       <!-- 社交連結 -->
-      <div class="flex items-center justify-center gap-4">
+      <div class="d-flex align-center justify-center ga-4">
         <a
           v-for="(btn, index) in socialButtons"
           :key="btn.label"
@@ -73,10 +81,13 @@ const socialButtons: SocialButton[] = [
           :style="{ animationDelay: `${1200 + index * 100}ms` }"
           :aria-label="btn.label"
         >
-          <component :is="btn.icon" class="w-5 h-5" />
+          <component
+            :is="btn.icon"
+            class="w-5 h-5"
+          />
         </a>
       </div>
-    </NCard>
+    </v-card>
   </div>
 </template>
 
@@ -89,6 +100,7 @@ const socialButtons: SocialButton[] = [
   min-width: 280px;
   max-width: 320px;
   background: white !important;
+  border-color: var(--color-border) !important;
 }
 
 /* 角落裝飾 - 日式 */
@@ -209,16 +221,19 @@ const socialButtons: SocialButton[] = [
 }
 
 .social-link:hover {
-  border-color: rgba(78, 69, 64, 0.4);
+  color: var(--color-primary);
+  border-color: rgba(78, 69, 64, 0.3);
   background: rgba(78, 69, 64, 0.05);
 }
 
 @keyframes gentleFadeIn {
   from {
     opacity: 0;
+    transform: translateY(8px);
   }
   to {
     opacity: 1;
+    transform: translateY(0);
   }
 }
 </style>
