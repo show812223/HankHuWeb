@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { NCard, NTag } from 'naive-ui'
-import { resumeData } from '~/data/resume'
-import MdiBriefcase from '~icons/mdi/briefcase'
-import MdiOfficeBuilding from '~icons/mdi/office-building'
-import MdiMapMarker from '~icons/mdi/map-marker'
-import MdiCalendar from '~icons/mdi/calendar'
+  import { NCard, NTag } from 'naive-ui'
+  import { resumeData } from '~/data/resume'
+  import MdiBriefcase from '~icons/mdi/briefcase'
+  import MdiOfficeBuilding from '~icons/mdi/office-building'
+  import MdiMapMarker from '~icons/mdi/map-marker'
+  import MdiCalendar from '~icons/mdi/calendar'
 
-const experiences = resumeData.experiences
+  const experiences = resumeData.experiences
 </script>
 
 <template>
@@ -31,9 +31,7 @@ const experiences = resumeData.experiences
               <h3 class="text-lg font-bold">
                 {{ exp.position }}
               </h3>
-              <NTag v-if="index === 0" type="success" size="small" round>
-                Current
-              </NTag>
+              <NTag v-if="index === 0" type="success" size="small" round> Current </NTag>
             </div>
             <div class="flex flex-wrap items-center gap-3 text-sm text-muted">
               <span class="flex items-center gap-1">
@@ -47,30 +45,24 @@ const experiences = resumeData.experiences
             </div>
           </div>
           <NTag size="small" round class="flex items-center gap-1">
-            <MdiCalendar class="text-sm" />
+            <template #icon>
+              <MdiCalendar class="text-sm" />
+            </template>
+
             {{ exp.startDate }} - {{ exp.endDate }}
           </NTag>
         </div>
 
         <!-- Description -->
         <ul class="description-list mb-5 pl-5">
-          <li
-            v-for="(desc, descIndex) in exp.description"
-            :key="descIndex"
-            class="mb-2 text-sm"
-          >
+          <li v-for="(desc, descIndex) in exp.description" :key="descIndex" class="mb-2 text-sm">
             {{ desc }}
           </li>
         </ul>
 
         <!-- Technologies -->
         <div v-if="exp.technologies?.length" class="flex flex-wrap gap-2">
-          <NTag
-            v-for="tech in exp.technologies"
-            :key="tech"
-            size="small"
-            round
-          >
+          <NTag v-for="tech in exp.technologies" :key="tech" size="small" round>
             {{ tech }}
           </NTag>
         </div>
@@ -80,46 +72,48 @@ const experiences = resumeData.experiences
 </template>
 
 <style scoped>
-.exp-card {
-  opacity: 0;
-  animation: fadeSlideUp 600ms cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
-  position: relative;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.exp-card:hover {
-  transform: translateX(4px);
-}
-
-.exp-card--current {
-  border-left: 3px solid #6B9B6B !important;
-}
-
-@keyframes fadeSlideUp {
-  from {
+  .exp-card {
     opacity: 0;
-    transform: translateY(20px);
+    animation: fadeSlideUp 600ms cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+    position: relative;
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+
+  .exp-card:hover {
+    transform: translateX(4px);
   }
-}
 
-.description-list {
-  line-height: 1.8;
-  margin: 0;
-}
+  .exp-card--current {
+    border-left: 3px solid #6b9b6b !important;
+  }
 
-.description-list li {
-  position: relative;
-}
+  @keyframes fadeSlideUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 
-.description-list li::marker {
-  color: var(--color-primary);
-}
+  .description-list {
+    line-height: 1.8;
+    margin: 0;
+  }
 
-.font-heading {
-  font-family: 'Noto Serif JP', 'Noto Serif TC', serif;
-}
+  .description-list li {
+    position: relative;
+  }
+
+  .description-list li::marker {
+    color: var(--color-primary);
+  }
+
+  .font-heading {
+    font-family: 'Noto Serif JP', 'Noto Serif TC', serif;
+  }
 </style>

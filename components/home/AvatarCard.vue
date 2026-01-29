@@ -48,7 +48,7 @@ const socialButtons: SocialButton[] = [
         <NAvatar
           :size="160"
           round
-          src="/images/avatar.svg"
+          src="/images/avatar.jpg"
           class="avatar-main"
         />
       </div>
