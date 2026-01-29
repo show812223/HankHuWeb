@@ -5,10 +5,10 @@
 </script>
 
 <template>
-  <section class="section anim-slide-up anim-delay-200">
+  <section class="d-flex flex-column ga-4 anim-slide-up anim-delay-200">
     <UiSectionHeader icon="mdi-translate" title="語言能力" />
 
-    <div class="d-flex ga-2">
+    <div class="d-flex ga-3 flex-wrap">
       <v-card
         v-for="(lang, index) in languages"
         :key="lang.name"

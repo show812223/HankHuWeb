@@ -7,30 +7,30 @@ defineProps<{
 </script>
 
 <template>
-  <div class="section-header mb-4">
-    <div class="d-flex align-center ga-3 mb-2">
+  <div class="section-header d-flex flex-column ga-2 mb-6">
+    <div class="d-flex align-center ga-3">
       <v-icon
         v-if="icon"
         :icon="icon"
-        size="28"
+        size="24"
         color="primary"
         class="section-icon"
       />
-      <h2 class="section-title text-h4 font-weight-medium">
+      <h2 class="section-title text-h6 font-weight-bold text-primary mb-0">
         {{ title }}
       </h2>
     </div>
-    <p v-if="subtitle" class="section-subtitle text-body-1 text-medium-emphasis ml-10">
+    <p
+      v-if="subtitle"
+      class="section-subtitle text-body-2 text-medium-emphasis mb-0"
+      :class="{ 'ml-9': icon }"
+    >
       {{ subtitle }}
     </p>
   </div>
 </template>
 
 <style scoped>
-.section-header {
-  position: relative;
-}
-
 .section-title {
   letter-spacing: 0.5px;
   line-height: 1.3;
@@ -38,21 +38,9 @@ defineProps<{
 
 .section-subtitle {
   line-height: 1.6;
-  max-width: 600px;
 }
 
 .section-icon {
   opacity: 0.9;
-}
-
-.section-divider {
-  height: 1px;
-  background: linear-gradient(
-    to right,
-    rgb(var(--v-theme-primary) / 0.3),
-    rgb(var(--v-theme-primary) / 0.1),
-    transparent
-  );
-  max-width: 200px;
 }
 </style>

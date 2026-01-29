@@ -12,10 +12,10 @@
     <!-- 頁面標題 - 日式簡約 -->
     <section class="page-header py-16">
       <v-container>
-        <div class="text-center anim-fade-in">
-          <p class="text-overline text-medium-emphasis mb-3 letter-spacing-wide">RESUME</p>
-          <h1 class="text-h2 font-weight-bold text-primary mb-2">履歷</h1>
-          <p class="text-body-1 text-medium-emphasis">專業背景與技術能力</p>
+        <div class="d-flex flex-column align-center ga-2 anim-fade-in">
+          <p class="text-overline text-medium-emphasis mb-0 letter-spacing-wide">RESUME</p>
+          <h1 class="text-h2 font-weight-bold text-primary mb-0">履歷</h1>
+          <p class="text-body-1 text-medium-emphasis mb-0">專業背景與技術能力</p>
         </div>
       </v-container>
     </section>

@@ -5,28 +5,28 @@
 </script>
 
 <template>
-  <section class="section anim-slide-up anim-delay-300">
+  <section class="d-flex flex-column ga-4 anim-slide-up anim-delay-300">
     <UiSectionHeader icon="mdi-school" title="教育背景" subtitle="學歷與專業培訓" />
 
-    <div class="d-flex flex-column ga-2">
+    <div class="d-flex flex-column ga-3">
       <v-card
         v-for="(edu, index) in educations"
         :key="edu.school + edu.degree"
-        class="h-100 pa-6 edu-card card-interactive"
+        class="h-100 pa-6 edu-card card-interactive d-flex flex-column ga-3"
         :style="{ animationDelay: `${400 + index * 150}ms` }"
       >
-        <div class="d-flex align-center mb-3">
-          <v-icon class="mr-3" color="primary" size="24"> mdi-school </v-icon>
+        <div class="d-flex align-center ga-3">
+          <v-icon color="primary" size="24">mdi-school</v-icon>
           <span class="text-h6 font-weight-medium">{{ edu.school }}</span>
         </div>
-        <p class="text-body-2 text-medium-emphasis mb-4">{{ edu.startDate }} - {{ edu.endDate }}</p>
-        <div class="d-flex align-center flex-wrap ga-2 mb-3">
+        <p class="text-body-2 text-medium-emphasis mb-0">{{ edu.startDate }} - {{ edu.endDate }}</p>
+        <div class="d-flex align-center flex-wrap ga-2">
           <v-chip color="primary" size="small">
             {{ edu.degree }}
           </v-chip>
           <span class="text-body-1">{{ edu.major }}</span>
         </div>
-        <p v-if="edu.description" class="text-body-2 text-medium-emphasis leading-relaxed">
+        <p v-if="edu.description" class="text-body-2 text-medium-emphasis leading-relaxed mb-0">
           {{ edu.description }}
         </p>
       </v-card>

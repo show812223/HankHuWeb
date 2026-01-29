@@ -29,9 +29,9 @@
     <!-- 技術展示區 - 日式卡片 -->
     <section class="skills-section py-16">
       <v-container>
-        <div class="text-center mb-12 anim-fade-in">
-          <p class="text-overline text-secondary mb-2 letter-spacing-wide">EXPERTISE</p>
-          <h2 class="text-h4 font-weight-bold text-primary">專業領域</h2>
+        <div class="d-flex flex-column align-center ga-2 mb-12 anim-fade-in">
+          <p class="text-overline text-secondary mb-0 letter-spacing-wide">EXPERTISE</p>
+          <h2 class="text-h4 font-weight-bold text-primary mb-0">專業領域</h2>
         </div>
 
         <v-row justify="center">

@@ -5,17 +5,17 @@ const experiences = resumeData.experiences
 </script>
 
 <template>
-  <section class="anim-slide-up anim-delay-200">
-    <div class="d-flex align-center mb-6">
-      <v-icon color="primary" class="mr-2">mdi-briefcase</v-icon>
-      <h2 class="text-h5 font-weight-bold mb-0">工作經驗</h2>
+  <section class="d-flex flex-column ga-4 anim-slide-up anim-delay-200">
+    <div class="d-flex align-center ga-3">
+      <v-icon color="primary" size="24">mdi-briefcase</v-icon>
+      <h2 class="text-h6 font-weight-bold text-primary mb-0">工作經驗</h2>
     </div>
 
-    <div class="experience-list">
+    <div class="d-flex flex-column ga-4">
       <v-card
         v-for="(exp, index) in experiences"
         :key="exp.company + exp.startDate"
-        class="exp-card pa-6 mb-4"
+        class="exp-card pa-6"
         :class="{ 'exp-card--current': index === 0 }"
         :style="{ animationDelay: `${300 + index * 150}ms` }"
       >

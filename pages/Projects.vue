@@ -14,10 +14,10 @@ const projects = resumeData.projects
     <!-- 頁面標題 -->
     <section class="page-header py-16">
       <v-container>
-        <div class="text-center anim-fade-in">
-          <p class="text-overline text-medium-emphasis mb-3 letter-spacing-wide">WORKS</p>
-          <h1 class="text-h2 font-weight-bold text-primary mb-2">作品集</h1>
-          <p class="text-body-1 text-medium-emphasis">參與或獨立開發的專案</p>
+        <div class="d-flex flex-column align-center ga-2 anim-fade-in">
+          <p class="text-overline text-medium-emphasis mb-0 letter-spacing-wide">WORKS</p>
+          <h1 class="text-h2 font-weight-bold text-primary mb-0">作品集</h1>
+          <p class="text-body-1 text-medium-emphasis mb-0">參與或獨立開發的專案</p>
         </div>
       </v-container>
     </section>
@@ -29,11 +29,11 @@ const projects = resumeData.projects
 
     <!-- 專案列表 -->
     <v-container class="py-12">
-      <div class="projects-list">
+      <div class="d-flex flex-column ga-6">
         <v-card
           v-for="(project, index) in projects"
           :key="project.name"
-          class="project-card mb-6"
+          class="project-card"
           :style="{ animationDelay: `${200 + index * 150}ms` }"
         >
           <div class="d-flex flex-column flex-md-row">
@@ -43,14 +43,14 @@ const projects = resumeData.projects
             </div>
 
             <!-- 專案內容 -->
-            <div class="flex-grow-1 pa-6">
-              <h3 class="text-h6 font-weight-bold mb-3">{{ project.name }}</h3>
-              <p class="text-body-2 text-medium-emphasis mb-4" style="line-height: 1.8;">
+            <div class="flex-grow-1 pa-6 d-flex flex-column ga-3">
+              <h3 class="text-h6 font-weight-bold mb-0">{{ project.name }}</h3>
+              <p class="text-body-2 text-medium-emphasis mb-0" style="line-height: 1.8;">
                 {{ project.description }}
               </p>
 
               <!-- 技術標籤 -->
-              <div class="d-flex flex-wrap ga-2 mb-4">
+              <div class="d-flex flex-wrap ga-2">
                 <span
                   v-for="tech in project.technologies"
                   :key="tech"
@@ -66,7 +66,7 @@ const projects = resumeData.projects
                   v-if="project.url"
                   :href="project.url"
                   target="_blank"
-                  class="project-link"
+                  class="project-link d-flex align-center"
                 >
                   <v-icon size="16" class="mr-1">mdi-open-in-new</v-icon>
                   Demo
@@ -75,7 +75,7 @@ const projects = resumeData.projects
                   v-if="project.github"
                   :href="project.github"
                   target="_blank"
-                  class="project-link"
+                  class="project-link d-flex align-center"
                 >
                   <v-icon size="16" class="mr-1">mdi-github</v-icon>
                   GitHub
@@ -87,12 +87,12 @@ const projects = resumeData.projects
       </div>
 
       <!-- GitHub CTA -->
-      <div class="text-center mt-16 anim-fade-in anim-delay-600">
-        <p class="text-body-2 text-medium-emphasis mb-4">查看更多專案</p>
+      <div class="d-flex flex-column align-center ga-4 mt-16 anim-fade-in anim-delay-600">
+        <p class="text-body-2 text-medium-emphasis mb-0">查看更多專案</p>
         <a
           href="https://github.com/show812223"
           target="_blank"
-          class="github-link"
+          class="github-link d-flex align-center"
         >
           <v-icon size="20" class="mr-2">mdi-github</v-icon>
           GitHub

@@ -5,21 +5,21 @@
 </script>
 
 <template>
-  <section class="section anim-slide-up anim-delay-500">
+  <section class="d-flex flex-column ga-4 anim-slide-up anim-delay-500">
     <UiSectionHeader icon="mdi-certificate" title="專業證照" subtitle="專業認證與資格" />
 
-    <div class="d-flex ga-2 flex-wrap">
+    <div class="d-flex ga-3 flex-wrap">
       <v-card
         v-for="(cert, index) in certifications"
         :key="cert.code"
-        class="h-100 pa-6 cert-card card-interactive d-flex flex-column"
+        class="h-100 pa-6 cert-card card-interactive d-flex flex-column ga-3"
         :style="{ animationDelay: `${600 + index * 100}ms` }"
       >
-        <div class="d-flex align-center mb-4">
-          <v-avatar color="primary" size="44" class="mr-4">
-            <v-icon color="white" size="24"> mdi-medal </v-icon>
+        <div class="d-flex align-center ga-3">
+          <v-avatar color="primary" size="44">
+            <v-icon color="white" size="24">mdi-medal</v-icon>
           </v-avatar>
-          <div>
+          <div class="d-flex flex-column">
             <div class="text-subtitle-1 font-weight-medium">
               {{ cert.code }}
             </div>
@@ -29,10 +29,10 @@
           </div>
         </div>
 
-        <p class="text-body-2 mb-3 flex-grow-1">
+        <p class="text-body-2 flex-grow-1 mb-0">
           {{ cert.name }}
         </p>
-        <p v-if="cert.date" class="text-caption text-medium-emphasis mb-4">
+        <p v-if="cert.date" class="text-caption text-medium-emphasis mb-0">
           取得日期：{{ cert.date }}
         </p>
 
@@ -43,8 +43,9 @@
           variant="outlined"
           color="primary"
           size="small"
+          class="align-self-start"
         >
-          <v-icon class="mr-1" size="16"> mdi-open-in-new </v-icon>
+          <v-icon class="mr-1" size="16">mdi-open-in-new</v-icon>
           查看證照
         </v-btn>
       </v-card>

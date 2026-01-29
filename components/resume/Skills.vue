@@ -7,12 +7,13 @@ const skills = resumeData.skills
 <template>
   <section class="anim-slide-up anim-delay-100">
     <v-card class="pa-5">
-      <div class="d-flex align-center mb-5">
-        <v-icon color="primary" class="mr-2">mdi-star-circle</v-icon>
-        <h3 class="text-h6 font-weight-bold mb-0">技術技能</h3>
-      </div>
+      <div class="d-flex flex-column ga-5">
+        <div class="d-flex align-center ga-3">
+          <v-icon color="primary" size="24">mdi-star-circle</v-icon>
+          <h3 class="text-h6 font-weight-bold text-primary mb-0">技術技能</h3>
+        </div>
 
-      <div class="skills-list d-flex flex-column ga-5">
+        <div class="d-flex flex-column ga-5">
         <div
           v-for="(skill, index) in skills"
           :key="skill.category"

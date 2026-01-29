@@ -44,10 +44,10 @@ function handleSubmit() {
     <!-- 頁面標題 -->
     <section class="page-header py-16">
       <v-container>
-        <div class="text-center anim-fade-in">
-          <p class="text-overline text-medium-emphasis mb-3 letter-spacing-wide">CONTACT</p>
-          <h1 class="text-h2 font-weight-bold text-primary mb-2">聯絡</h1>
-          <p class="text-body-1 text-medium-emphasis">歡迎與我聯繫</p>
+        <div class="d-flex flex-column align-center ga-2 anim-fade-in">
+          <p class="text-overline text-medium-emphasis mb-0 letter-spacing-wide">CONTACT</p>
+          <h1 class="text-h2 font-weight-bold text-primary mb-0">聯絡</h1>
+          <p class="text-body-1 text-medium-emphasis mb-0">歡迎與我聯繫</p>
         </div>
       </v-container>
     </section>
@@ -84,26 +84,26 @@ function handleSubmit() {
           <!-- 聯絡表單 -->
           <v-card class="contact-form-card pa-8 pa-md-10 anim-fade-in anim-delay-400">
             <!-- 區塊標題 -->
-            <div class="section-header mb-8 text-center">
-              <p class="text-overline text-medium-emphasis mb-2 letter-spacing-wide">MESSAGE</p>
-              <h2 class="text-h5 font-weight-bold text-primary">發送訊息</h2>
+            <div class="d-flex flex-column align-center ga-2 mb-8">
+              <p class="text-overline text-medium-emphasis mb-0 letter-spacing-wide">MESSAGE</p>
+              <h2 class="text-h6 font-weight-bold text-primary mb-0">發送訊息</h2>
             </div>
 
             <!-- 成功訊息 -->
             <v-expand-transition>
-              <div v-if="submitted" class="text-center py-8">
-                <v-icon size="48" color="success" class="mb-4">mdi-check-circle-outline</v-icon>
-                <p class="text-h6 font-weight-bold mb-2">訊息已送出</p>
-                <p class="text-body-2 text-medium-emphasis">感謝您的來信，我會盡快回覆。</p>
+              <div v-if="submitted" class="d-flex flex-column align-center ga-3 py-8">
+                <v-icon size="48" color="success">mdi-check-circle-outline</v-icon>
+                <p class="text-h6 font-weight-bold mb-0">訊息已送出</p>
+                <p class="text-body-2 text-medium-emphasis mb-0">感謝您的來信，我會盡快回覆。</p>
               </div>
             </v-expand-transition>
 
             <!-- 表單 -->
-            <v-form v-if="!submitted" @submit.prevent="handleSubmit">
+            <v-form v-if="!submitted" @submit.prevent="handleSubmit" class="d-flex flex-column ga-6">
               <v-row>
                 <v-col cols="12" sm="6">
-                  <div class="form-group mb-6">
-                    <label class="form-label text-caption text-medium-emphasis mb-2 d-block">姓名</label>
+                  <div class="d-flex flex-column ga-2">
+                    <label class="form-label text-caption text-medium-emphasis">姓名</label>
                     <v-text-field
                       v-model="form.name"
                       placeholder="請輸入您的姓名"
@@ -114,8 +114,8 @@ function handleSubmit() {
                   </div>
                 </v-col>
                 <v-col cols="12" sm="6">
-                  <div class="form-group mb-6">
-                    <label class="form-label text-caption text-medium-emphasis mb-2 d-block">Email</label>
+                  <div class="d-flex flex-column ga-2">
+                    <label class="form-label text-caption text-medium-emphasis">Email</label>
                     <v-text-field
                       v-model="form.email"
                       placeholder="your@email.com"
@@ -128,8 +128,8 @@ function handleSubmit() {
                 </v-col>
               </v-row>
 
-              <div class="form-group mb-8">
-                <label class="form-label text-caption text-medium-emphasis mb-2 d-block">訊息</label>
+              <div class="d-flex flex-column ga-2">
+                <label class="form-label text-caption text-medium-emphasis">訊息</label>
                 <v-textarea
                   v-model="form.message"
                   placeholder="請輸入您想說的話..."

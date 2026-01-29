@@ -5,11 +5,11 @@ const summary = resumeData.summary
 </script>
 
 <template>
-  <section class="anim-fade-in">
+  <section class="d-flex flex-column ga-4 anim-fade-in">
     <!-- 區塊標題 -->
-    <div class="section-header mb-6">
-      <p class="text-overline text-medium-emphasis mb-2 letter-spacing-wide">ABOUT</p>
-      <h2 class="text-h5 font-weight-bold text-primary">關於我</h2>
+    <div class="section-header d-flex flex-column ga-1">
+      <p class="text-overline text-medium-emphasis mb-0 letter-spacing-wide">ABOUT</p>
+      <h2 class="text-h6 font-weight-bold text-primary mb-0">關於我</h2>
     </div>
 
     <!-- 簡介內容 -->
