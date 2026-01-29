@@ -6,6 +6,9 @@ import MdiLanguageTypescript from '~icons/mdi/language-typescript'
 import MdiCloud from '~icons/mdi/cloud'
 import MdiDocker from '~icons/mdi/docker'
 
+const { container, spacing } = useLayoutConfig()
+const { getListDelay } = useAnimationConfig()
+
 interface Skill {
   icon: Component
   name: string
@@ -31,12 +34,15 @@ const skills: Skill[] = [
 
     <!-- Hero Section -->
     <section class="hero-section relative z-10">
-      <div class="max-w-6xl mx-auto px-6 py-16 md:py-20">
+      <v-container
+        :style="container.style"
+        :class="[spacing.sectionTitle, spacing.containerPadding]"
+      >
         <div class="flex flex-col md:flex-row items-center justify-center gap-12 md:gap-16">
           <HomeAvatarCard class="flex-shrink-0" />
           <HomeAboutMe />
         </div>
-      </div>
+      </v-container>
     </section>
 
     <!-- 簡約分隔線 -->
@@ -45,11 +51,18 @@ const skills: Skill[] = [
     </div>
 
     <!-- 技術展示區 -->
-    <section class="skills-section py-16 relative z-10">
-      <div class="max-w-6xl mx-auto px-6">
+    <section class="skills-section relative z-10">
+      <v-container
+        :style="container.style"
+        :class="[spacing.sectionContent, spacing.containerPadding]"
+      >
         <div class="text-center mb-12 anim-fade-in">
-          <p class="text-xs text-muted mb-2 letter-spacing-wide uppercase">EXPERTISE</p>
-          <h2 class="text-2xl font-bold text-primary font-heading">專業領域</h2>
+          <p class="text-xs text-muted mb-2 letter-spacing-wide uppercase">
+            EXPERTISE
+          </p>
+          <h2 class="text-2xl font-bold text-primary font-heading">
+            專業領域
+          </h2>
         </div>
 
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-6">
@@ -57,16 +70,23 @@ const skills: Skill[] = [
             v-for="(skill, index) in skills"
             :key="skill.name"
             class="skill-item text-center cursor-pointer p-6"
-            :style="{ animationDelay: `${300 + index * 150}ms` }"
+            :style="{ animationDelay: getListDelay(index, 300) }"
           >
             <div class="skill-icon-wrapper w-18 h-18 rounded-full border border-[var(--color-border)] flex items-center justify-center mx-auto mb-4 bg-white transition-all duration-300">
-              <component :is="skill.icon" class="text-3xl" />
+              <component
+                :is="skill.icon"
+                class="text-3xl"
+              />
             </div>
-            <div class="text-sm font-bold mb-1">{{ skill.name }}</div>
-            <div class="text-xs text-muted">{{ skill.desc }}</div>
+            <div class="text-sm font-bold mb-1">
+              {{ skill.name }}
+            </div>
+            <div class="text-xs text-muted">
+              {{ skill.desc }}
+            </div>
           </div>
         </div>
-      </div>
+      </v-container>
     </section>
   </div>
 </template>

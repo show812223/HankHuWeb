@@ -1,7 +1,8 @@
 import type { ResumeData } from '~/types/resume'
 
 export const resumeData: ResumeData = {
-  summary: '專注於 Vue 3 / Nuxt 3 的前端工程師，擁有 6 年以上企業級 Web 應用開發經驗。擅長前端架構設計、CI/CD 流程建置與團隊技術指導，致力於打造高效、可維護的現代化前端解決方案。',
+  summary:
+    '擁有 6 年經驗的前端技術主管，擅長帶領團隊進行大型專案轉型與技術升級。主導多項產品從舊有架構遷移至 Vue 3 / Nuxt 4 與 Monorepo 體系，並成功導入 AI Code Review 與 AI 驅動的開發工作流（Claude Skills / Playwright），大幅優化研發品質與交付速度。專精於前端工程化，從介面開發、自動化測試到佈署流程，建構完整的技術閉環。',
 
   languages: [
     { name: '中文', level: '母語', icon: 'mdi-ideogram-cjk' },
@@ -21,16 +22,6 @@ export const resumeData: ResumeData = {
       description: '使用 Nuxt 3 + Vuetify 打造的現代化個人履歷網站，部署於 Cloudflare Workers。',
       technologies: ['Nuxt 3', 'Vue 3', 'Vuetify', 'TypeScript', 'Cloudflare'],
       github: 'https://github.com/show812223/HankHuWeb',
-    },
-    {
-      name: '企業級前端框架',
-      description: '為公司建立的前端開發框架，包含組件庫、工具函數與最佳實踐指南。',
-      technologies: ['Vue 3', 'TypeScript', 'Vite', 'Vitest'],
-    },
-    {
-      name: 'Azure DevOps CI/CD Pipeline',
-      description: '設計與實作自動化部署流程，支援多環境部署與自動化測試。',
-      technologies: ['Azure DevOps', 'Docker', 'YAML', 'Shell Script'],
     },
   ],
 
@@ -112,7 +103,22 @@ export const resumeData: ResumeData = {
         '建立與優化 CI/CD 流程，使用 Azure DevOps 實現自動化部署',
         '負責新人培訓與技術分享，提升團隊技術能力',
       ],
-      technologies: ['Vue 3', 'Nuxt 3', 'TypeScript', 'Vuetify', 'Azure DevOps', 'Docker', 'Git', 'REST API', 'Vite', 'Pinia', 'SCSS', 'Jest', 'Cypress', 'Figma'],
+      technologies: [
+        'Vue 3',
+        'Nuxt 3',
+        'TypeScript',
+        'Vuetify',
+        'Azure DevOps',
+        'Docker',
+        'Git',
+        'REST API',
+        'Vite',
+        'Pinia',
+        'SCSS',
+        'Jest',
+        'Cypress',
+        'Figma',
+      ],
     },
     {
       company: '衛武資訊股份有限公司',
@@ -127,7 +133,16 @@ export const resumeData: ResumeData = {
         '與後端團隊協作，串接 RESTful API 實現業務功能',
         '參與系統效能優化與使用者體驗改善',
       ],
-      technologies: ['Vue 3', 'Vue 2', 'TypeScript', 'JavaScript', 'Vuetify', 'HTML5', 'CSS3', 'SCSS'],
+      technologies: [
+        'Vue 3',
+        'Vue 2',
+        'TypeScript',
+        'JavaScript',
+        'Vuetify',
+        'HTML5',
+        'CSS3',
+        'SCSS',
+      ],
     },
   ],
 
@@ -154,14 +169,14 @@ export const resumeData: ResumeData = {
       code: 'AI-102',
       issuer: 'Microsoft',
       date: '',
-      url: 'https://learn.microsoft.com/credentials',
+      url: 'https://learn.microsoft.com/api/credentials/share/zh-tw/31709189/47ACF93E772F9797?sharingId=458C563EE9B36A54',
     },
     {
       name: 'Azure Data Fundamentals',
       code: 'DP-900',
       issuer: 'Microsoft',
       date: '',
-      url: 'https://learn.microsoft.com/credentials',
+      url: 'https://learn.microsoft.com/api/credentials/share/zh-tw/31709189/726CBD3C69AF5963?sharingId=458C563EE9B36A54',
     },
   ],
 }

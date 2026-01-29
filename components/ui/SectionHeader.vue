@@ -8,14 +8,20 @@ defineProps<{
 <template>
   <div class="section-header mb-8">
     <div class="flex items-center gap-3 mb-2">
-      <span v-if="$slots.icon" class="section-icon text-2xl flex items-center">
+      <span
+        v-if="$slots.icon"
+        class="section-icon text-2xl flex items-center"
+      >
         <slot name="icon" />
       </span>
       <h2 class="section-title text-2xl font-medium font-heading">
         {{ title }}
       </h2>
     </div>
-    <p v-if="subtitle" class="section-subtitle text-base text-muted ml-10">
+    <p
+      v-if="subtitle"
+      class="section-subtitle text-base text-muted ml-10"
+    >
       {{ subtitle }}
     </p>
     <div class="section-divider mt-4" />

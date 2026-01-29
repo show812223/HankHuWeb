@@ -1,29 +1,42 @@
 <script setup lang="ts">
-import { NCard, NTag } from 'naive-ui'
 import { resumeData } from '~/data/resume'
 import MdiGithub from '~icons/mdi/github'
 import MdiOpenInNew from '~icons/mdi/open-in-new'
 import MdiArrowRight from '~icons/mdi/arrow-right'
 
+const { getListDelay } = useAnimationConfig()
+
 const projects = resumeData.projects
 </script>
 
 <template>
-  <div class="projects-page min-h-screen relative">
+  <div class="projects-page min-h-screen position-relative">
     <!-- 日式裝飾 -->
     <div class="page-decoration">
       <div class="deco-circle" />
     </div>
 
     <!-- 頁面標題 -->
-    <section class="page-header py-16 relative z-10">
-      <div class="max-w-6xl mx-auto px-6">
+    <section
+      class="page-header py-16 position-relative"
+      style="z-index: 10;"
+    >
+      <v-container style="max-width: 1152px;">
         <div class="text-center anim-fade-in">
-          <p class="text-xs text-muted mb-3 letter-spacing-wide uppercase">WORKS</p>
-          <h1 class="text-4xl font-bold text-primary mb-2 font-heading">作品集</h1>
-          <p class="text-base text-muted">參與或獨立開發的專案</p>
+          <p
+            class="text-caption text-medium-emphasis mb-3"
+            style="letter-spacing: 0.3em;"
+          >
+            WORKS
+          </p>
+          <h1 class="text-h3 font-weight-bold text-primary mb-2 font-heading">
+            作品集
+          </h1>
+          <p class="text-body-1 text-medium-emphasis">
+            參與或獨立開發的專案
+          </p>
         </div>
-      </div>
+      </v-container>
     </section>
 
     <!-- 日式分隔線 -->
@@ -32,41 +45,52 @@ const projects = resumeData.projects
     </div>
 
     <!-- 專案列表 -->
-    <div class="max-w-6xl mx-auto px-6 py-12">
+    <v-container
+      class="py-12"
+      style="max-width: 1152px;"
+    >
       <div class="projects-list">
-        <NCard
+        <v-card
           v-for="(project, index) in projects"
           :key="project.name"
           class="project-card mb-6"
-          :style="{ animationDelay: `${200 + index * 150}ms` }"
+          :style="{ animationDelay: getListDelay(index, 200) }"
+          variant="outlined"
         >
-          <div class="flex flex-col md:flex-row">
+          <div class="d-flex flex-column flex-md-row">
             <!-- 專案編號 -->
-            <div class="project-number p-6 flex items-center justify-center">
+            <div class="project-number pa-6 d-flex align-center justify-center">
               <span class="number-text">{{ String(index + 1).padStart(2, '0') }}</span>
             </div>
 
             <!-- 專案內容 -->
-            <div class="flex-grow p-6">
-              <h3 class="text-lg font-bold mb-3">{{ project.name }}</h3>
-              <p class="text-sm text-muted mb-4 leading-relaxed">
+            <div class="flex-grow-1 pa-6">
+              <h3 class="text-h6 font-weight-bold mb-3">
+                {{ project.name }}
+              </h3>
+              <p
+                class="text-body-2 text-medium-emphasis mb-4"
+                style="line-height: 1.6;"
+              >
                 {{ project.description }}
               </p>
 
               <!-- 技術標籤 -->
-              <div class="flex flex-wrap gap-2 mb-4">
-                <NTag
+              <div class="d-flex flex-wrap ga-2 mb-4">
+                <v-chip
                   v-for="tech in project.technologies"
                   :key="tech"
                   size="small"
-                  round
                 >
                   {{ tech }}
-                </NTag>
+                </v-chip>
               </div>
 
               <!-- 連結 -->
-              <div v-if="project.url || project.github" class="flex gap-4">
+              <div
+                v-if="project.url || project.github"
+                class="d-flex ga-4"
+              >
                 <a
                   v-if="project.url"
                   :href="project.url"
@@ -88,12 +112,14 @@ const projects = resumeData.projects
               </div>
             </div>
           </div>
-        </NCard>
+        </v-card>
       </div>
 
       <!-- GitHub CTA -->
       <div class="text-center mt-16 anim-fade-in anim-delay-600">
-        <p class="text-sm text-muted mb-4">查看更多專案</p>
+        <p class="text-body-2 text-medium-emphasis mb-4">
+          查看更多專案
+        </p>
         <a
           href="https://github.com/show812223"
           target="_blank"
@@ -104,7 +130,7 @@ const projects = resumeData.projects
           <MdiArrowRight class="w-4 h-4 ml-1" />
         </a>
       </div>
-    </div>
+    </v-container>
   </div>
 </template>
 
@@ -156,7 +182,7 @@ const projects = resumeData.projects
   font-family: 'Noto Serif JP', serif;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 960px) {
   .project-number {
     border-right: none;
     border-bottom: 1px solid var(--color-border);
