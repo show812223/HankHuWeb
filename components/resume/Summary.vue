@@ -7,14 +7,14 @@ const summary = resumeData.summary
 <template>
   <section class="anim-fade-in">
     <!-- 區塊標題 -->
-    <div class="section-header mb-6 pl-4 relative">
-      <p class="text-xs text-muted mb-2 letter-spacing-wider uppercase">ABOUT</p>
-      <h2 class="text-xl font-bold text-primary font-heading">關於我</h2>
+    <div class="mb-6 pl-4 position-relative section-header">
+      <p class="text-overline text-medium-emphasis mb-2">ABOUT</p>
+      <h2 class="text-h6 font-weight-bold text-primary font-heading">關於我</h2>
     </div>
 
     <!-- 簡介內容 -->
-    <div class="summary-content pl-4 border-l border-[var(--color-border)]">
-      <p class="text-base mb-0 leading-loose">
+    <div class="pl-4 summary-content">
+      <p class="text-body-1 mb-0" style="line-height: 1.8;">
         {{ summary }}
       </p>
     </div>
@@ -30,6 +30,10 @@ const summary = resumeData.summary
   bottom: 4px;
   width: 2px;
   background: rgba(78, 69, 64, 0.3);
+}
+
+.summary-content {
+  border-left: 1px solid rgba(78, 69, 64, 0.1);
 }
 
 .font-heading {

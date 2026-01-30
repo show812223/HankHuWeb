@@ -1,37 +1,26 @@
 <script setup lang="ts">
-import { NCard } from 'naive-ui'
 import { resumeData } from '~/data/resume'
-import MdiStar from '~icons/mdi/star'
-import MdiVuejs from '~icons/mdi/vuejs'
-import MdiLanguageTypescript from '~icons/mdi/language-typescript'
-import MdiCloud from '~icons/mdi/cloud'
-import MdiDocker from '~icons/mdi/docker'
-import MdiSitemap from '~icons/mdi/sitemap'
-import MdiPackageVariant from '~icons/mdi/package-variant'
-import type { Component } from 'vue'
 
 const skills = resumeData.skills
 
-const iconMap: Record<string, Component> = {
-  'mdi-vuejs': MdiVuejs,
-  'mdi-language-typescript': MdiLanguageTypescript,
-  'mdi-cloud': MdiCloud,
-  'mdi-docker': MdiDocker,
-  'mdi-sitemap': MdiSitemap,
+const iconMap: Record<string, string> = {
+  'mdi-vuejs': 'mdi-vuejs',
+  'mdi-language-typescript': 'mdi-language-typescript',
+  'mdi-cloud': 'mdi-cloud',
+  'mdi-docker': 'mdi-docker',
+  'mdi-sitemap': 'mdi-sitemap',
 }
-
-const defaultIcon = MdiPackageVariant
 </script>
 
 <template>
   <section class="anim-slide-up anim-delay-100">
-    <NCard class="p-5">
-      <div class="flex items-center mb-5">
-        <MdiStar class="text-xl mr-2" />
-        <h3 class="text-lg font-bold font-heading">技術技能</h3>
+    <v-card class="pa-5">
+      <div class="d-flex align-center mb-5">
+        <v-icon icon="mdi-star" class="mr-2" />
+        <h3 class="text-subtitle-1 font-weight-bold font-heading">技術技能</h3>
       </div>
 
-      <div class="skills-list flex flex-col gap-5">
+      <div class="d-flex flex-column ga-5">
         <div
           v-for="(skill, index) in skills"
           :key="skill.category"
@@ -39,20 +28,20 @@ const defaultIcon = MdiPackageVariant
           :style="{ animationDelay: `${200 + index * 80}ms` }"
         >
           <!-- 類別標題 -->
-          <div class="flex items-center mb-3">
-            <component :is="iconMap[skill.icon] || defaultIcon" class="text-lg mr-2" />
-            <span class="text-sm font-medium">{{ skill.category }}</span>
+          <div class="d-flex align-center mb-3">
+            <v-icon :icon="iconMap[skill.icon] || 'mdi-package-variant'" size="small" class="mr-2" />
+            <span class="text-body-2 font-weight-medium">{{ skill.category }}</span>
           </div>
 
           <!-- 技能項目 -->
-          <div class="skill-items flex flex-col gap-2 pl-6 border-l border-[var(--color-border)]">
+          <div class="skill-items d-flex flex-column ga-2 pl-6">
             <div
               v-for="item in skill.items"
               :key="item.name"
-              class="skill-item flex justify-between items-center py-1"
+              class="d-flex justify-space-between align-center py-1"
             >
-              <span class="text-sm">{{ item.name }}</span>
-              <div v-if="item.level" class="flex gap-1">
+              <span class="text-body-2">{{ item.name }}</span>
+              <div v-if="item.level" class="d-flex ga-1">
                 <span
                   v-for="n in 5"
                   :key="n"
@@ -64,7 +53,7 @@ const defaultIcon = MdiPackageVariant
           </div>
         </div>
       </div>
-    </NCard>
+    </v-card>
   </section>
 </template>
 
@@ -85,16 +74,20 @@ const defaultIcon = MdiPackageVariant
   }
 }
 
+.skill-items {
+  border-left: 1px solid rgba(78, 69, 64, 0.1);
+}
+
 .level-dot {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--color-border);
+  background: rgba(78, 69, 64, 0.15);
   transition: background 0.3s ease;
 }
 
 .level-dot--active {
-  background: var(--color-primary);
+  background: rgb(var(--v-theme-primary));
 }
 
 .font-heading {

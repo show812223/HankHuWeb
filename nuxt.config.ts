@@ -1,9 +1,14 @@
 import Icons from 'unplugin-icons/vite'
+import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   // 全域 CSS
   css: ['~/assets/css/animations.css', '~/assets/css/main.css'],
+
+  build: {
+    transpile: ['vuetify'],
+  },
 
   // https://nuxt.com/modules
   modules: [
@@ -11,10 +16,20 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@nuxtjs/tailwindcss',
     '@nuxtjs/google-fonts',
+    (_options, nuxt) => {
+      nuxt.hooks.hook('vite:extendConfig', (config) => {
+        config.plugins?.push(vuetify({ autoImport: true }))
+      })
+    },
   ],
 
-  // Vite 配置 - unplugin-icons
+  // Vite 配置
   vite: {
+    vue: {
+      template: {
+        transformAssetUrls,
+      },
+    },
     plugins: [
       Icons({
         compiler: 'vue3',

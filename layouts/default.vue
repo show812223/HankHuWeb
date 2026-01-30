@@ -1,45 +1,6 @@
 <script setup lang="ts">
-import {
-  NConfigProvider,
-  NLayout,
-  NLayoutHeader,
-  NLayoutContent,
-  NLayoutFooter,
-  NButton,
-  NDrawer,
-  NDrawerContent,
-  type GlobalThemeOverrides,
-} from 'naive-ui'
-import MdiMenu from '~icons/mdi/menu'
-import MdiGithub from '~icons/mdi/github'
-import MdiLinkedin from '~icons/mdi/linkedin'
-
 const route = useRoute()
-const showMobileMenu = ref(false)
-const isMobile = ref(false)
-
-// 主題覆寫 - 日系溫暖色調
-const themeOverrides: GlobalThemeOverrides = {
-  common: {
-    primaryColor: '#4E4540',
-    primaryColorHover: '#3A3330',
-    primaryColorPressed: '#3A3330',
-    primaryColorSuppl: '#8B7355',
-    borderRadius: '8px',
-    borderRadiusSmall: '6px',
-    fontFamily: '"Zen Maru Gothic", "Noto Sans TC", sans-serif',
-  },
-  Card: {
-    borderRadius: '12px',
-  },
-  Button: {
-    borderRadiusMedium: '8px',
-    borderRadiusLarge: '12px',
-  },
-  Tag: {
-    borderRadius: '999px',
-  },
-}
+const drawer = ref(false)
 
 const menuItems = [
   { label: 'Home', key: '/', titleJa: 'ホーム' },
@@ -55,134 +16,104 @@ const activeKey = computed(() => {
 
 function handleMenuSelect(key: string) {
   navigateTo(key)
-  showMobileMenu.value = false
+  drawer.value = false
 }
-
-function checkMobile() {
-  isMobile.value = window.innerWidth < 768
-}
-
-onMounted(() => {
-  checkMobile()
-  window.addEventListener('resize', checkMobile)
-})
-
-onUnmounted(() => {
-  window.removeEventListener('resize', checkMobile)
-})
 </script>
 
 <template>
-  <NConfigProvider :theme-overrides="themeOverrides">
-    <NLayout class="min-h-screen">
-      <!-- 導航列 -->
-      <NLayoutHeader class="nav-bar h-20 flex items-center px-6 fixed top-0 left-0 right-0 z-50">
-        <div class="max-w-6xl mx-auto w-full flex items-center justify-between">
-          <!-- Logo -->
-          <NuxtLink to="/" class="logo-link flex items-center no-underline">
-            <span class="text-xl font-bold text-primary tracking-widest">胡聖翰</span>
+  <v-app>
+    <!-- 導航列 -->
+    <v-app-bar elevation="0" class="nav-bar">
+      <v-container class="d-flex align-center py-0" style="max-width: 1200px;">
+        <NuxtLink to="/" class="text-decoration-none">
+          <span class="text-h6 font-weight-bold text-primary" style="letter-spacing: 0.1em;">胡聖翰</span>
+        </NuxtLink>
+
+        <v-spacer />
+
+        <!-- Desktop Navigation -->
+        <nav class="d-none d-md-flex ga-6">
+          <NuxtLink
+            v-for="item in menuItems"
+            :key="item.key"
+            :to="item.key"
+            class="nav-link"
+            :class="{ 'nav-link--active': activeKey === item.key }"
+          >
+            {{ item.label }}
           </NuxtLink>
+        </nav>
 
-          <!-- Desktop Navigation -->
-          <nav v-if="!isMobile" class="flex items-center gap-8">
-            <NuxtLink
-              v-for="item in menuItems"
-              :key="item.key"
-              :to="item.key"
-              class="nav-link"
-              :class="{ 'nav-link--active': activeKey === item.key }"
-            >
-              <span class="nav-link-text">{{ item.label }}</span>
-            </NuxtLink>
-          </nav>
+        <!-- Mobile Menu Button -->
+        <v-btn icon="mdi-menu" variant="text" class="d-md-none" @click="drawer = true" />
+      </v-container>
+    </v-app-bar>
 
-          <!-- Mobile Menu Button -->
-          <NButton v-else text @click="showMobileMenu = true">
-            <template #icon>
-              <MdiMenu class="text-2xl" />
-            </template>
-          </NButton>
-        </div>
-      </NLayoutHeader>
+    <!-- Mobile Drawer -->
+    <v-navigation-drawer v-model="drawer" location="right" temporary width="280">
+      <v-list-item title="選單" />
+      <v-divider />
+      <v-list>
+        <v-list-item
+          v-for="item in menuItems"
+          :key="item.key"
+          :active="activeKey === item.key"
+          @click="handleMenuSelect(item.key)"
+        >
+          <v-list-item-title>{{ item.label }}</v-list-item-title>
+          <template #append>
+            <span class="text-medium-emphasis text-body-2">{{ item.titleJa }}</span>
+          </template>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
 
-      <!-- Mobile Drawer -->
-      <NDrawer v-model:show="showMobileMenu" placement="right" :width="280">
-        <NDrawerContent title="選單" closable>
-          <div class="flex flex-col gap-2 py-4">
-            <div
-              v-for="item in menuItems"
-              :key="item.key"
-              class="mobile-menu-item px-4 py-3 rounded-lg cursor-pointer flex justify-between items-center"
-              :class="{ 'mobile-menu-item--active': activeKey === item.key }"
-              @click="handleMenuSelect(item.key)"
-            >
-              <span>{{ item.label }}</span>
-              <span class="text-sm text-muted">{{ item.titleJa }}</span>
-            </div>
-          </div>
-        </NDrawerContent>
-      </NDrawer>
-
-      <!-- Main Content -->
-      <NLayoutContent class="pt-20">
-        <NuxtPage :transition="{ name: 'page', mode: 'out-in' }" />
-      </NLayoutContent>
+    <!-- Main Content -->
+    <v-main>
+      <NuxtPage :transition="{ name: 'page', mode: 'out-in' }" />
 
       <!-- Footer -->
-      <NLayoutFooter class="site-footer py-8 border-t border-primary">
-        <div class="max-w-6xl mx-auto px-6">
-          <div class="flex flex-col items-center gap-4">
+      <v-footer class="bg-transparent py-8">
+        <v-container style="max-width: 1200px;">
+          <div class="d-flex flex-column align-center ga-4">
             <!-- 社交連結 -->
-            <div class="flex gap-4">
-              <a
+            <div class="d-flex ga-3">
+              <v-btn
+                icon="mdi-github"
+                variant="outlined"
+                size="small"
                 href="https://github.com/show812223"
                 target="_blank"
-                class="footer-link"
-                aria-label="GitHub"
-              >
-                <MdiGithub class="w-5 h-5" />
-              </a>
-              <a
+              />
+              <v-btn
+                icon="mdi-linkedin"
+                variant="outlined"
+                size="small"
                 href="https://www.linkedin.com/in/%E8%81%96%E7%BF%B0-%E8%83%A1-b435b9285/"
                 target="_blank"
-                class="footer-link"
-                aria-label="LinkedIn"
-              >
-                <MdiLinkedin class="w-5 h-5" />
-              </a>
+              />
             </div>
-
-            <!-- 版權 -->
-            <p class="text-sm text-muted">
+            <p class="text-body-2 text-medium-emphasis">
               &copy; {{ new Date().getFullYear() }} Sheng Han Hu
             </p>
           </div>
-        </div>
-      </NLayoutFooter>
-    </NLayout>
-  </NConfigProvider>
+        </v-container>
+      </v-footer>
+    </v-main>
+  </v-app>
 </template>
 
 <style scoped>
-/* 導航列 */
 .nav-bar {
-  background: rgba(250, 235, 215, 0.9);
+  background: rgba(250, 235, 215, 0.9) !important;
   backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
 }
 
-.logo-link {
-  text-decoration: none;
-}
-
-/* 導航連結 */
 .nav-link {
   position: relative;
   text-decoration: none;
-  color: var(--color-text);
+  color: rgb(var(--v-theme-on-background));
   font-size: 0.875rem;
-  font-weight: 400;
-  letter-spacing: 0.05em;
   padding: 0.5rem 0;
   transition: color 0.3s ease;
 }
@@ -194,58 +125,17 @@ onUnmounted(() => {
   left: 0;
   width: 0;
   height: 1px;
-  background: var(--color-primary);
+  background: rgb(var(--v-theme-primary));
   transition: width 0.3s ease;
 }
 
-.nav-link:hover {
-  color: var(--color-primary);
+.nav-link:hover,
+.nav-link--active {
+  color: rgb(var(--v-theme-primary));
 }
 
 .nav-link:hover::after,
 .nav-link--active::after {
   width: 100%;
-}
-
-.nav-link--active {
-  color: var(--color-primary);
-}
-
-/* Mobile Menu */
-.mobile-menu-item {
-  transition: background-color 0.2s ease;
-}
-
-.mobile-menu-item:hover {
-  background-color: rgba(78, 69, 64, 0.05);
-}
-
-.mobile-menu-item--active {
-  background-color: rgba(78, 69, 64, 0.1);
-  color: var(--color-primary);
-}
-
-/* Footer */
-.site-footer {
-  border-color: var(--color-border);
-}
-
-.footer-link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 1px solid var(--color-border);
-  color: var(--color-text);
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-
-.footer-link:hover {
-  color: var(--color-primary);
-  border-color: rgba(78, 69, 64, 0.3);
-  background: rgba(78, 69, 64, 0.05);
 }
 </style>

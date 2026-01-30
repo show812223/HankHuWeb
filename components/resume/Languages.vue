@@ -1,46 +1,42 @@
 <script setup lang="ts">
-import { NCard, NTag } from 'naive-ui'
 import { resumeData } from '~/data/resume'
-import MdiTranslate from '~icons/mdi/translate'
-import MdiIdeogramCjk from '~icons/mdi/ideogram-cjk'
-import MdiAlphabetical from '~icons/mdi/alphabetical'
-import MdiWeb from '~icons/mdi/web'
-import type { Component } from 'vue'
 
 const languages = resumeData.languages
 
-const iconMap: Record<string, Component> = {
-  'mdi-ideogram-cjk': MdiIdeogramCjk,
-  'mdi-alphabetical': MdiAlphabetical,
+const iconMap: Record<string, string> = {
+  'mdi-ideogram-cjk': 'mdi-ideogram-cjk',
+  'mdi-alphabetical': 'mdi-alphabetical',
 }
-
-const defaultIcon = MdiWeb
 </script>
 
 <template>
   <section class="anim-slide-up anim-delay-200">
     <UiSectionHeader title="語言能力">
       <template #icon>
-        <MdiTranslate />
+        <v-icon icon="mdi-translate" />
       </template>
     </UiSectionHeader>
 
-    <div class="grid grid-cols-2 gap-4">
-      <NCard
+    <v-row dense>
+      <v-col
         v-for="(lang, index) in languages"
         :key="lang.name"
-        class="text-center p-6 lang-card"
-        :style="{ animationDelay: `${300 + index * 100}ms` }"
+        cols="6"
       >
-        <component :is="iconMap[lang.icon] || defaultIcon" class="text-3xl mb-4 mx-auto" />
-        <div class="text-lg font-medium mb-3">
-          {{ lang.name }}
-        </div>
-        <NTag size="small" round type="primary">
-          {{ lang.level }}
-        </NTag>
-      </NCard>
-    </div>
+        <v-card
+          class="text-center pa-6 lang-card"
+          :style="{ animationDelay: `${300 + index * 100}ms` }"
+        >
+          <v-icon :icon="iconMap[lang.icon] || 'mdi-web'" size="32" class="mb-4" />
+          <div class="text-subtitle-1 font-weight-medium mb-3">
+            {{ lang.name }}
+          </div>
+          <v-chip size="small" color="primary">
+            {{ lang.level }}
+          </v-chip>
+        </v-card>
+      </v-col>
+    </v-row>
   </section>
 </template>
 
@@ -48,6 +44,7 @@ const defaultIcon = MdiWeb
 .lang-card {
   opacity: 0;
   animation: popIn 400ms cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+  border: 1px solid rgba(78, 69, 64, 0.1);
   transition: transform 0.3s ease;
 }
 

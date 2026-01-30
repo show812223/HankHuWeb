@@ -1,22 +1,9 @@
 <script setup lang="ts">
-import { markRaw } from 'vue'
-import type { Component } from 'vue'
-import MdiVuejs from '~icons/mdi/vuejs'
-import MdiLanguageTypescript from '~icons/mdi/language-typescript'
-import MdiCloud from '~icons/mdi/cloud'
-import MdiDocker from '~icons/mdi/docker'
-
-interface Skill {
-  icon: Component
-  name: string
-  desc: string
-}
-
-const skills: Skill[] = [
-  { icon: markRaw(MdiVuejs), name: 'Vue / Nuxt', desc: '前端框架' },
-  { icon: markRaw(MdiLanguageTypescript), name: 'TypeScript', desc: '型別安全' },
-  { icon: markRaw(MdiCloud), name: 'Azure', desc: '雲端服務' },
-  { icon: markRaw(MdiDocker), name: 'Docker', desc: '容器技術' },
+const skills = [
+  { icon: 'mdi-vuejs', name: 'Vue / Nuxt', desc: '前端框架' },
+  { icon: 'mdi-language-typescript', name: 'TypeScript', desc: '型別安全' },
+  { icon: 'mdi-cloud', name: 'Azure', desc: '雲端服務' },
+  { icon: 'mdi-docker', name: 'Docker', desc: '容器技術' },
 ]
 </script>
 
@@ -30,13 +17,13 @@ const skills: Skill[] = [
     </div>
 
     <!-- Hero Section -->
-    <section class="hero-section relative z-10">
-      <div class="max-w-6xl mx-auto px-6 py-16 md:py-20">
-        <div class="flex flex-col md:flex-row items-center justify-center gap-12 md:gap-16">
+    <section class="relative z-10">
+      <v-container class="py-16" style="max-width: 1200px;">
+        <div class="d-flex flex-column flex-md-row align-center justify-center ga-12 ga-md-16">
           <HomeAvatarCard class="flex-shrink-0" />
           <HomeAboutMe />
         </div>
-      </div>
+      </v-container>
     </section>
 
     <!-- 簡約分隔線 -->
@@ -45,28 +32,33 @@ const skills: Skill[] = [
     </div>
 
     <!-- 技術展示區 -->
-    <section class="skills-section py-16 relative z-10">
-      <div class="max-w-6xl mx-auto px-6">
+    <section class="py-16 relative z-10">
+      <v-container style="max-width: 1200px;">
         <div class="text-center mb-12 anim-fade-in">
-          <p class="text-xs text-muted mb-2 letter-spacing-wide uppercase">EXPERTISE</p>
-          <h2 class="text-2xl font-bold text-primary font-heading">專業領域</h2>
+          <p class="text-overline text-medium-emphasis mb-2">EXPERTISE</p>
+          <h2 class="text-h5 font-weight-bold text-primary font-heading">專業領域</h2>
         </div>
 
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-6">
-          <div
+        <v-row justify="center">
+          <v-col
             v-for="(skill, index) in skills"
             :key="skill.name"
-            class="skill-item text-center cursor-pointer p-6"
-            :style="{ animationDelay: `${300 + index * 150}ms` }"
+            cols="6"
+            sm="3"
           >
-            <div class="skill-icon-wrapper w-18 h-18 rounded-full border border-[var(--color-border)] flex items-center justify-center mx-auto mb-4 bg-white transition-all duration-300">
-              <component :is="skill.icon" class="text-3xl" />
+            <div
+              class="skill-item text-center cursor-pointer pa-6"
+              :style="{ animationDelay: `${300 + index * 150}ms` }"
+            >
+              <v-avatar size="72" variant="outlined" class="mb-4 skill-icon">
+                <v-icon :icon="skill.icon" size="32" />
+              </v-avatar>
+              <div class="text-body-2 font-weight-bold mb-1">{{ skill.name }}</div>
+              <div class="text-caption text-medium-emphasis">{{ skill.desc }}</div>
             </div>
-            <div class="text-sm font-bold mb-1">{{ skill.name }}</div>
-            <div class="text-xs text-muted">{{ skill.desc }}</div>
-          </div>
-        </div>
-      </div>
+          </v-col>
+        </v-row>
+      </v-container>
     </section>
   </div>
 </template>
@@ -99,15 +91,7 @@ const skills: Skill[] = [
 
 .zen-line {
   position: absolute;
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    rgba(78, 69, 64, 0.08),
-    transparent
-  );
-}
-
-.zen-line-1 {
+  background: linear-gradient(to bottom, transparent, rgba(78, 69, 64, 0.08), transparent);
   width: 1px;
   height: 200px;
   top: 100px;
@@ -125,14 +109,13 @@ const skills: Skill[] = [
   transform: translateY(-4px);
 }
 
-.skill-item:hover .skill-icon-wrapper {
-  border-color: rgba(78, 69, 64, 0.3);
-  background: rgba(78, 69, 64, 0.08);
+.skill-icon {
+  transition: all 0.3s ease;
 }
 
-.skill-icon-wrapper {
-  width: 72px;
-  height: 72px;
+.skill-item:hover .skill-icon {
+  border-color: rgba(78, 69, 64, 0.3);
+  background: rgba(78, 69, 64, 0.08);
 }
 
 @keyframes gentleFadeUp {

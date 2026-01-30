@@ -6,16 +6,16 @@ defineProps<{
 </script>
 
 <template>
-  <div class="section-header mb-8">
-    <div class="flex items-center gap-3 mb-2">
-      <span v-if="$slots.icon" class="section-icon text-2xl flex items-center">
+  <div class="mb-8">
+    <div class="d-flex align-center ga-3 mb-2">
+      <span v-if="$slots.icon" class="d-flex align-center">
         <slot name="icon" />
       </span>
-      <h2 class="section-title text-2xl font-medium font-heading">
+      <h2 class="text-h6 font-weight-medium font-heading">
         {{ title }}
       </h2>
     </div>
-    <p v-if="subtitle" class="section-subtitle text-base text-muted ml-10">
+    <p v-if="subtitle" class="text-body-2 text-medium-emphasis ml-10" style="max-width: 600px;">
       {{ subtitle }}
     </p>
     <div class="section-divider mt-4" />
@@ -23,24 +23,6 @@ defineProps<{
 </template>
 
 <style scoped>
-.section-header {
-  position: relative;
-}
-
-.section-title {
-  letter-spacing: 0.5px;
-  line-height: 1.3;
-}
-
-.section-subtitle {
-  line-height: 1.6;
-  max-width: 600px;
-}
-
-.section-icon {
-  opacity: 0.9;
-}
-
 .section-divider {
   height: 1px;
   background: linear-gradient(
