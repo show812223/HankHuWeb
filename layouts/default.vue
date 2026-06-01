@@ -25,7 +25,7 @@ function handleMenuSelect(key: string) {
 </script>
 
 <template>
-  <v-layout class="min-h-screen flex-column">
+  <v-layout class="layout-root flex-column">
     <!-- 導航列 -->
     <v-app-bar
       class="nav-bar"
@@ -103,12 +103,12 @@ function handleMenuSelect(key: string) {
     </v-navigation-drawer>
 
     <!-- Main Content -->
-    <v-main class="pt-20">
+    <v-main class="main-content">
       <NuxtPage :transition="{ name: 'page', mode: 'out-in' }" />
     </v-main>
 
     <!-- Footer -->
-    <v-footer class="site-footer py-8 border-t">
+    <v-footer class="site-footer py-8 footer-border">
       <v-container style="max-width: 1152px;">
         <div class="d-flex flex-column align-center ga-4">
           <!-- 社交連結 -->
@@ -119,7 +119,7 @@ function handleMenuSelect(key: string) {
               class="footer-link"
               aria-label="GitHub"
             >
-              <MdiGithub class="w-5 h-5" />
+              <MdiGithub class="footer-icon" />
             </a>
             <a
               href="https://www.linkedin.com/in/%E8%81%96%E7%BF%B0-%E8%83%A1-b435b9285/"
@@ -127,7 +127,7 @@ function handleMenuSelect(key: string) {
               class="footer-link"
               aria-label="LinkedIn"
             >
-              <MdiLinkedin class="w-5 h-5" />
+              <MdiLinkedin class="footer-icon" />
             </a>
           </div>
 
@@ -142,6 +142,24 @@ function handleMenuSelect(key: string) {
 </template>
 
 <style scoped>
+.layout-root {
+  min-height: 100vh;
+}
+
+/* 內容區避開 80px 高的固定導航列 */
+.main-content {
+  padding-top: 80px;
+}
+
+.footer-border {
+  border-top: 1px solid var(--color-border);
+}
+
+.footer-icon {
+  width: 20px;
+  height: 20px;
+}
+
 /* 導航列 */
 .nav-bar {
   background: rgba(250, 235, 215, 0.9) !important;

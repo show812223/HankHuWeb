@@ -7,20 +7,20 @@ defineProps<{
 
 <template>
   <div class="section-header mb-8">
-    <div class="flex items-center gap-3 mb-2">
+    <div class="d-flex align-center ga-3 mb-2">
       <span
         v-if="$slots.icon"
-        class="section-icon text-2xl flex items-center"
+        class="section-icon text-h5 d-flex align-center"
       >
         <slot name="icon" />
       </span>
-      <h2 class="section-title text-2xl font-medium font-heading">
+      <h2 class="section-title text-h5 font-weight-medium font-heading">
         {{ title }}
       </h2>
     </div>
     <p
       v-if="subtitle"
-      class="section-subtitle text-base text-muted ml-10"
+      class="section-subtitle text-body-1 text-muted ms-10"
     >
       {{ subtitle }}
     </p>

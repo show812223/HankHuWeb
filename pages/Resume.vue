@@ -3,26 +3,26 @@ const { container, spacing } = useLayoutConfig()
 </script>
 
 <template>
-  <div class="resume-page min-h-screen relative">
+  <div class="resume-page position-relative">
     <!-- 日式裝飾 -->
     <div class="page-decoration">
       <div class="deco-circle" />
     </div>
 
     <!-- 頁面標題 -->
-    <section class="page-header relative z-10">
+    <section class="page-header position-relative z-above">
       <v-container
         :style="container.style"
         :class="[spacing.sectionTitle, spacing.containerPadding]"
       >
         <div class="text-center anim-fade-in">
-          <p class="text-xs text-muted mb-3 letter-spacing-wide uppercase">
+          <p class="text-caption text-muted mb-3 letter-spacing-wide text-uppercase">
             RESUME
           </p>
-          <h1 class="text-4xl font-bold text-primary mb-2 font-heading">
+          <h1 class="text-h3 font-weight-bold text-primary mb-2 font-heading">
             履歷
           </h1>
-          <p class="text-base text-muted">
+          <p class="text-body-1 text-muted">
             專業背景與技術能力
           </p>
         </div>
@@ -39,15 +39,15 @@ const { container, spacing } = useLayoutConfig()
       :style="container.style"
       :class="[spacing.sectionContent, spacing.containerPadding]"
     >
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+      <div class="resume-grid">
         <!-- 左欄 - 主要內容 -->
-        <div class="lg:col-span-2 flex flex-col gap-10">
+        <div class="resume-main d-flex flex-column ga-10">
           <ResumeSummary />
           <ResumeExperiences />
         </div>
 
         <!-- 右欄 - 側邊欄 -->
-        <div class="flex flex-col gap-8 sidebar-content">
+        <div class="d-flex flex-column ga-8 sidebar-content">
           <ResumeSkills />
           <ResumeLanguages />
           <ResumeEducations />
@@ -59,6 +59,31 @@ const { container, spacing } = useLayoutConfig()
 </template>
 
 <style scoped>
+.resume-page {
+  min-height: 100vh;
+}
+
+.z-above {
+  z-index: 10;
+}
+
+/* 響應式網格 */
+.resume-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+}
+
+@media (min-width: 1024px) {
+  .resume-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .resume-main {
+    grid-column: span 2;
+  }
+}
+
 /* 頁面裝飾 */
 .deco-circle {
   position: absolute;

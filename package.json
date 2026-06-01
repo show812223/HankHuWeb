@@ -18,7 +18,6 @@
     "@mdi/font": "^7.4.47",
     "@nuxt/eslint": "^0.7.5",
     "@nuxthub/core": "^0.10.0",
-    "@nuxtjs/tailwindcss": "latest",
     "nuxt": "latest",
     "vue": "latest",
     "vue-router": "latest",

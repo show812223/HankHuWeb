@@ -38,7 +38,7 @@ const contactInfo: ContactInfo[] = [
 </script>
 
 <template>
-  <div class="contact-page min-h-screen position-relative">
+  <div class="contact-page position-relative">
     <!-- 日式裝飾 -->
     <div class="page-decoration">
       <div class="deco-circle" />
@@ -91,7 +91,7 @@ const contactInfo: ContactInfo[] = [
             <div class="contact-icon-wrapper mb-3">
               <component
                 :is="info.icon"
-                class="w-6 h-6"
+                class="contact-icon"
               />
             </div>
             <p class="text-caption text-medium-emphasis mb-1">
@@ -108,6 +108,15 @@ const contactInfo: ContactInfo[] = [
 </template>
 
 <style scoped>
+.contact-page {
+  min-height: 100vh;
+}
+
+.contact-icon {
+  width: 24px;
+  height: 24px;
+}
+
 /* 頁面裝飾 */
 .deco-circle {
   position: absolute;
