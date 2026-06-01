@@ -1,7 +1,12 @@
 <script setup lang="ts">
 import { resumeData } from '~/data/resume'
 
-const summary = resumeData.summary
+const { yearsOfExperience } = useExperience()
+
+// 將 summary 中的 {years} 佔位符替換為動態計算的年資
+const summary = computed(() =>
+  resumeData.summary.replace('{years}', String(yearsOfExperience.value)),
+)
 </script>
 
 <template>

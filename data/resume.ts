@@ -1,8 +1,10 @@
 import type { ResumeData } from '~/types/resume'
 
 export const resumeData: ResumeData = {
+  careerStartDate: '2018-03',
+
   summary:
-    '擁有 6 年經驗的前端技術主管，擅長帶領團隊進行大型專案轉型與技術升級。主導多項產品從舊有架構遷移至 Vue 3 / Nuxt 4 與 Monorepo 體系，並成功導入 AI Code Review 與 AI 驅動的開發工作流（Claude Skills / Playwright），大幅優化研發品質與交付速度。專精於前端工程化，從介面開發、自動化測試到佈署流程，建構完整的技術閉環。',
+    '擁有 {years} 年經驗的前端技術主管，擅長帶領團隊進行大型專案轉型與技術升級。主導多項產品從舊有架構遷移至 Vue 3 / Nuxt 4 與 Monorepo 體系，並成功導入 AI Code Review 與 AI 驅動的開發工作流（Claude Skills / Playwright），大幅優化研發品質與交付速度。專精於前端工程化，從介面開發、自動化測試到佈署流程，建構完整的技術閉環。',
 
   languages: [
     { name: '中文', level: '母語', icon: 'mdi-ideogram-cjk' },

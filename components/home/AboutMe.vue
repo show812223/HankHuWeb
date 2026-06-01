@@ -1,4 +1,5 @@
 <script setup lang="ts">
+const { yearsOfExperience } = useExperience()
 </script>
 
 <template>
@@ -39,7 +40,7 @@
         style="min-width: 60px;"
       >
         <p class="text-h5 font-weight-bold text-primary mb-1">
-          6+
+          {{ yearsOfExperience }}+
         </p>
         <p class="text-caption text-medium-emphasis">
           年經驗
