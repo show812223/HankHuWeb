@@ -19,8 +19,8 @@ const contactInfo: ContactInfo[] = [
   {
     icon: markRaw(MdiEmail),
     title: 'Email',
-    value: 'your.email@example.com',
-    href: 'mailto:your.email@example.com',
+    value: 'show812223@gmail.com',
+    href: 'mailto:show812223@gmail.com',
   },
   {
     icon: markRaw(MdiLinkedin),
