@@ -85,7 +85,7 @@ const socialButtons: SocialButton[] = [
         >
           <component
             :is="btn.icon"
-            class="w-5 h-5"
+            class="social-icon"
           />
         </a>
       </div>
@@ -226,6 +226,11 @@ const socialButtons: SocialButton[] = [
   color: var(--color-primary);
   border-color: rgba(78, 69, 64, 0.3);
   background: rgba(78, 69, 64, 0.05);
+}
+
+.social-icon {
+  width: 20px;
+  height: 20px;
 }
 
 @keyframes gentleFadeIn {

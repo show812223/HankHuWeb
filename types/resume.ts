@@ -56,6 +56,7 @@ export interface Project {
 }
 
 export interface ResumeData {
+  careerStartDate: string // 職涯起始日 (YYYY-MM)，用於動態計算年資
   summary: string
   skills: Skill[]
   languages: Language[]

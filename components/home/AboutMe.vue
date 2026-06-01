@@ -1,4 +1,5 @@
 <script setup lang="ts">
+const { yearsOfExperience } = useExperience()
 </script>
 
 <template>
@@ -28,7 +29,7 @@
         class="text-body-1 mb-0"
         style="line-height: 2;"
       >
-        一名專注於 <span class="text-primary font-weight-medium">Nuxt 3</span> 與前端開發的工程師，擁有豐富的全端開發與雲端部署經驗。擅長 <span class="text-primary font-weight-medium">Vue、TypeScript</span> 及 <span class="text-primary font-weight-medium">Azure CI/CD</span>，並熟悉容器化與微服務架構。
+        一名專注於 <span class="text-primary font-weight-medium">Nuxt 4</span> 與前端開發的工程師，擁有豐富的全端開發與雲端部署經驗。擅長 <span class="text-primary font-weight-medium">Vue、TypeScript</span> 及 <span class="text-primary font-weight-medium">Azure CI/CD</span>，並熟悉容器化與微服務架構。
       </p>
     </div>
 
@@ -39,7 +40,7 @@
         style="min-width: 60px;"
       >
         <p class="text-h5 font-weight-bold text-primary mb-1">
-          6+
+          {{ yearsOfExperience }}+
         </p>
         <p class="text-caption text-medium-emphasis">
           年經驗

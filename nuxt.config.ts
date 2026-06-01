@@ -9,7 +9,6 @@ export default defineNuxtConfig({
   modules: [
     '@nuxthub/core',
     '@nuxt/eslint',
-    '@nuxtjs/tailwindcss',
     '@nuxtjs/google-fonts',
     // Vuetify module hook
     (_options, nuxt) => {
@@ -79,10 +78,5 @@ export default defineNuxtConfig({
     display: 'swap',
     prefetch: true,
     preconnect: true,
-  },
-
-  tailwindcss: {
-    exposeConfig: true,
-    viewer: true,
   },
 })

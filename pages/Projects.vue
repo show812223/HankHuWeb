@@ -10,7 +10,7 @@ const projects = resumeData.projects
 </script>
 
 <template>
-  <div class="projects-page min-h-screen position-relative">
+  <div class="projects-page position-relative">
     <!-- 日式裝飾 -->
     <div class="page-decoration">
       <div class="deco-circle" />
@@ -97,7 +97,7 @@ const projects = resumeData.projects
                   target="_blank"
                   class="project-link"
                 >
-                  <MdiOpenInNew class="w-4 h-4 mr-1" />
+                  <MdiOpenInNew class="link-icon-sm me-1" />
                   Demo
                 </a>
                 <a
@@ -106,7 +106,7 @@ const projects = resumeData.projects
                   target="_blank"
                   class="project-link"
                 >
-                  <MdiGithub class="w-4 h-4 mr-1" />
+                  <MdiGithub class="link-icon-sm me-1" />
                   GitHub
                 </a>
               </div>
@@ -125,9 +125,9 @@ const projects = resumeData.projects
           target="_blank"
           class="github-link"
         >
-          <MdiGithub class="w-5 h-5 mr-2" />
+          <MdiGithub class="link-icon-md me-2" />
           GitHub
-          <MdiArrowRight class="w-4 h-4 ml-1" />
+          <MdiArrowRight class="link-icon-sm ms-1" />
         </a>
       </div>
     </v-container>
@@ -135,6 +135,20 @@ const projects = resumeData.projects
 </template>
 
 <style scoped>
+.projects-page {
+  min-height: 100vh;
+}
+
+.link-icon-sm {
+  width: 16px;
+  height: 16px;
+}
+
+.link-icon-md {
+  width: 20px;
+  height: 20px;
+}
+
 /* 頁面裝飾 */
 .deco-circle {
   position: absolute;

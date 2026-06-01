@@ -24,21 +24,21 @@ const skills: Skill[] = [
 </script>
 
 <template>
-  <div class="home-page min-h-screen relative overflow-hidden">
+  <div class="home-page position-relative overflow-hidden">
     <!-- 日式裝飾元素 -->
-    <div class="zen-decoration fixed inset-0 pointer-events-none z-0">
+    <div class="zen-decoration">
       <div class="zen-circle zen-circle-1" />
       <div class="zen-circle zen-circle-2" />
       <div class="zen-line zen-line-1" />
     </div>
 
     <!-- Hero Section -->
-    <section class="hero-section relative z-10">
+    <section class="hero-section position-relative z-above">
       <v-container
         :style="container.style"
         :class="[spacing.sectionTitle, spacing.containerPadding]"
       >
-        <div class="flex flex-col md:flex-row items-center justify-center gap-12 md:gap-16">
+        <div class="d-flex flex-column flex-md-row align-center justify-center ga-12 ga-md-16">
           <HomeAvatarCard class="flex-shrink-0" />
           <HomeAboutMe />
         </div>
@@ -46,42 +46,42 @@ const skills: Skill[] = [
     </section>
 
     <!-- 簡約分隔線 -->
-    <div class="zen-divider relative z-10">
+    <div class="zen-divider position-relative z-above">
       <span class="zen-divider-dot" />
     </div>
 
     <!-- 技術展示區 -->
-    <section class="skills-section relative z-10">
+    <section class="skills-section position-relative z-above">
       <v-container
         :style="container.style"
         :class="[spacing.sectionContent, spacing.containerPadding]"
       >
         <div class="text-center mb-12 anim-fade-in">
-          <p class="text-xs text-muted mb-2 letter-spacing-wide uppercase">
+          <p class="text-caption text-muted mb-2 letter-spacing-wide text-uppercase">
             EXPERTISE
           </p>
-          <h2 class="text-2xl font-bold text-primary font-heading">
+          <h2 class="text-h5 font-weight-bold text-primary font-heading">
             專業領域
           </h2>
         </div>
 
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-6">
+        <div class="skill-grid">
           <div
             v-for="(skill, index) in skills"
             :key="skill.name"
-            class="skill-item text-center cursor-pointer p-6"
+            class="skill-item text-center cursor-pointer pa-6"
             :style="{ animationDelay: getListDelay(index, 300) }"
           >
-            <div class="skill-icon-wrapper w-18 h-18 rounded-full border border-[var(--color-border)] flex items-center justify-center mx-auto mb-4 bg-white transition-all duration-300">
+            <div class="skill-icon-wrapper mx-auto mb-4 bg-white">
               <component
                 :is="skill.icon"
-                class="text-3xl"
+                class="text-h4"
               />
             </div>
-            <div class="text-sm font-bold mb-1">
+            <div class="text-body-2 font-weight-bold mb-1">
               {{ skill.name }}
             </div>
-            <div class="text-xs text-muted">
+            <div class="text-caption text-muted">
               {{ skill.desc }}
             </div>
           </div>
@@ -150,9 +150,27 @@ const skills: Skill[] = [
   background: rgba(78, 69, 64, 0.08);
 }
 
+.skill-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+@media (min-width: 600px) {
+  .skill-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
 .skill-icon-wrapper {
   width: 72px;
   height: 72px;
+  border-radius: 9999px;
+  border: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
 }
 
 @keyframes gentleFadeUp {

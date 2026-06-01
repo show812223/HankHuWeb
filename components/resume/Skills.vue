@@ -56,7 +56,7 @@ const defaultIcon = MdiPackageVariant
           </div>
 
           <!-- 技能項目 -->
-          <div class="skill-items d-flex flex-column ga-2 pl-6 border-l">
+          <div class="skill-items d-flex flex-column ga-2 ps-6 border-l">
             <div
               v-for="item in skill.items"
               :key="item.name"
