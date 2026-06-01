@@ -4,7 +4,6 @@ import type { Component } from 'vue'
 import MdiEmail from '~icons/mdi/email-outline'
 import MdiLinkedin from '~icons/mdi/linkedin'
 import MdiGithub from '~icons/mdi/github'
-import MdiSend from '~icons/mdi/send'
 
 const { getListDelay, intervals } = useAnimationConfig()
 
@@ -36,18 +35,6 @@ const contactInfo: ContactInfo[] = [
   },
 ]
 
-const form = reactive({
-  name: '',
-  email: '',
-  message: '',
-})
-
-const submitted = ref(false)
-
-function handleSubmit() {
-  console.log('Form submitted:', form)
-  submitted.value = true
-}
 </script>
 
 <template>
@@ -116,106 +103,6 @@ function handleSubmit() {
           </a>
         </div>
       </div>
-
-      <!-- 聯絡表單 -->
-      <v-card
-        class="contact-form-card pa-8 pa-md-10 anim-fade-in anim-delay-400"
-        variant="outlined"
-      >
-        <!-- 區塊標題 -->
-        <div class="section-header mb-8 text-center">
-          <p
-            class="text-caption text-medium-emphasis mb-2"
-            style="letter-spacing: 0.3em;"
-          >
-            MESSAGE
-          </p>
-          <h2 class="text-h5 font-weight-bold text-primary font-heading">
-            發送訊息
-          </h2>
-        </div>
-
-        <!-- 成功訊息 -->
-        <Transition name="fade">
-          <div
-            v-if="submitted"
-            class="text-center py-8"
-          >
-            <v-icon
-              color="success"
-              size="64"
-              class="mb-4"
-            >
-              mdi-check-circle
-            </v-icon>
-            <h3 class="text-h6 mb-2">
-              訊息已送出
-            </h3>
-            <p class="text-body-2 text-medium-emphasis">
-              感謝您的來信，我會盡快回覆。
-            </p>
-          </div>
-        </Transition>
-
-        <!-- 表單 -->
-        <v-form
-          v-if="!submitted"
-          @submit.prevent="handleSubmit"
-        >
-          <v-row>
-            <v-col
-              cols="12"
-              sm="6"
-            >
-              <label class="form-label text-caption text-medium-emphasis mb-2 d-block">姓名</label>
-              <v-text-field
-                v-model="form.name"
-                placeholder="請輸入您的姓名"
-                density="comfortable"
-                hide-details
-              />
-            </v-col>
-            <v-col
-              cols="12"
-              sm="6"
-            >
-              <label class="form-label text-caption text-medium-emphasis mb-2 d-block">Email</label>
-              <v-text-field
-                v-model="form.email"
-                placeholder="your@email.com"
-                type="email"
-                density="comfortable"
-                hide-details
-              />
-            </v-col>
-          </v-row>
-
-          <div class="mt-6 mb-8">
-            <label class="form-label text-caption text-medium-emphasis mb-2 d-block">訊息</label>
-            <v-textarea
-              v-model="form.message"
-              placeholder="請輸入您想說的話..."
-              rows="5"
-              density="comfortable"
-              hide-details
-            />
-          </div>
-
-          <div class="text-center">
-            <v-btn
-              color="primary"
-              size="large"
-              type="submit"
-              class="submit-btn px-8"
-            >
-              <template #prepend>
-                <MdiSend />
-              </template>
-              送出
-            </v-btn>
-          </div>
-        </v-form>
-      </v-card>
     </v-container>
   </div>
 </template>
@@ -274,33 +161,6 @@ function handleSubmit() {
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-/* 表單標籤 */
-.form-label {
-  letter-spacing: 0.1em;
-}
-
-/* 送出按鈕 */
-.submit-btn {
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  transition: all 0.3s ease;
-}
-
-.submit-btn:hover {
-  transform: translateX(4px);
-}
-
-/* 過渡動畫 */
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.3s ease;
-}
-
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
 }
 
 .font-heading {

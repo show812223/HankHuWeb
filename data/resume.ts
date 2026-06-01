@@ -21,8 +21,8 @@ export const resumeData: ResumeData = {
     },
     {
       name: '個人履歷網站',
-      description: '使用 Nuxt 3 + Vuetify 打造的現代化個人履歷網站，部署於 Cloudflare Workers。',
-      technologies: ['Nuxt 3', 'Vue 3', 'Vuetify', 'TypeScript', 'Cloudflare'],
+      description: '使用 Nuxt 4 + Vuetify 打造的現代化個人履歷網站，部署於 Cloudflare Workers。',
+      technologies: ['Nuxt 4', 'Vue 3', 'Vuetify', 'TypeScript', 'Cloudflare'],
       github: 'https://github.com/show812223/HankHuWeb',
     },
   ],
@@ -33,7 +33,7 @@ export const resumeData: ResumeData = {
       icon: 'mdi-vuejs',
       items: [
         { name: 'Vue 3', level: 5 },
-        { name: 'Nuxt 3', level: 5 },
+        { name: 'Nuxt 4', level: 5 },
         { name: 'Vuetify', level: 4 },
       ],
     },
@@ -42,8 +42,8 @@ export const resumeData: ResumeData = {
       icon: 'mdi-language-typescript',
       items: [
         { name: 'TypeScript', level: 5 },
-        { name: 'JavaScript', level: 5 },
-        { name: 'HTML5', level: 5 },
+        { name: 'JavaScript', level: 4 },
+        { name: 'HTML5', level: 4 },
         { name: 'CSS3 / SCSS', level: 4 },
       ],
     },
@@ -90,7 +90,7 @@ export const resumeData: ResumeData = {
         '進行技術評估與選型，導入新技術以提升產品競爭力',
         '跨部門協作，與產品、後端團隊緊密配合確保專案順利交付',
       ],
-      technologies: ['Vue 3', 'Nuxt 3', 'TypeScript', 'Vuetify', 'Azure DevOps'],
+      technologies: ['Vue 3', 'Nuxt 4', 'TypeScript', 'Vuetify', 'Azure DevOps'],
     },
     {
       company: '衛武資訊股份有限公司',

@@ -1,11 +1,11 @@
 # HankHuWeb - 個人履歷網站
 
-一個使用 Nuxt 3 + Naive UI + Tailwind CSS 打造的現代化個人履歷網站，採用日系溫暖極簡風格設計。
+一個使用 Nuxt 4 + Vuetify + Tailwind CSS 打造的現代化個人履歷網站，採用日系溫暖極簡風格設計。
 
 ## 技術棧
 
-- **框架**: [Nuxt 3](https://nuxt.com/) - Vue 3 全端框架
-- **UI 組件庫**: [Naive UI](https://www.naiveui.com/) - Vue 3 組件庫
+- **框架**: [Nuxt 4](https://nuxt.com/) - Vue 3 全端框架
+- **UI 組件庫**: [Vuetify](https://vuetifyjs.com/) - Vue 3 Material Design 組件庫
 - **樣式**: [Tailwind CSS](https://tailwindcss.com/) - 工具優先的 CSS 框架
 - **字體**: Google Fonts (Noto Serif JP, Zen Maru Gothic)
 - **部署**: Cloudflare Workers / Vercel
